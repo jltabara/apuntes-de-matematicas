@@ -108,7 +108,14 @@ for folder,category in CATEGORIES.items():
   items.append(item)
   if missing:report.append({'archivo':rel,'referencias_no_encontradas':sorted(missing)})
 items.sort(key=lambda x:norm(x['title']))
-(OUT/'catalogo.js').write_text('window.CATALOGO = '+json.dumps(items,ensure_ascii=False)+';\n')
+catalog_path=OUT/'catalogo.js'
+catalog_path.write_text('window.CATALOGO = '+json.dumps(items,ensure_ascii=False)+';\n')
+version=hashlib.sha256(catalog_path.read_bytes()).hexdigest()[:12]
+index_path=OUT/'index.html'
+html=index_path.read_text()
+html, count=re.subn(r'(<script src="catalogo\.js)(?:\?v=[a-f0-9]+)?(" defer></script>)',lambda m:m[1]+'?v='+version+m[2],html)
+if count!=1:raise RuntimeError('No se encontró la referencia al catálogo en index.html')
+index_path.write_text(html)
 (ROOT/'web/informe-recursos.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
 (OUT/'.nojekyll').touch()
 print(f'{len(items)} entradas, {sum(bool(x["pdf"]) for x in items)} PDF, {len(report)} entradas con referencias pendientes.')
