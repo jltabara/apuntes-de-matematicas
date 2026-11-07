@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><meta name="description" content="Biblioteca de apuntes de matemáticas, libros y ficción. Lee los PDF y descarga sus fuentes LaTeX."><title>Apuntes de Matemáticas</title><link rel="stylesheet" href="estilos.css"><script src="catalogo.js" defer></script><script src="app.js" defer></script></head>
+<body>
+<a class="skip" href="#catalogo">Saltar al catálogo</a>
+<header><a class="brand" href="./"><span class="logo" aria-hidden="true">∑</span><span>Apuntes de Matemáticas<small>BIBLIOTECA DIGITAL</small></span></a><button id="tema" class="theme" aria-label="Cambiar tema">◐ <span>Tema oscuro</span></button></header>
+<main><section class="intro"><div><span class="eyebrow">UN ESPACIO PARA LEER Y APRENDER</span><h1>El conocimiento, a mano.</h1><p>Explora los apuntes y libros. Lee aquí o llévate las fuentes.</p></div><div id="stats" class="stats"></div></section>
+<div class="workspace"><section class="catalog" id="catalogo" aria-label="Catálogo"><div class="catalog-head"><h2>La colección <span id="total"></span></h2><label class="search"><span aria-hidden="true">⌕</span><input type="search" id="buscar" placeholder="Buscar título, autor o archivo…" aria-label="Buscar título, autor o archivo"></label><div id="categorias" class="filters" aria-label="Categorías"></div><div class="tools"><label><input type="checkbox" id="con-pdf"> Solo con PDF</label><label>Orden <select id="orden"><option value="az">Título A–Z</option><option value="za">Título Z–A</option></select></label></div></div><div id="resultados" role="status" class="results"></div><div id="lista" class="list"></div></section>
+<section class="reader" id="lector" aria-label="Lector de documentos"><div class="reader-top"><span><i></i> ESPACIO DE LECTURA</span><button id="cerrar" hidden aria-label="Cerrar obra">Cerrar ×</button></div><div id="contenido" class="reader-content"><div class="empty"><div class="book" aria-hidden="true">▤</div><span class="eyebrow">TU PRÓXIMA LECTURA</span><h2>Todo empieza con una página.</h2><p>Selecciona una obra de la colección para leer su PDF y descargar sus archivos LaTeX.</p><div class="empty-tags"><span>PDF en línea</span><span>Fuentes LaTeX</span></div></div></div></section></div></main>
+<footer><span>Apuntes de Matemáticas</span><span>Matemáticas, letras y curiosidad.</span></footer>
+<noscript>Activa JavaScript para consultar el catálogo y el lector.</noscript>
+</body></html>

@@ -1,0 +1,5 @@
+Archivo principal: Apuntes de Matematicas/[MatematicasApuntes] AlgebrasdeLie.tex
+
+Fuentes de texto convertidas a UTF-8 y declaraciones inputenc actualizadas. En Overleaf: Nuevo proyecto > Subir proyecto, selecciona este ZIP y establece como documento principal el archivo indicado arriba. Se conserva la estructura original. Se incluyen recursos locales y compartidos. No se ha verificado la compilación. Para imágenes compartidas, puede ser necesario añadir ../Imagenes/ a la ruta de búsqueda de LaTeX.
+
+Referencias no encontradas: algebrasdelie

@@ -1,0 +1,10 @@
+.DS_Store
+servidor.pid
+servidor.log
+retirados/
+compilacion/
+*.pyc
+__pycache__/
+/catalogo-paginas.png
+/lector-sin-miniaturas.png
+/vista-previa.png

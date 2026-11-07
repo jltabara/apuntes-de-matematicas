@@ -1,0 +1,4200 @@
+
+\documentclass[a4paper,draft,12pt]{scrartcl}
+
+%%%%%%%%%%%%%%%%%%%%%%Paquetes
+\usepackage[spanish]{babel}  
+\usepackage{makeidx}  %%%%%%%%%%%%%%%%%Para crear indices
+\usepackage{indentfirst} %%%%%%%%%%%%%%%%Crear un indent al principio
+\usepackage[utf8]{inputenc}%%%%%%%%%%%%ñ y acentos
+\usepackage{amstext}%%%%%%%%
+\usepackage{amsfonts}%%%%%%%
+\usepackage{amssymb}%%%%%%%% AMSLaTeX
+\usepackage{amscd}%%%%%%%%%%
+\usepackage{amsmath}%%%%%%%%
+\usepackage{enumerate}%%%%%%%%%%%%%%%%Mejoras del entorno enumerate
+\usepackage{latexsym}
+\usepackage{color}
+\usepackage[mathcal]{eucal}%%%%%%%Caligrafica matematica
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage[all]{xy}%%%%%%% Diagramas conmutativos
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\onehalfspacing
+\renewcommand{\sectfont}{\rmfamily \bfseries} %cabeceras y titulos con estilo roman, negrita.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%Teoremas
+\newtheorem{teo}{Teorema}[section]%%%%%%%%% Teorema
+\newtheorem{defi}{Definición}[section]%%%%%%%% Definicion
+\newtheorem{lema}[teo]{Lema}%%%%%%%%%%%%% Lema
+\newtheorem{propo}[teo]{Proposición}%%%%%%%% Proposicion
+\newtheorem{cor}[teo]{Corolario}%%%%%%%%%%%Corolario
+\newtheorem{pro1}{}%[chapter]%%%%%%%%%Problema
+\newenvironment{pro}{\begin{pro1} \rm} {\end{pro1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%Comandos
+\newcommand{\dem}{\noindent \textbf{Demostración. }\vspace{0.3 cm}}%%Demostracion
+\newcommand{\R}{\mathbb{R}}%%%%%%%%%%%%Numeros reales
+\newcommand{\F}{\mathbb{F}}%%%%%%%%%%%%Cuerpo
+\newcommand{\C}{\mathbb{C}}%%%%%%%%%%%%Numeros complejos
+\newcommand{\Q}{\mathbb{Q}}%%%%%%%%%%%%Numeros racionales
+\newcommand{\N}{\mathbb{N}}%%%%%%%%%%%%Numeros naturales
+\newcommand{\Z}{\mathbb{Z}}%%%%%%%%%%%%Numeros enteros
+\newcommand{\g}{\mathfrak{g}}%%%%%%%%%%%%Algebra de Lie del grupo G
+\newcommand{\V}{\mathcal{V}}%%%%%%%%%%%%Variedad
+\newcommand{\W}{\mathcal{W}}%%%%%%%%%%%%Variedad
+\newcommand{\h}{\mathcal{H}}%%%%%%%%%%%%Algebra de Lie del grupo H
+\newcommand{\uni}{\mathcal{U}}%%%%%%%%%%%%Algebra envolvente
+\newcommand{\fin}{ $\Box $ \vspace{0.4 cm}}
+\newcommand{\p}{\mathfrak{p}}%%%%%%%% Ideal primo
+\newcommand{\m}{\mathfrak{m}}%%%%%%%% Ideal maximal
+\newcommand{\limind}{\lim_{\longrightarrow} } 
+\newcommand{\gp}{\mathcal{G'}}%%%%%%%%%%%Algebra del grupo G'
+\newcommand{\lto}{\longrightarrow}%%%%%%Simplificacion de la flecha larga
+\newcommand{\wa}{\omega_2} %%%%%%%%%%%forma simplectica
+\newcommand{\Wa}{\Omega_2} %%%%%%%%%% forma simplectica lineal
+\newcommand{\lag}{\lambda_g}%%%%%%%%%%%%Traslacion a la izquierda
+\newcommand{\rg}{\rho_g}%%%%%%%%%%%%%%%%Traslacion a la derecha
+\newcommand{\Gr}{\boldsymbol{G}}%%%%%%%%%%Recubridor universal
+\newcommand{\norma}[1]{\: \parallel #1 \!\parallel\! }%%%Norma de un vector
+\newcommand{\abs}[1]{\left|\, #1 \right|}  %%%Valor absoluto 
+\newcommand{\Pro}{\mathbb{P}}%%%%%%Espacio proyectivo
+\newcommand{\Problemas}{\newpage  \begin{center}{\Huge Problemas}\end{center}}
+\newcommand{\Ejemplos}{\vspace{0.5 cm} {\bf Ejemplos}}
+\newcommand{\D}{\mathcal{D}}%%%%%%%%%%%%Serie derivada
+\newcommand{\central}{\mathcal{C}}%%%%%%%%%%%%Serie central
+\renewcommand{\to}{\lto}
+\newcommand{\escalar}[2]{\left\langle\, #1,#2\, \right\rangle}  %%%Producto escalar 
+\newcommand{\df}[1]{\textsf{\color{blue}#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%Operadores
+\DeclareMathOperator{\End}{End}%%%%%%%%%%Endomorfismo
+\DeclareMathOperator{\Ad}{Ad}%%%%%%%%%%Adjunta
+\DeclareMathOperator{\grad}{grad}%%%%%%%%%%Graciente
+\DeclareMathOperator{\Dif}{Dif}%%%%%%%%%%Diferenciales
+\DeclareMathOperator{\sop}{sop}%%%%%%%%%Soporte
+\DeclareMathOperator{\distancia}{d}%%%%%%%%Distancia
+\DeclareMathOperator{\sen}{sen}%%%%%%%%%%Seno español
+\DeclareMathOperator{\Der}{Der}%%%%%%%%%%Derivaciones
+\DeclareMathOperator{\rang}{rang}%%%%%%%%Rango
+\DeclareMathOperator{\Hom}{Hom}%%%%%%Homomorfismos
+\DeclareMathOperator{\Ann}{Ann}%%%%%%%Anulador
+\DeclareMathOperator{\Img}{Im} %%%%Parte imaginaria
+\DeclareMathOperator{\rad}{rad}%%%%%%%%Radical
+\DeclareMathOperator{\Ker}{Ker}%%%%%%%Nucleo
+\DeclareMathOperator{\Id}{Id}%%%%%%% Identidad
+\DeclareMathOperator{\GL}{GL}%%%%%%%%%Grupo lineal
+\DeclareMathOperator{\Apli}{Apli}%%%%%%Aplicaciones
+\DeclareMathOperator{\Bil}{Bil}%%%%%Bilineales
+\DeclareMathOperator{\Spec}{Spec}%%%%Espectro
+\DeclareMathOperator{\Aut}{Aut}%%%%Espectro
+\DeclareMathOperator{\Ob}{Ob}  %%% Objetos de una categoría
+\DeclareMathOperator{\Traza}{Tr}  %%% Traza de un endomorfismo
+\DeclareMathOperator{\ad}{ad}  %%% Traza de un endomorfismo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\pagestyle{empty}
+\makeindex
+\author{José Luis Tábara Carbajo}
+
+
+
+\begin{document}
+
+
+
+%%%%%%%%%%Titulo y tabla de contenidos
+\newlength{\centeroffset}
+\setlength{\centeroffset}{-0.5\oddsidemargin}
+\addtolength{\centeroffset}{0.4\evensidemargin}
+\addtolength{\textwidth}{-\centeroffset}
+\thispagestyle{empty}
+\vspace*{\stretch{0.8}}
+\noindent\hspace*{\centeroffset}\begin{minipage}{\textwidth}
+\flushright
+\textcolor{blue}{
+{\Huge \bfseries \sf  Álgebras de Lie}
+\noindent\rule[-1ex]{\textwidth}{5pt}\\[4.5ex]}
+\end{minipage}
+
+
+%\vspace{\stretch{0}}
+\noindent\hspace*{\centeroffset}\begin{minipage}{\textwidth}
+\flushright
+\textcolor{blue}{
+ {\bfseries  
+José Luis Tábara\\[1.5ex]} 
+Versión~0.2, \today\\} %Marzo del 2007
+
+\end{minipage}
+%\addtolength{\textwidth}{\centeroffset}
+\vspace{\stretch{2}}
+
+
+
+\newpage
+
+
+\tableofcontents
+
+\newpage
+
+
+
+
+%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+\section{Definición y ejemplos}
+
+
+
+%%%%%%%%%%%% fancyhdr
+
+\lhead{\footnotesize Álgebras de Lie}
+\rhead{\footnotesize \bf  \thepage}
+\cfoot{}
+\pagestyle{fancy}
+\setcounter{page}{1}
+%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\noindent{\bf Nota.} Todos los cuerpos   serán supuestos de característica nula.
+Ciertos ejemplos requieren conocimientos de geometría diferencial, pero no son imprescindibles para seguir el desarrollo del texto.  Marcaremos dichos pasajes con un asterisco.
+
+\begin{defi}
+
+Sea  $k$  un cuerpo. Un  \df{álgebra de Lie} \index{algebra@álgebra!de Lie} sobre  $k$ es un  $k$-espacio vectorial $\g$ dotado de una aplicación
+\[
+\begin{array}{ccc}
+ \g \times \g & \lto & \g \\
+  (x,y)& \lto & [x,y]
+\end{array}
+\]
+que satisface:
+
+\begin{enumerate}[\indent 1.-]
+
+ \item  Es bilineal: $[\lambda x+y,z]= \lambda[x,z]+[y,z]$ y análogo en la segunda componente.
+
+\item  Es antisimétrica: $ [x, y ] = - [y,x ]$
+
+\item   Cumple la   \df{identidad de Jacobi}:\index{identidad de Jacobi}\label{identidad de Jacobi} $[x,[y,z ]  ] +[y,[z,x ]  ] + [z,[x,y ]  ]=0$ 
+
+\end{enumerate}
+
+\end{defi}
+
+
+
+\noindent {\bf Observaciones.}
+
+\begin{itemize}
+
+\item El producto de dos elementos, $[x,y]$ se lee: paréntesis de  $x$ e $y$, conmutador de $x$ e $y$,  o también corchete de  $x$ e $y$.
+
+\item Sea $k \subset K$ una extensión de cuerpos.  Toda álgebra de Lie sobre $K$ es un álgebra de Lie sobre el subcuerpo $k$. 
+
+\item Llamamos   \df{dimensión} \index{dimensión de un álgebra} de la  $k$-álgebra a la dimensión del  $k$-espacio $\g$.  A veces puede ocurrir que $\g$ sea un álgebra de Lie sobre varios cuerpos. En este caso debemos tener cuidado y especificar siempre el cuerpo en cuestión cuando hablemos de dimensión. 
+
+\item Si $[x,y]=0$  decimos que los elementos  $x$  e  $y$  conmutan. En virtud de la definición de álgebra de Lie tenemos que $[x,x]=0$ para todo elemento del álgebra. Un álgebra es   \df{abeliana}\index{algebra@álgebra!abeliana} o   \df{conmutativa} \index{algebra@álgebra!conmutativa}  si conmutan todo par de elementos.
+
+
+
+\end{itemize}
+
+\newpage
+
+\noindent {\bf Ejemplos.}
+
+\begin{itemize}
+
+\item Si  A  es una  $k$-álgebra asociativa, podemos introducir en A una nueva operación definiendo $[x,y] = xy - yx$. Este nuevo producto dota al conjunto  A  de estructura de  $k$-álgebra de Lie. 
+
+\item  Si $E$ es un espacio vectorial, denotamos por $\End(E)$ al conjunto de sus endomorfismos, donde el producto es la composición.  Si queremos resaltar que en dicho conjunto consideramos la estructura de álgebra de Lie dada por el conmutador, lo denotaremos por $\mathfrak{gl}(E)$.  Si tomamos una base en el espacio, y éste es de dimensión finita $n$, el conjunto de endomorfismos se identifica con el conjunto de matrices cuadradas de orden $n$.  Lo denotamos en este caso por $\mathfrak{gl}(n,k)$, haciendo referencia al cuerpo donde están definidas las matrices, siempre que sea necesario.
+
+\item Sea $E$ un $k$-espacio vectorial arbitrario.  Si sobre $E$ definimos $[x,y]=0$ para todo par de elementos, obtenemos un álgebra de Lie conmutativa. 
+
+
+\item $\R^3$ con el   \df{producto vectorial}.\index{producto vectorial} Para probar la identidad de Jacobi utililícese la fórmula  $(x \times y) \times z= \langle x,z\rangle y - \langle y,z\rangle x $, donde $\langle \ ,\rangle$ denota el producto escalar.
+
+\item Un álgebra $A$ sobre un cuerpo $k$ es un espacio vectorial sobre dicho cuerpo junto con  una aplicación bilineal de $A \times A $ en $A$.  Normalmente se designa dicha aplicación bilineal por la yuxtaposición o por un punto.  Sin embargo, en el caso de las álgebras de Lie se emplea la notación del corchete.  
+
+ Decimos que un endomorfismo  $D$  de  A  es una   \df{derivación} \index{derivación de un álgebra} si:
+\[
+D(a\cdot b) = D(a)\cdot b + a\cdot D(b)
+\]
+para todo par de elementos $a,b \in A$. El conjunto de derivaciones de A, $\Der(A)$, es un espacio vectorial. Si $D$  y  $D'$ son derivaciones es fácil comprobar que $[D,D'] = D D' - D' D$ es una derivación. Tenemos entonces una estructura de álgebra de Lie en el conjunto de derivaciones.
+
+
+ \item  (*) Sea  $\mathcal{V}$  una variedad diferenciable de dimensión finita. El conjunto de todos los campos vectoriales diferenciables sobre $\mathcal{V}$, junto con el paréntesis de Lie, constituyen un álgebra de Lie, $\mathfrak{X}(\V)$, cuya dimensión es infinita. Este álgebra coincide con el conjunto de derivaciones del anillo $C^\infty(\V)$.
+
+\item (*) Si  $G$  es un grupo de Lie, el conjunto $\g$ de los campos vectoriales invariantes por la  izquierda  es un álgebra de Lie. Su dimensión coincide con la dimensión del grupo.
+
+\item (*) Si $\mathcal{V}$ es una variedad   \df{simpléctica}, \index{variedad!simpléctica} entonces $C^ \infty (\mathcal{V})$ es un álgebra de Lie infinitodimensional si llamamos corchete de dos elementos a su   \df{paréntesis de Poison}. \index{paréntesis de Poison}
+
+
+
+\end{itemize}
+
+\section*{\centerline{Problemas}}
+
+\begin{pro}
+
+Demostrar que $[0,x]=0$ para todo $x \in \g$. Demostrar que si $[x,y]\neq 0$ entonces $x$ e $y$ son linealmente independientes.
+
+\end{pro}
+
+\begin{pro}
+        Sea $K$ un cuerpo y  $k$  un subcuerpo. ¿Qué relación existe entre las dimensiones sobre $K$ y sobre $k$  de una misma $K$-álgebra de Lie?
+\end{pro}
+
+\begin{pro}
+
+Sea $\g$ un álgebra de Lie sobre un cuerpo $k$.  Sobre $\g$ introducimos una nueva multiplicación que denotaremos, para no confundirnos, con $[-,-]_1$.  La nueva definición es
+\[
+[x,y]_1= [y,x]
+\]
+Probar que con este nuevo conmutador es un álgebra de Lie.  Dicha álgebra se denomina   \df{álgebra opuesta} \index{algebra@álgebra!opuesta} de $\g$.
+
+\end{pro}
+
+
+
+\begin{pro}
+
+Sea $\g$ un álgebra de Lie de dimensión $2$.  Si el álgebra es abeliana, entonces existe una base $\{x,y\}$ que cumple $[x,y]=0$.  Comprobar que si no es abeliana debe existir una base $\{x,y\}$ que cumple la regla de conmutación $[x,y]=x$.  Concluir que, salvo isomorfismos, existen dos álgebras de Lie de dimensión dos sobre cualquier cuerpo.
+
+\end{pro}
+
+\begin{pro}
+
+Sea $A$ un álgebra y sean $D$ y $D'$ dos derivaciones. Comprobar que $\lambda D$, $D+D'$ y $[D,D']$ son también derivaciones.
+
+\end{pro}
+
+\begin{pro}
+
+Dada un álgebra de Lie arbitraria, sea $\ad_x$ la aplicación lineal 
+\[
+\begin{array}{lccc}
+\ad_x: & \g & \lto &\g \\
+    & y& \lto & [x,y]
+\end{array}
+\]
+
+Demostrar que $\ad_x$ es una derivación del álgebra de Lie (la condición $\ad_x([y,z])=[\ad_x (y), z]+[y,\ad_x (z)]$ es simplemente una nueva forma de escribir la identidad de Jacobi). Las derivaciones de la forma $\ad_x$ se denominan   \df{derivaciones interiores}. \index{derivación!interior} El resto se denominan   \df{exteriores}. \index{derivación!exterior}
+
+\end{pro}
+
+\begin{pro}
+
+Sea $\g$ un álgebra de Lie, $D=\ad_x$ una derivación interior y $D'$ una derivación arbitraria. Comprobar que $[D,D']$ es una derivación interior. 
+
+\end{pro}
+
+
+\begin{pro}
+
+Sea $E$ un espacio vectorial de dimensión finita $n$ y $\{e_1, \dots,e_n\}$ una base.  Denotamos por $\varphi_{ij}$ al endomorfismo que cumple $\varphi_{ij}(e_j)=e_i$ y $\varphi_{ij}(e_k)=0$ si $k \neq j$.
+
+\begin{itemize}
+
+\item La matriz del endomorfismo $\varphi_{ij}$ en la base dada tiene todas las entradas nulas salvo la posición $(ij)$ donde tiene un uno.  Denotaremos a dicha matriz mediante $e_{ij}$.
+
+\item Los endomorfismos $\{\varphi_{ij}\}$ con $ 1 \leq i,j\leq n$ forman una base del espacio de endomorfismos.
+
+\item La multiplicación de estos endomorfismos cumple la regla:
+\[
+\varphi_{ij} \varphi_{kl} = \delta_{jk} \varphi_{il}
+\]
+Para comprobarla, verificar que ambos endomorfismos transforman la base de $E$ en los mismos  vectores.
+
+\item Se cumple la regla de conmutación
+\[
+[\varphi_{ij}, \varphi_{kl}]= \delta_{jk}\varphi_{il}-\delta_{li} \varphi_{kj}
+\]
+
+\end{itemize}
+
+\end{pro}
+
+
+
+
+\begin{pro}
+   (*)     Probar que el álgebra de campos y el de funciones diferenciables en una variedad simpléctica son de dimensión infinita. 
+\end{pro}
+
+
+\newpage
+
+\section{Subálgebras e ideales}
+
+        Sean   $\mathfrak{a}$  y  $\mathfrak{b}$  dos subespacios de una  $k$-álgebra de Lie. Denotamos $[\mathfrak{a},\mathfrak{b}]$ al subespacio de $\g$ generado por los vectores de la forma $[x,y]$ con $ x\in \mathfrak{a}$, $  y \in  \mathfrak{b}$.
+
+\begin{defi}
+
+Un subespacio   $\mathfrak{h} \subset  \g$  es una \df{subálgebra de Lie} \index{subálgebra!de Lie}  si   $[\mathfrak{h},\mathfrak{h}] \subset  \mathfrak{h}$.  
+Un subespacio  $\mathfrak{n}$  es un \df{ideal} \index{ideal!de un álgebra de Lie}   si $[\mathfrak{n},\g] \subset   \mathfrak{n}$.
+
+\end{defi}
+
+Con las estructuras inducidas, toda subálgebra y todo ideal son  álgebras de Lie. Todo ideal  es una subálgebra, pero el recíproco en general no es cierto.
+ 
+ \bigskip
+
+\noindent {\bf Ejemplos.}
+
+\begin{itemize}
+
+\item Sea $\g$ un álgebra de Lie.  Todo subespacio de dimensión 1 es una subálgebra puesto que $[x,x]=0$ para todo elemento de un álgebra de Lie. En general, dados varios elementos $\{x_1, \dots ,x_n\}$ que conmutan dos a dos, el subespacio $\left\langle x_1, \dots, x_n \right \rangle$ generado por dichos elementos es una subálgebra puesto que el conmutador de cualesquiera dos elementos del subespacio es nulo.  Dicha subálgebra  es abeliana. 
+
+
+\item Sea  $\g = \mathfrak{gl} (E)$, donde $E$ es un espacio vectorial de dimensión finita. El conjunto  $\mathfrak{sl}(E)$ de los endomorfismos (o matrices, una vez tomada una base) de traza nula, es un ideal de  $\g$. En efecto, dadas dos aplicaciones lineales, su corchete es siempre una aplicación lineal de traza nula, puesto que $\Traza(fg)= \Traza(gf)$. Es más, este razonamiento demuestra que $[\mathfrak{gl}(E),\mathfrak{gl}(E)] \subset \mathfrak{sl}(E)$
+
+\item Consideramos un espacio vectorial $E$ y definido en él una forma bilineal, que denotamos $\escalar{-}{-}$. El conjunto de endomorfismos $\varphi$ de $E$ que cumplen
+\[
+\escalar{\varphi(x)}{y} + \escalar{x}{\varphi(y)} = 0 \text{ para todo } x,y \in E
+\]
+es una subálgebra del álgebra de endomorfismos.  Si tomamos una base y denotamos por $S$ a la matriz de la forma bilineal en esta base, este álgebra se identifica con el conjunto de matrices $A$ que verifican $A^tS+SA=0$, que es una subálgebra del conjunto de matrices cuadradas.
+
+
+\item Sea  $\mathcal{V}$  una variedad con un elemento de volumen $\tau$.  El conjunto de campos de  \df{divergencia} \index{divergencia} nula (o sea campos tales que $X^L \tau  = 0$) es una subálgebra. Para demostrarlo podemos utilizar la siguiente propiedad de la derivada de Lie:
+\[
+[X,Y]^L = X^L Y^L - Y^L X^L= [X^L, Y^L]
+\]
+
+\item Sea  $\mathcal{V}$  una variedad riemaniana o semirriemaniana con métrica  $g$. El conjunto de  \df{campos Killing} \index{campos!Killing} ($X$ es Killing si $X^L g = 0$) es una subálgebra. Si   $\mathcal{V}$ es simpléctica, los  \df{campos localmente hamiltonianos} \index{campos!localmente hamiltonianos} ($X^L \omega_2 = 0$) forman una subálgebra.
+
+\item Supongamos dada en $\mathcal{V}$ una distribución de campos  p-dimensional y regular. Decimos que un campo vectorial pertenece a la distribución si en todos los puntos el vector correspondiente pertenece al subespacio de la distribución. Según el teorema de integrabilidad de Frobenius, \index{teorema!Frobenius} dicha distribución es integrable si y sólo si los campos de dicha distribución forman una subálgebra de Lie del álgebra de campos de la variedad.
+
+\item $\Der  (A)$ es una subálgebra de $\End (A)$, puesto que ya hemos demostrado que el conmutador de dos derivaciones es de nuevo una derivación.
+
+
+\item Dada un álgebra de Lie, definimos su \df{centro}\index{centro} como el conjunto de elementos del álgebra que conmutan con todos los elementos.  Si denotamos por $\mathrm{Z}(\g)$ a dicho conjunto tenemos
+\[
+\mathrm{Z}(\g)=\{ x \in \g \text{ tales que } [x,y] = 0 \text{ para todo } y \in \g\}
+\]
+El centro es siempre un ideal abeliano, que a veces puede ser nulo. 
+
+\end{itemize}
+
+
+ 
+ Estudiemos ahora el retículo formado por las subálgebras y por los ideales. Las analogías con la teoría de anillos serán evidentes.
+ 
+ \begin{propo}
+ 
+ La intersección de subálgebras es otra subálgebra.  La intersección de ideales es nuevamente un ideal.
+ 
+ \end{propo}
+
+\dem
+
+Sea $\{\mathfrak{h}_i\}$ una colección de subálgebras de $\g$.  Sabemos que la intersección es un subespacio vectorial.  Sean ahora $ x,y \in \bigcap\mathfrak{h}_i$. Tenemos que $x$ e $y$ pertenecen a todas las subálgebras $\mathfrak{h}_i$. Por lo tanto $[x,y]$ pertenece a todas las subálgebras y necesariamente pertenece a la intersección.  El razonamiento para los ideales es similar.  \fin
+
+Dado un conjunto $S$ del álgebra de Lie, consideramos todas las subálgebras de $\g$ que contienen a dicho conjunto.  La intersección de dichas subálgebras es otra subálgebra, que llamaremos  \df{subálgebra generada} \index{subálgebra!generada} por el conjunto~$S$.  Si consideramos los ideales que contienen a $S$, obtenemos el  \df{ideal generado} \index{ideal!generado}por el conjunto $S$. Como todo ideal es en particular una subálgebra, la subálgebra generada por el conjunto $S$ siempre estará contenida en el ideal generado  por el mismo conjunto.
+
+\begin{propo}
+
+La suma de ideales es un ideal.
+
+\end{propo}
+
+\dem
+
+Sean $\mathfrak{n}_1$ y $\mathfrak{n}_2$ dos ideales. Su suma $ \mathfrak{n}_1 + \mathfrak{n}_2$ es un subespacio.  Veamos que el producto de elementos de dicho conjunto por elementos arbitrarios es nuevamente un elemento de la suma.  Los elementos de la suma serán de la forma $x_1+ x_2$ con $x_i \in \mathfrak{n}_i$. Entonces $[x_1+x_2,y]= [x_1,y]+[x_2,y]$ que pertenece a la suma, puesto que $[x_i,y] \in \mathfrak{n}_i$ por ser ideal. El razonamiento es el mismo para un conjunto finito de ideales. \fin
+
+\noindent {\bf Observación.}
+
+La misma proposición utilizada para subálgebras es claramente falsa. Por ejemplo en $\R^3$ con el producto vectorial, la suma de la subálgebra generada por el vector $i$ y la generada por el vector $j$ no es subálgebra pues $i \times j=k$.
+
+\bigskip
+
+En vista de las anteriores proposiciones tenemos que el  conjunto de ideales es un retículo, suyo supremo es la suma de ideales y cuyo ínfimo es la intersección.  En el caso de las subálgebras el ínfimo también es la intersección, pero el supremo es la subálgebra generada por el conjunto unión.
+
+\begin{propo}
+
+Dados dos ideales, $\mathfrak{n}_1$ y $\mathfrak{n}_2$, el subespacio $[\mathfrak{n}_1, \mathfrak{n}_2]$ es un ideal.
+
+\end{propo}
+
+\dem
+
+Utilizando la identidad de Jacobi tenemos que 
+\[
+[[\mathfrak{n}_1, \mathfrak{n}_2], \g] \subset [[\mathfrak{n}_2,\g],\mathfrak{n}_1]+ [[\g,\mathfrak{n}_1],\mathfrak{n}_2]
+\]
+lo que prueba que $[\mathfrak{n}_1, \mathfrak{n}_2]$ es un ideal. \fin
+
+
+\section*{\centerline{Problemas}}
+
+\begin{pro}
+
+Denotemos por $\mathfrak{d}(n,k)$ sl conjunto de matrices cuadradas diagonales. Demostrar que forman un subálgebra de $\mathfrak{gl}(n,k)$.
+
+Una matriz cuadrada es \df{triangular superior} \index{triangular superior} si todos los elementos situados bajo la diagonal principal son nulos. Denotemos por $\mathfrak{t}(n,k)$ al conjunto de matrices triangulares superiores. Demostrar que forman una subálgebra de $\mathfrak{gl}(n,k)$.
+
+Una matriz cuadrada es \df{estrictamente triangular superior} \index{estrictamente triangular superior} si todos los elementos situados debajo de la diagonal principal y también los elementos de la diagonal principal son nulos. Denotemos dicho conjunto por $\mathfrak{n}(n,k)$. Demostrar que también forman una subálgebra de $\mathfrak{gl}(n,k)$.
+
+Demostrar además que  $\mathfrak{n}(n,k)$ es un ideal de $\mathfrak{b}(n,k)$. Esto es, si tomamos una matriz estrictamente triangular y otra triangular, su conmutador es también estrictamente triangular.
+
+\end{pro}
+
+\begin{pro}
+
+ Sea $\mathfrak{h} \subset \g$ una subálgebra.  El \df{normalizador} \index{normalizador} de $\mathfrak{h}$ es el conjunto
+\[
+N(\mathfrak{h})= \{ x  \in \g \text{ tales que } \ad_x(\mathfrak{h})\subset \mathfrak{h}\}
+\]
+Demostrar que el  normalizador de $\mathfrak{h}$ es una subálgebra de $\g$ (aplicar la identidad de Jacobi) que contiene a $\mathfrak{h}$.  Además $\mathfrak{h}$ es un ideal de su normalizador.
+
+\end{pro}
+
+
+\begin{pro}
+
+ El \df{centralizador} \index{centralizador} de una subálgebra $\mathfrak{h} \subset \g$ es el conjunto
+\[
+C(\mathfrak{h})= \{ x \in \g \text{ tales que } \ad_x(\mathfrak{h})=0\}
+\]
+Demostrar que es  una subálgebra. En particular, el centralizador de todo el álgebra es precisamente el centro de $\g$.
+
+\end{pro}
+
+
+
+\begin{pro}
+
+Sean $\mathfrak{n_1}, \mathfrak{n_2}, \mathfrak{n_3}$ ideales de un álgebra de Lie.  Demostrar
+
+\begin{itemize}
+
+\item $ [\mathfrak{n_1}, \mathfrak{n_2}]= [\mathfrak{n_2}, \mathfrak{n_1}]$
+
+\item $ [\mathfrak{n_1}+ \mathfrak{n_2}, \mathfrak{n_3}]= [\mathfrak{n_1}, \mathfrak{n_3}]+ [\mathfrak{n_2}, \mathfrak{n_3}]$
+
+\item $[[\mathfrak{n_1}, \mathfrak{n_2}],\mathfrak{n_3}] \subset [[\mathfrak{n_1}, \mathfrak{n_3}],\mathfrak{n_2}]+[[\mathfrak{n_2},\mathfrak{n_3}],\mathfrak{n_1}]$
+
+\item $[ \mathfrak{n_1} \cap \mathfrak{n_2}, \mathfrak{n_3}] \subset [\mathfrak{n_1}, \mathfrak{n_3}] \cap [\mathfrak{n_2}, \mathfrak{n_3}]$
+
+\end{itemize}
+
+\end{pro}
+
+\begin{pro}
+
+Sea $\g$ un álgebra de Lie.  Cualquier subespacio $\mathfrak{a}$ que contenga al ideal $[\g,\g]$ es un ideal de $\g$. Si $[\g,\g]$ es distinto de $\g$, el álgebra tiene un ideal de codimensión~1.
+
+\end{pro}
+
+
+
+
+
+\begin{pro}
+
+Demostrar que el núcleo de una derivación es una subálgebra.
+
+\end{pro}
+  
+
+\begin{pro}
+
+El centro de $\mathfrak{gl}(E)$ está formado por los múltiplos de la identidad.
+
+\end{pro}
+
+\begin{pro}
+
+Decimos que un álgebra de Lie es simple si sus únicos ideales son el cero y el total. Probar, mediante argumentos geométricos, que $\R^3$ con el producto vectorial es simple.
+
+\end{pro}
+
+
+
+
+
+\begin{pro}
+
+Si $\g$ es simple, entonces $[\g,\g]=\g$.
+
+\end{pro}
+
+
+
+
+\begin{pro}
+
+Demostrar que $\mathfrak{sl}(2)$ es simple.
+
+\end{pro}
+
+
+\begin{pro}
+
+Sea $E$ un espacio vectorial real con un métrica euclídea.  A cada endomorfismo $\varphi$ le podemos hacer corresponder su adjunto $\varphi^*$ respecto de dicha métrica.
+
+\begin{itemize}
+
+\item Se cumple $\escalar{\varphi(x)}{y}= \escalar{x}{\varphi^*(y)}$ para todo $x, y \in E$.
+
+\item En una base ortonormal la matriz de $\varphi^*$ es precisamente la traspuesta de la matriz de $\varphi$.
+
+\item La toma de adjuntos verifica $(\varphi \phi)^*= \phi^*\varphi^*$.
+
+\item Consideramos el subconjunto de los endomorfismos que cumplen $\varphi^*= - \varphi$.  Demostrar que es una subálgebra de Lie y calcular su dimensión.
+
+\item El mismo razonamiento es válido tomando una métrica no degenerada sobre un espacio vectorial de dimensión finita sobre cualquier cuerpo.
+
+\item  Si consideramos métricas hermíticas sobre los complejos, entonces la toma de adjuntos cumple $(\lambda \varphi)^*= \overline{\lambda}\varphi^*$.  En este caso las álgebras son sobre el cuerpo real.
+
+\end{itemize}
+
+
+\end{pro}
+
+
+\newpage
+
+\section{Morfismos, cocientes y sumas directas}
+
+
+Las aplicaciones importantes entre álgebras de Lie son aquellas que respetan las estructuras.
+
+\begin{defi}
+Sean $\g$ y $\g'$  dos álgebras de Lie. Un  \df{morfismo de álgebras de Lie} \index{morfismo de álgebras de Lie} es una aplicación $\varphi : \g \rightarrow  \g'$   que cumple:
+\begin{itemize}
+\item $\varphi$ es lineal.
+\item $\varphi ([x,y]) = [\varphi(x),\varphi(y)] \text{ para todo } x,y$.
+\end{itemize}
+\end{defi}
+
+La identidad es un morfismo de álgebras de Lie y la composición de estos morfismos es de nuevo un morfismo de álgebras. Tenemos ya todos los ingredientes para hablar de la categoría de  $k$-álgebras de Lie. \index{categoría de $k$-álgebras de Lie}
+
+Si $\varphi: \g \rightarrow \g'$ es un morfismo biunívoco, entonces la aplicación inversa conserva el paréntesis.  Los morfismos biyectivos se denominan  \df{isomorfismos} \index{isomorfismo} (\df{automorfismos} si $\g= \g'$). \index{automorfismos}  Si entre dos álgebras de Lie existe un isomorfismo, diremos que ambas son isomorfas y a todos los efectos serán consideradas como la misma álgebra. El conjunto de automorfismos de un álgebra es un grupo respecto a la composición.  Dicho grupo se denota por $\textrm{Aut}(\g)$.
+
+
+\bigskip
+
+\noindent{\bf Ejemplos.}
+
+\begin{itemize}
+
+\item Sea $\mathfrak{h} \subset \g$ una subálgebra. La inyección canónica es un morfismo de álgebras de Lie.
+
+\item  El conjunto de morfismos de $\g$ en $\g'$ es un espacio vectorial.
+
+\item Sea $\theta:A\rightarrow A'$ un morfismo de álgebras asociativas.  Entonces $\theta$ es también un morfismo de las álgebras de Lie subyacentes.
+
+\item Tomemos la aplicación
+$$
+\begin{array}{cccc}
+ \ad: & \g & \lto & \mathfrak{gl}(\g) \\
+    & x & \lto & \ad(x)= \ad_x
+    \end{array}
+    $$
+Para demostrar que es morfismo debemos comprobar que 
+$$
+\ad_{[x,y]}= \ad_x\ad_y-\ad_y\ad_x= [\ad_x,\ad_y]
+$$
+Si escribimos esta condición nos daremos cuenta que no es más que otra forma de escribir la identidad de Jacobi.  Este morfismo se llama  \df{representación adjunta}. \index{representación!adjunta}
+
+
+
+
+\end{itemize}
+
+Los morfismo de álgebras de Lie respetan el retículo de ideales.
+
+
+
+
+\begin{propo}
+ Si $\varphi : \g \rightarrow   \g'$   es un morfismo, la antiimagen de un ideal es un ideal y la imagen de una subálgebra es una subálgebra.
+ 
+\end{propo}
+
+\dem
+
+
+Sea $\mathfrak{n}'$ un ideal de $\g'$.  La antiimagen $\varphi^{-1}(\mathfrak{n}')$ es un subespacio vectorial.  Sea $x \in \varphi^{-1}(\mathfrak{n})$ e $y \in \g$.  Entonces $\varphi([x,y])= [\varphi(x), \varphi(y)]$ que pertenece a $\mathfrak{n}'$ por ser este ideal.  Entonces $[x,y] \in \varphi^{-1}(\mathfrak{n})$, que es un ideal.
+
+\bigskip
+
+Sea ahora $\mathfrak{h}$ una subálgebra de $\g$.  Dados dos elementos $x',y'\in \varphi(\mathfrak{h})$, deben existir elementos $x,y \in \mathfrak{h}$ tales que $\varphi(x)=x'$, $\varphi(y)=y'$.  De este modo 
+$$
+[x',y']= [\varphi(x),\varphi(y)] =\varphi([x,y])
+$$
+ y la imagen es cerrada para el producto.  El mismo razonamiento sirve para probar que si la aplicación es epiyectiva, entonces la imagen de un ideal es un ideal. \fin
+ 
+\noindent{\bf Observación.}
+ 
+ Hallemos el núcleo de la representación adjunta. Si $x \in \Ker(\ad)$ entonces $\ad_x=0$.  Necesariamente $\ad_x(y)= [x,y]=0$. El núcleo de la representación adjunta es precisamente el centro de $\g$.  La aplicación será inyectiva cuando el centro sea nulo.
+ 
+ \bigskip
+
+
+Sea  $\mathfrak{n}$  un ideal de $\g$. Sobre el conjunto $\g/\mathfrak{n}$ existe una única estructura de $k$-álgebra de Lie que hace que la proyección canónica   sea un morfismo de álgebras.
+Naturalmente dicha estructura viene definida por la fórmula
+$$
+[\pi(x), \pi(y)] = \pi([x,y])
+$$
+que es independiente de los representantes. Comprobémoslo.
+
+Si $\pi(x) = \pi(x')$ entonces $x= x'+n_1$ donde $n_1 \in \mathfrak{n}$. Si $\pi(y) = \pi(y')$ entonces $y= y'+n_2$ donde $n_2 \in \mathfrak{n}$. Operamos
+$$
+[x,y]= [x+n_1,y+n_2]= [x,y]+ [x,n_2]+[n_1,y] +[n_1,n_2] = [x,y]+ \mathfrak{n}
+$$
+
+Decimos que $\g/\mathfrak{n}$ es el  \df{cociente} \index{algebra@álgebra!cociente} de $\g$ módulo $\mathfrak{n}$. Naturalmente la aplicación canónica $\pi$ es epiyectiva.  Si tenemos una aplicación epiyectiva $\varphi: \g \rightarrow \g'$, entonces $\g'$ es isomorfa al álgebra cociente $\g/\Ker(\varphi)$, utilizando el teorema de factorización canónica (véase problema \ref{pro:factorizacioncanonica}).
+
+Sean    $\g$ y $\g'$     dos álgebras. Sobre el conjunto $\g \times \g'$   introducimos el corchete:
+                        $$[(x,x'),(y,y')]  = ([x,y],[x',y'])$$
+Con este producto componente a componente hemos construido lo que se denomina  \df{producto directo} \index{producto directo} o  \df{suma directa} \index{suma directa} de las álgebras  $\g$ y $\g'$. Las proyecciones canónicas son morfismos y las inyecciones canónicas también son morfismos. Es de notar que todo elemento de un álgebra conmuta con cualquier elemento de la otra álgebra. Además es fácil comprobar que tanto $\g$ como $\g'$ son ideales del producto.
+
+\section*{\centerline{Problemas}}
+
+\begin{pro}
+
+Probar que si $\varphi : \g \rightarrow \g'$  es epiyectivo, existe una correspondencia biu\-nívoca entre ideales de $\g'$  e ideales de  $\g$ que contienen a $\Ker(\varphi)$.
+
+\end{pro}
+
+\begin{pro}\label{pro:factorizacioncanonica}
+Probar el teorema de factorización canónica para  $k$-álgebras de Lie, así como los teoremas clásicos de isomorfismo conocidos de otras estructuras.
+\end{pro}
+
+\begin{pro}
+
+La aplicación $x \rightarrow -x$ establece un isomorfismo de un álgebra de Lie con su álgebra opuesta.  Como ambas son isomorfas, solamente se estudia una de ellas.
+
+\end{pro}
+
+
+\begin{pro}
+
+Demostrar si es cierta o falsa la siguiente propiedad:
+$$
+\varphi([\mathfrak{a},\mathfrak{b}])= [\varphi(\mathfrak{a}), \varphi(\mathfrak{b})]
+$$
+donde  $\varphi: \g \rightarrow \g'$ es un morfismo de álgebras y 
+$\mathfrak{a}$ y $\mathfrak{b}$ son subespacios vectoriales de $\g$.
+
+\end{pro}
+
+
+\begin{pro}
+
+Un álgebra cociente $\g /\mathfrak{n}$ es conmutativa si y solo si $[\g,\g]\subset \mathfrak{n}$.
+
+\end{pro}
+
+\begin{pro}
+
+Sea $\g= \mathfrak{t}(E)$ el conjunto de matrices triangulares superiores.  Sea $\mathfrak{n}(E)$ el conjunto de matrices triangulares superiores de diagonal nula. Demostrar que el  cociente de ámbas álgebra es isomorfa al álgebra de matrices diagonales, que es un álgebra abeliana.
+
+\end{pro}
+
+
+
+\newpage
+\section{Álgebras resolubles}
+
+\begin{defi}
+
+Llamamos  \df{álgebra derivada} \index{algebra@álgebra!derivada} de $\g$ y denotamos por $\D \g$ al ideal $[\g,\g]$.  Inductivamente definimos la $n$-ésima álgebra derivada como 
+$$
+\D^n\g = \D(\D^{n-1}\g)
+$$ 
+y escribimos por convenio que $\D^0\g=\g$
+
+\end{defi}
+
+Como $\g$ es un ideal, $[\g,\g]= \D \g$ es un ideal.  Como $\D \g$ es un ideal, entonces $[\D\g,\D\g]= \D^2\g$ es también un ideal.  Por inducción concluimos que las álgebras derivadas de cualquier orden son ideales de $\g$.  Estos razonamientos por inducción son típicos del estudio de las álgebras resolubles y los emplearemos ampliamente.
+
+Como para cualquier ideal $\mathfrak{n}$ se cumple de modo obvio que $[\mathfrak{n},\mathfrak{n}]\subset \mathfrak{n}$, podemos formar con las álgebras derivadas una sucesión
+$$
+\g = \D^0\g \supset \D^1 \g \supset \cdots \supset \D^n\g \supset \cdots
+$$
+llamada  \df{serie derivada} \index{serie derivada} asociada al álgebra $\g$.
+
+\begin{defi}
+
+Un álgebra $\g$ es  \df{resoluble} \index{algebra@álgebra!resoluble} si existe un $r$ tal que $\D^r \g=0$.
+
+\end{defi}
+
+\noindent {\bf Observaciones.}
+
+\begin{itemize}
+
+
+\item Un álgebra abeliana es resoluble, pues ya en el primer eslabón de la cadena se hace nulo.
+
+\item Si $\g$ es de dimensión finita $n$, entonces si $r$ es el menor valor que cumple $\D^r\g=0$, necesariamente $r\leq n$. Si el álgebra es resoluble,  en cada eslabón de la serie derivada debemos bajar la dimensión, puesto que de lo contrario la serie se estabilizaría y no llegaría nunca a cero.
+
+\item Sea $r$ el menor número que cumple $\D^r\g=0$.  Entonces $\D^{r-1}\g$ es un ideal no nulo y además es abeliano, puesto que 
+$$
+[\D^{r-1}\g,\D^{r-1}\g] = \D^r\g =0
+$$
+Como conclusión obtenemos que todo álgebra resoluble posee ideales abelianos no nulos.
+
+
+
+\item  En muchos libros la notación empleada para la serie derivada difiere de la empleada aquí.  Es común emplear tambien la notación $\g^{(n)}$ para la $n$-ésima álgebra derivada. También es bastante habitual llamar $\D^1$ a $\g$, $\D^2 =[\g,\g]$, etc. cambiando el inicio de la numeración.  
+
+\item El ejemplo más natural de álgebra resoluble es de las matrices triangulares superiores. 
+$$
+\mathfrak{t}(n,k)= \{ A \in \mathfrak{gl}(n,k) \text{ tales que } a_{ij}=0 \text{ si } i<j\}
+$$ 
+El álgebra derivada esta formada por las matrices triangulares que tiene la diagonal principal nula.  La segunda álgebra derivada está formada por las matrices que tienen nula la diagonal principal y las dos diagonales inmediatamente superiores, etc.  Así  se demuestra que existe un álgebra derivada que tiene todas las entradas nulas y por lo tanto es resoluble.
+
+
+\end{itemize}
+
+\begin{propo}
+
+Sea $k \subset K$ una extensión de cuerpos. Se cumple
+$$
+\D^p(\g_K)= (\D^p\g)_K
+$$
+También se verifica
+$$
+\D^p\g= \D^p(\g_K) \cap \g
+$$
+
+\end{propo}
+
+
+\dem
+
+Sean $x,y \in \g$. Los elementos de la forma $[x,y]$ generan $\D\g$.  Considerando ahora dichos elementos como pertenecientes al álgebra $\g_K$, dichos elementos generan también el álgebra $\D(\g_K)$.  Con este argumento y aplicando inducción se concluye. \fin
+
+\begin{cor}
+
+Un álgebra $\g$ es resoluble si y solo si $\g_K$ es resoluble.  La resolubilidad es invariante por cambios de base.
+
+\end{cor}
+
+La resolubilidad de un álgebra es un concepto que no depende del cuerpo base sobre el que esté definida.  Siempre podemos extender el cuerpo para probar la resolubilidad.  En particular, siempre se puede suponer que el cuerpo es algebraicamente cerrado.
+
+
+
+\begin{propo}
+
+Si $\g$ es un álgebra de Lie, entonces el álgebra cociente $\g/\D\g$ es abeliana.
+
+\end{propo}
+
+\dem
+
+Sean $\pi(x), \pi(y) \in \g/\D\g$. Sabemos que $[\pi(x),\pi(y)]= \pi([x,y])$ puesto que $\pi$ es morfismo.  Pero como $[x,y]$ pertenece al álgebra derivada, su clase cociente es nula y los elementos conmutan. \fin
+
+Aplicando este resultado a la serie derivada vemos que $\D^j\g/\D^{j-1}\g$ es siempre un álgebra conmutativa (posiblemente nula).  Si el álgebra es resoluble, entonces posee una sucesión de ideales, que empiezan en $\g$ y terminan en $0$ tales que sus cocientes son abelianos.  El recíproco también es cierto.
+
+\begin{propo}
+
+Un álgebra $\g$ es resoluble si y solo si posee una cadena de ideales
+$$
+\g =\mathfrak{n}_0 \supset \mathfrak{n}_1 \supset \dots \supset \mathfrak{n}_n=0
+$$
+tales que el cociente $\mathfrak{n}_{i+1}/\mathfrak{n}_i$ sea abeliano.
+
+\end{propo}
+
+\dem
+
+Si $\g$ es resoluble podemos tomar como ideales $\mathfrak{n}_i = \D^i\g$.
+
+\bigskip
+
+Sea $\{\mathfrak{n}_i\}$ una cadena de ideales con cocientes abelianos.  Analicemos el cociente en cada eslabón.  Decir que $\mathfrak{n}_{i}/\mathfrak{n}_{i+1}$ es abeliano equivale a decir que $[\mathfrak{n}_i,\mathfrak{n}_i]\subset \mathfrak{n}_{i+1}$.  Comenzamos por el primer eslabón
+$$
+[\mathfrak{n}_0,\mathfrak{n}_0]=[\g,\g]=\D\g\subset \mathfrak{n}_1
+$$
+Continuamos
+$$
+\D^2 \g = [\D \g,\D\g] \subset [\mathfrak{n}_1,\mathfrak{n}_1]\subset \mathfrak{n}_2
+$$
+y en general tenemos que $\D^n\g \subset \mathfrak{n}_n$, lo que muestra la resolubilidad.  \fin
+
+Si recordamos que los ideales de un álgebra de Lie son los análogos en la teoría de los subgrupos normales en teoría de grupos, vemos la estrecha analogía entre esta nueva definición de resolubilidad y la empleada para grupos.
+
+
+\begin{propo}
+
+Sea $\varphi: \g \rightarrow \g'$ un morfismo epiyectivo.  En estas circunstancias $\varphi(\D\g)=\D\g'$.
+
+\end{propo}
+
+
+\dem
+
+Sea $z \in \D\g$.  Entonces $z$ se puede escribir como una suma finita de elementos de la forma $[x,y]$, pues estos generan, por definición, el subespacio $[\g,\g]$.
+
+Tomemos entonces $z = \sum [x_i,y_i]$.  Aplicamos $\varphi$ a esta combinación lineal. $\varphi(z) = \sum [\varphi(x_i),\varphi(y_i)]$ que es un elemento de $\D \g'$.
+
+Como $\varphi$ es epiyectiva, un razonamiento similar prueba que $\D\g' \subset \varphi(\D\g)$ de donde obtenemos la igualdad.  \fin
+
+\begin{cor}
+
+Si $\varphi$ es epiyectiva $\varphi(\D^n\g) = \D^n\g'$.
+
+\end{cor}
+
+\begin{teo}
+
+Sea $0 \rightarrow \mathfrak{n} \rightarrow \g \rightarrow \g/\mathfrak{n}\rightarrow 0 $ una sucesión exacta de morfismos.  Entonces $\g$ es resoluble si y solo si lo son $\mathfrak{n}$ y $\g/\mathfrak{n}$.
+
+\end{teo}
+
+
+\dem
+
+Tenemos que $[\mathfrak{n},\mathfrak{n}]\subset [\g,\g]\cap \mathfrak{n}$. Inductivamente $\D^n\mathfrak{n}\subset \D^n \g \cap \mathfrak{n}$.  Si $\g$ es resoluble, necesariamente  también lo es $\mathfrak{n}$.
+
+Por los resultados anteriores sabemos que como $\pi$ es epiyectiva $\pi(\D^n\g) = \D^n(\g/\mathfrak{n})$, por lo tanto el cociente es resoluble si $\g$ lo es.
+
+\bigskip
+
+Tratemos ahora el recíproco.  Suponemos ahora que la subálgebra y el cociente son resolubles.
+
+Sea $i$ el primer entero que cumpla $\D^i(\g/\mathfrak{n})=0$.  Como $\varphi(\D^i\g)= \D^i(\g/\mathfrak{n})$, tenemos que $\D^i\g$ está contenido en el núcleo de $\varphi$, que es precisamente $\mathfrak{n}$.  Sea $j$ el primer índice que hace que $\D^j(\mathfrak{n})=0$.  Como tenemos que $\D^i(\g) \subset \mathfrak{n}$ entonces $\D^{i+1}\g \subset \D^1\mathfrak{n}$ e inductivamente $\D^{i+j}\g \subset \D^j\mathfrak{n}$.  Por lo tanto $\g$ es resoluble.  \fin
+
+\begin{cor}
+
+Un álgebra de Lie $\g$ es resoluble si y solo si el álgebra adjunta $\ad(\g)$ es resoluble.
+
+\end{cor}
+
+\dem
+
+El núcleo de la representación adjunta es el centro de $\g$, que es abeliano y por lo tanto resoluble.  \fin
+
+Este corolario reduce el estudio de la resolubilidad de un álgebra arbitraria, al estudio de la resolubilidad de un álgebra matricial. 
+
+
+
+Es muy común emplear razonamientos inductivos en las álgebras de Lie. Los siguientes resultados serán útiles en el momento en que tengamos que hacer inducciones.
+
+
+
+
+\begin{defi}
+
+Decimos que un álgebra de Lie satisface la  \df{condición de cadena} \index{condición de cadena} si todo ideal $\mathfrak{n}$ de $\g$ tiene un ideal $\mathfrak{n}_1 \subset \mathfrak{n}$ de codimensión $1$ (esto es, $\mathrm{dim}(\mathfrak{n}) = \mathrm{dim}(\mathfrak{n}_1)+1)$.
+
+\end{defi}
+
+Aplicando inductivamente este resultado podemos construir una serie de composición del espacio vectorial $\g$ de tal manera que cada subespacio es un ideal del subespacio anterior y el cociente tiene dimensión $1$
+\begin{propo}
+
+Un álgebra de dimensión finita es resoluble si y solo si cumple la condición de cadena.
+
+\end{propo}
+
+\dem
+
+Si $\g$ es resoluble entonces se tiene la inclusión estricta $\D\g \subset \g$.  Tomamos un hiperplano de $\g$ que contenga a $\D\g$ y obtenemos un ideal de codimensión $1$ (pruébese que es ideal).  Como todo ideal de un álgebra resoluble es también resoluble, esto vale para todos los ideales.
+
+\bigskip
+
+Dada una serie de composición formada por subespacios $\mathfrak{n}_i$ veamos que $\D(\mathfrak{n}_{i-1})\subset \mathfrak{n}_i$. Como estamos en codimensión $1$   todo elemento de $\mathfrak{n}_{i-1}$ se puede escribir como $x+\lambda e$ donde $x \in \mathfrak{n}_{i}$ y $e$ es un vector no nulo.  Calculamos el corchete de dos elementos de este tipo y aplicando que $[e,e]=0$ tenemos el resultado deseado. No nos queda más que aplicar inducción y concluir que el álgebra es resoluble.  \fin
+
+
+\begin{cor}
+
+Toda álgebra resoluble de dimensión finita posee un ideal resoluble de codimensión~$1$.
+
+\end{cor}
+
+\section*{\centerline{Problemas}}
+
+\begin{pro}
+
+Consideremos un álgebra de Lie bidimensional con una base formada por dos elementos $e_1$ y $e_2$ que cumplen la regla de conmutación $[e_1,e_2]= e_1$.  Demostrar que este álgebra es resoluble.
+
+\end{pro}
+
+\begin{pro}
+
+El producto directo de un número finito de álgebras resolubles es resoluble.
+
+\end{pro}
+
+\begin{pro}
+
+Sea $\g$ un álgebra de Lie y $D$ una derivación.  Una subálgebra $\mathfrak{h}$ es invariante por $D$ si $D (\mathfrak{h}) \subset \mathfrak{h}$.
+
+\begin{itemize}
+
+\item Si $\mathfrak{n}$ es un ideal invariante por una derivacióm, entonces $[\mathfrak{n}, \mathfrak{n}]$ es invariante por $D$.  Inductivamente probar que $\D^p(\mathfrak{n})$ es invariante por $D$.
+
+\item En particular $\D^p \g$ es invariante por toda derivación.
+
+\end{itemize}
+
+\end{pro}
+
+\newpage
+\section{Radical}
+
+
+Decimos que un ideal $\mathfrak{n}$ de un álgebra es resoluble, si entendido como álgebra de Lie es resoluble.  Probaremos que a todo álgebra de dimensión finita se le puede asociar de un modo canónico un álgebra resoluble, que será una subálgebra del álgebra de partida.
+
+Sabemos que la suma de ideales es de nuevo un ideal.  Además si los ideales son resolubles, su suma también será resoluble.
+
+\begin{propo}
+
+Sean $\mathfrak{n}_1$, $ \mathfrak{n}$ dos ideales resolubles.  Entonces su suma es resoluble.
+
+\end{propo}
+
+\dem
+
+Consideramos la inyección canónica de $\mathfrak{n}_1$ en $\mathfrak{n}_1+\mathfrak{n}_2$. Tomamos la proyección del ideal suma módulo el ideal $\mathfrak{n}_2$.  Obtenemos de este modo una aplicación
+$$
+\varphi: \mathfrak{n}_1+\mathfrak{n}_2\lto (\mathfrak{n}_1+\mathfrak{n}_2)/\mathfrak{n}_2
+$$
+que es claramente epiyectiva.  El núcleo de dicha aplicación es precisamente $\mathfrak{n}_1 \cap \mathfrak{n}_2$.  Por el teorema de factorización canónica tenemos entonces un isomorfismo
+$$
+(\mathfrak{n}_1+\mathfrak{n}_2)/\mathfrak{n}_2 \sim \mathfrak{n}_1/(\mathfrak{n}_1 \cap \mathfrak{n}_2)
+$$
+Como la intersección está contenida en un ideal resoluble es resoluble.  El cociente de $\mathfrak{n}_1$ módulo la intersección es resoluble, pues ambos lo son.  Además $\mathfrak{n}_2$ es también resoluble, lo que nos conduce a que la suma es resoluble.  \fin
+
+Este procedimiento es válido para cualquier cantidad finita de ideales resolubles. De esta forma la suma de un número finito de ideales resolubles es resoluble.
+
+Sea ahora $\g$ un álgebra de Lie.  Consideramos el conjunto de ideales resolubles de $\g$.  Tomamos un maximal de esta colección de conjuntos.  Este maximal debe contener a todos los ideales resolubles pues si existe uno que no está contenido, la suma de este con el maximal es también resoluble.  Esto contradice la maximalidad, por lo que todos están contenidos en dicho maximal. 
+Supongamos ahora que $\g$ es un álgebra de dimensión finita.  Aunque tenga infinitos ideales resolubles, la suma de todos ellos es equivalente a la suma de solamente un número finito.  Por lo tanto la suma de todos los ideales resolubles es de nuevo un ideal y es resoluble.  Claramente es el ideal resoluble maximal del álgebra de dimensión finita $\g$.
+
+\begin{defi}
+
+Dada un álgebra $\g$, llamamos  \df{radical}\index{radical} de $\g$ y denotamos por $\mathfrak{r}$ al ideal maximal resoluble  de $\g$.
+
+\end{defi}
+
+Como la imagen de las álgebras resolubles, es también un álgebra resoluble, tenemos que la imagen del radical estará contenida en el radical de la imagen.  En efecto: si $\varphi:\g \rightarrow \g'$ es un morfismo, entonces $\varphi(\mathfrak{r})$ es un ideal resoluble y contenido por lo tanto en el radical de $\g'$.
+
+Consideremos ahora la proyección canónica $\pi:\g \rightarrow \g/\mathfrak{r}$.  Si en el cociente existe un ideal resoluble no nulo, su antiimagen será un ideal que contiene al radical.  Pero  la antiimagen por $\pi$ de un ideal resoluble es también resoluble (puesto que $\pi^{-1}(\mathfrak{n}')/\mathfrak{r}= \mathfrak{n}'$).  Luego entrañaría una contradicción con el hecho de que el radical es el mayor ideal resoluble. Luego el cociente de un álgebra módulo su radical es un álgebra que carece de radical.
+
+\begin{defi}
+
+Un álgebra es  \df{semisimple}\index{algebra@álgebra!semisimple} si su radical es nulo.
+
+\end{defi}
+
+Hemos demostrado que a toda álgebra de Lie de dimensión finita le podemos asociar de modo único un álgebra resoluble, su radical, y un álgebra semisimple, el cociente módulo su radical.  El famoso  \df{teorema de Levi}\index{teorema!de Levi} afirma que  todo álgebra de Lie de dimensión finita es isomorfa a un producto semidirecto de estas dos álgebras.  Como el producto no es directo, esto no reduce el estudio de las álgebras de Lie al caso de las resolubles y de las semisimples, pero si es un gran paso adelante.  Para conocer todos los productos semidirectos debemos conocer las siguientes cosas
+
+\begin{enumerate}[\indent 1.- ]
+
+\item Todas las álgebras resolubles.
+
+\item Todas las álgebras semisimples.
+
+\item Todas las posibles representaciones de las álgebras semisimples.
+
+\end{enumerate}
+
+Los pasos $2$ y $3$ están resueltos hoy en dia, pero la clasificación de todas las álgebras resolubles no lo está todavia.
+
+Supongamos que $\g$ tiene radical. Sea $i$ el menor valor que cumple $\D^i\mathfrak{r}=0$.  Entonces $\D^{i-1}\mathfrak{r}$ es un ideal abeliano y no nulo de $\g$.  Por lo tanto en un álgebra semisimple no pueden existir ideales abelianos.  Esto nos conduce a un criterio de semisimplicidad, útil en muchos casos
+
+\begin{propo}
+
+Un álgebra de Lie $\g$ es semisimple si y solo si carece de ideales abelianos no nulos.
+
+\end{propo}
+
+En particular el centro de un álgebra de Lie es un ideal abeliano.
+
+\begin{cor}
+
+Un álgebra semisimple carece de centro.  La representación adjunta es entonces inyectiva.
+
+\end{cor}
+
+
+
+
+\section*{\centerline{Problemas}}
+
+
+\begin{pro}
+
+Calcular el radical de un producto directo de álgebras.
+
+\end{pro}
+
+\begin{pro}
+
+El radical de $\g$ es el ideal más pequeño que cumple que el cociente es semisimple.
+
+\end{pro}
+
+\newpage
+
+\section{Endomorfismos nilpotentes y  semisimples}
+
+Como paso previo al estudio de la descomposición de Jordan-Chevalley, recordemos algunos resultados referentes a operadores nilpotentes.
+
+\begin{defi}
+
+Sea $E$ un espacio vectorial y $\varphi : E \rightarrow E$ una aplicación lineal.  Decimos que $\varphi$ es  \df{nilpotente} \index{nilpotente!endomorfismo}  si existe $n \in \N$ tal que $\varphi^n=0$.
+
+\end{defi}
+
+El polinomio anulador de $\varphi$ es entonces un divisor de $x^n$.  Por lo tanto es también de la forma $x^m$, donde $m$ puede ser menor que $n$. Recíprocamente, si el anulador de un endomorfismo es una potencia de $x$, entonces el endomorfismo es nilpotente.  De esto sacamos como conclusión que el único  valor propio de un endomorfismo nilpotente es el cero.
+
+Asociados a los endomorfismos nilpotentes existen unas bases donde la expresión de este aplicación lineal es particularmente simple.  Las vamos a construir.
+
+Sea $n$ es primer entero que cumpla $\varphi^n=0$.  Entonces $\varphi^{n-1}\neq 0$ y debe existir un elemento $e\in E$ tal que $\varphi^{n-1}(e)\neq 0$.  Llamamos $e_1$ a dicho vector, que es entonces un vector propio (de valor propio cero) de $\varphi$.
+
+
+
+Consideramos ahora el diagrama conmutativo
+$$
+\xymatrix{
+E \ar[r]^\varphi\ar[d]_\pi& E \ar[d]^\pi\\
+E/\langle e_1\rangle \ar[r]^{\varphi^*}& E /\langle e_1 \rangle
+}
+$$
+
+
+La aplicación $\varphi^*$ inducida entre los cocientes es de nuevo nilpotente (tal vez anulado por un $n$  menor).  Existe en el cociente un elemento $\pi(e_2)$ que es anulado por $\varphi^*$.  Teniendo en cuenta el diagrama conmutativo, vemos que $e_2$ es un elemento linealmente independiente con $e_1$ y que cumple $\pi(\varphi(e_2))=0$.  Luego $\varphi(e_2)$ está en el núcleo de $\pi$ y debe ser combinación lineal de una base de este espacio, en este caso formada por un único vector. Si la dimensión del espacio es finita, aplicando inductivamente este argumento, encontramos una base $\{e_1, \dots, e_n\}$ de tal modo que $\varphi(e_i) \in \langle e_1, \dots, e_{i-1}\rangle$. 
+
+Traduciendo este resultado a matrices, esto equivalente a que la matriz de $\varphi$ en dicha base sea una matriz estrictamente triangular superior\footnote{Esto es, una matriz que cumple $a_{ij}=0 $ si $ i \geq j$.}.  Hemos demostrado 
+
+\begin{propo}
+
+En dimensión finita un endomorfismo $\varphi$ es nilpotente si y solo si es representable por una matriz estrictamente triangular superior.
+
+\end{propo}
+
+\dem
+
+La parte difícil es el razonamiento anterior. Si $\varphi$ se puede escribir como una matriz triangular superior, con ceros en la diagonal, entonces claramente $\varphi^n=0$, siendo $n$ la dimensión del espacio.  Entonces $\varphi$ es nilpotente.  \fin
+
+\begin{cor}
+
+Un endomorfismo nilpotente tiene traza nula.
+
+\end{cor}
+
+\dem
+
+El endomorfismo es representable por una matriz con la diagonal principal nula.  Como la traza no depende de la base,  es nula.    \fin
+
+También se puede deducir este resultado sabiendo que el único valor propio de un endomorfismo nilpotente es el cero y la traza es la suma de sus autovalores.
+
+\begin{cor}
+
+Todo endomorfismo nilpotente tiene un vector propio (de valor propio cero naturalmente).
+
+\end{cor}
+
+Esta propiedad es muy importante.  Como el valor propio es cero, no es necesario que el cuerpo sea algebraicamente cerrado para asegurar que un endomorfismo nilpotente tiene un vector propio.
+
+\begin{cor}
+
+El primer entero $n$ que cumple $\varphi^n=0$ es menor o igual que la dimensión del espacio.
+
+\end{cor}
+
+Los resultado referentes a la ``triangulación'' de los endomorfismos nilpotentes se pueden traducir a términos invariantes que  no dependan ni de bases ni de matrices.  Estos conceptos intrínsecos son mucho más cómodos de utilizar.
+
+\begin{defi}
+
+Sea $E$ un espacio vectorial de dimensión finita. Una  \df{serie de composición} \index{serie de composición} de $E$ es una cadena de subespacios
+$$
+0=E_0\subset E_1 \dots \subset E_n=E
+$$
+tales que $\text{dim}(E_{i+1})= \text{dim}(E_i)+1$.
+
+\end{defi}
+
+Una serie de composición es el análogo invariante de una base.  Dada una base $(e_1,\dots,e_n)$, definimos una serie de composición construyendo $E_i= \langle e_1, \dots ,e_i\rangle$.  Recíprocamente, si $\{E_i\}$ es una serie de composición, eligiendo $e_i \in E_i -E_{i-1}$ obtenemos una base.
+
+\begin{cor}
+
+En dimensión finita, un endomorfismo $\varphi$ es nilpotente si y solo si $E$ tiene una serie de composición $\{E_i\}$ que cumple $\varphi(E_i) \subset E_{i-1}$.
+
+\end{cor}
+
+\begin{propo}
+
+Si dos endomorfismos nilpotentes conmutan su suma es un también nilpotente.
+
+\end{propo}
+
+\dem
+
+Es consecuencia inmediata de la fórmula del binomio de Newton, que es válida en este caso debido a que ambos elementos conmutan. \fin
+
+
+Los endomorfismos semisimples son aquellos que se pueden diagonalizar.  Por ello muchas veces nos referiremos a ellos como endomorfismos diagonalizables.
+
+\begin{defi}
+
+Un endomorfismo es  \df{semisimple} \index{endomorfismo!semisimple} si tiene una base formada por  vectores propios.
+
+\end{defi}
+
+Las bases de las que habla la definición no son únicas, pero la matriz diagonal en cualquiera de ellas tiene que tener los mismos elementos, salvo posiblemente el orden.
+
+\begin{propo}
+
+El polinomio mínimo de un endomorfismo diagonalizable descompone en factores lineales.  Recíprocamente, si el polinomio anulador descopone en factores lineales, el endomorfismo es semisimple.
+
+\end{propo}
+
+\dem
+
+Tomamos una base donde la matriz sea diagonal.  Calculamos el polinomio característico y el mínimo en dicha base. Este polinomio es exactamente $(x-\lambda_1) \cdots (x-\lambda_s)$ siendo $\lambda_1, \cdots, \lambda_s$ los elementos de la diagonal de la matriz.  Dichos elementos coinciden con los valores propios del endomorfismo.  Como los cálculos son independientes de la base, terminamos.
+
+\smallskip
+
+Denotemos por $\varphi$ al endomorfismo y por $E$ al espacio vectorial donde está definido.  El polinomio anulador es entonces de la forma $(x- \lambda_1) \dots(x- \lambda_s)$. Podemos descomponer en suma directa el espacio vectorial.
+$$
+E= \Ker(\varphi- \lambda_1) \oplus \cdots \oplus \Ker(\varphi-\lambda_s)
+$$
+Tomando una base de cada subespacio $\Ker(\varphi-\lambda_i)$ obtenemos una base formada por vectores propios. \fin
+
+Si tomamos varios endomorfismos semisimples, podemos encontrar para cada uno de ellos una base donde diagonalicen.  Si da la casualidad de que la base es la misma para todos, los endomorfismos necesariamente conmutan dos a dos.  Resulta que esta condición necesaria es también suficiente.
+
+\begin{propo}
+
+Sean $\varphi_1$ y $\varphi_2$ dos endomorfismos semisimples que conmutan.  Entonces existe una base donde ambos diagonalizan.
+
+\end{propo}
+
+\dem
+
+Sea $\lambda_1$ un valor propio del endomorfismo $\varphi_1$.  Consideramos el subespacio vectorial $E_1=\Ker(\varphi_1 - \lambda_1)$.  Como los endomorfismos conmutan resulta que $\varphi_2$ manda vectores de $E_1$ en vectores de $E_1$.  Dicho en otras palabras, $E_1$ es un subespacio invariante para $\varphi_2$. El polinomio mínimo del endomorfismo $\varphi_2$ en el subespacio es un divisor del polinomio mínimo de $\varphi_2$.  Descompone entonces en factores lineales y es diagonalizable.  Tomamos una base del subespacio $E_1$ que diagonalice al segundo endomorfismo.  Pero naturalmente dicha base también diagonaliza al primero pues $E_1$ está formado por vectores propios de $\varphi_1$.  Continuando con todos los valores propios, podemos encontrar una base donde ambos diagonalizan. \fin
+
+\newpage
+
+\section{Descomposición de Jordan-Chevalley}
+
+Recordemos ahora el teorema de Jordan sobre  la forma normal de un endomorfismo. En el caso de un cuerpo algebraicamente cerrado, sabemos que todo endomorfismo se puede escribir en una base como suma de ``celdas'' de Jordan del tipo
+$$
+\begin{pmatrix}
+\lambda & 1& 0 & \dots & 0 \\
+0  & \lambda & 1 & \dots & 0 \\
+\dots & \dots & \dots & \dots & \dots\\
+0 & \dots & 0 & \lambda & 1 \\
+0 & \dots & \dots & \dots & \lambda
+\end{pmatrix}
+$$
+
+Si reemplazamos los  unos por ceros, obtenemos un endomorfismo diagonalizable.  Si reemplazamos la diagonal principal por ceros, obtenemos un endomorfismo nilpotente. De esta manera a cada endomorfismo le podemos asociar un endomorfismo diagonalizable y un endomorfismo nilpotente.  Es claro que dichos endomofismos conmutan debido a la expresión dada en una base de Jordan. En general podemos afirmar.
+
+\begin{propo}
+Sea $k$ un cuerpo algebraicamente cerrado.
+ A todo endomorfismo $x \in \mathfrak{gl}(E)$ le podemos asociar un par de endomorfismos $x_s$ y $x_n$ que verifican:
+ 
+ \begin{enumerate}[\indent 1.- ]
+ 
+ \item Se tiene la descomposición $x= x_s+x_n$. El endomorfismo $x_s$ es semisimple (diagonalizable) y $x_n$ es nilpotente. Además $x_s$ y $x_n$ conmutan
+ 
+ \item Existen polinomios  sin término independiente $p_s, p_n \in k(x)$ tales que $x_s = p_s(x)$ y $x_n= p_n(x)$.  Tanto la parte nilpotente como la semisimple son polinomios, sin término constante, del endomorfismo $x$
+ 
+ \end{enumerate}
+ 
+ \end{propo}
+
+
+\dem
+
+Consideramos el polinomio característico del endomorfismo $x$.  Si las raices del polinomio son $\lambda_1, \dots, \lambda_k$ con multiplicidades $m_1,\dots,m_k$, el teorema de descomposición de endomorfismos nos dice que $E$ es suma directa de los sub\-espacios $E_i = \Ker(x-\lambda_i)^{m_i}$.  Definimos el operador $x_s$ como $\lambda_i\Id$ en cada subespacio~$E_i$.  Este endomorfismo así definido es diagonalizable y tiene el mismo polinomio característico que $x$, puesto que tiene las mismas raices.  La parte nilpotente se define como $x_n= x-x_s$.
+
+\bigskip
+
+Para la demostración de que cada parte se puede escribir como un polinomio en el endomorfismo $x$ nos remitimos a la bibliografia (\cite{humint}).  \fin
+
+
+\begin{cor}
+
+Sean $F \subset G \subset E$ dos subespacios de $E$.  Si $x$ manda los vectores de $G$ a vectores de $F$, entonces $x_s$ y $x_n$ también lo hacen.
+
+\end{cor}
+
+\dem
+
+Por hipótesis $x(G) \subset F$. Inductivamente $x^n(G) \subset (F)$.  Cualquier polinomio sin término independiente  manda el subespacio $G$ en el subespacio $F$.  En particular eso se cumple para las partes semisimple y nilpotente del operador.  \fin
+
+Aunque por construcción, los operadores $x_n$ y $x_s$ están unívocamente determinados no está de más conocer el siguiente resultado.
+
+\begin{propo}
+
+Sea $x= s+n$ donde $s$ es semisimple, $n$ diagonalizable y $s$ y $n$ conmutan.  Entonces $s = x_s$ y $n= x_n$.
+
+\end{propo}
+
+\dem
+
+La suma de dos endomorfismos diagonalizables y que conmutan es un endomorfismo diagonalizable.  La suma de dos nilpotentes que conmutan es también nilpotente.  Como $x = x_s+x_n= s+n$ tenemos que $x_s-s= x_n-n$.  Como el miembro de la izquierda es diagonalizable y el de la derecha es nilpotente, la igualdad implica que ambos son nulos.  \fin
+
+
+\begin{defi}
+
+La descomposición $x= x_s+x_n$ de un endomorfismo, se denomina  \df{descomposición de Jordan-Chevalley}. \index{descomposición!de Jordan-Chevalley}
+
+\end{defi}
+
+
+Si el álgebra de Lie carece de centro, la representación adjunta es inyectiva.  De este modo cada elemento del álgebra se puede entender como un endomorfismo y aplicarle la descomposición de Jordan-Chevalley.  Si sucede que las partes semisimple y nilpotente de dicho endomorfismo están en el álgebra adjunta, podremos descomponer el elemento del álgebra en suma de dos elementos, que llamaremos parte semisimple y parte nilpotente.  Veremos posteriormente que esto es válido para álgebras semisimples.
+
+
+
+
+
+
+
+\section*{\centerline{Problemas}}
+
+\begin{pro}
+
+Un endomorfismo es diagonalizable si y solo si todas las raices de su polinomio mínimo son distintas.
+
+\end{pro}
+
+
+
+\begin{pro}
+
+Sea  $\g$ un álgebra lineal. Si $x\in \g$ es un endomorfismo semisimple, entonces $\ad_x$ también es semisimple.
+Si $x\in \g$ es nilpotente, entonces $\ad_x$ es nilpotente.
+
+\end{pro}
+
+
+
+
+\begin{pro}
+
+Sea $\g \subset \mathfrak{gl}(E)$ un  álgebra de Lie lineal.  Dado un elemento $x \in \g$ consideramos su descomposición de Jordan-Chevalley, $x= x_s+x_n$.  Probar que la descomposición de Jordan-Chevalley de $\ad_x$ es precisamente $\ad_{x_s}+ \ad_{x_n}$.
+
+\end{pro}
+
+\newpage
+
+\section{Álgebras nilpotentes}
+
+\begin{defi}
+
+Llamamos  \df{ideal central} \index{ideal!central} $n$-ésimo, $\central^n \g$, al definido inductivamente mediante
+$$
+\central^0\g=\g, \central^1\g =[\central^0\g,\g], \dots, \central^n \g= [\central^{n-1}\g,\g]
+$$
+
+\end{defi}
+
+Tenemos que en efecto $\central^n \g$ es un ideal y que además se cumple $\central^n \supset \central^{n+1}$.  Podemos construir una serie de ideales
+$$
+\g = \central^0\g\supset \central^1 \g \supset \dots \supset \central^n\g\supset \cdots
+$$
+llamada  \df{serie central descendente} \index{serie central} del álgebra de Lie.
+
+
+
+
+\begin{defi}
+
+Un álgebra de Lie $\g$ es nilpotente \index{algebra@álgebra!nilpotente} si existe algún $n \in \N$ que cumpla $\central^n\g=0$. 
+
+\end{defi}
+
+
+\noindent {\bf Observaciones.}
+
+
+\begin{itemize}
+
+\item El primer entero $r$ que cumple $\central^r\g=0$ es menor o igual que la dimensión del espacio, pues en cada eslabón de la serie central debemos disminuir al menos  una dimensión.
+
+
+\item Por definición $\central^1\g= [\g,\g]$.  Un álgebra abeliana es entonces nilpotente.
+
+
+
+\item Si $r$ es el primer entero que cumple $\central^r\g=0$, entonces $\central^{r-1}\g$ es un ideal no nulo contenido en el centro del álgebra. El centro de un álgebra nilpotente es no nulo.
+
+
+
+\item Veamos un ejemplo de álgebra nilpotente, contenida en $\mathfrak{gl}(n,k)$.  Denotemos por $\mathfrak{ut}(n,k)$ el conjunto de matrices triangulares superiores con la diagonal nula\footnote{La notación proviene de ``upper triangular''}.  Denotemos por $\{e_i\}$ la base canónica.  Al componer cualesquiera dos elementos de $\mathfrak{ut}(n,k)$ obtenemos otro elemento del mismo conjunto, pero que tiene ceros en la diagonal y en la paralela superior a la diagonal. 
+  En fórmulas, esto equivale a que $\varphi_1\varphi_2(e_i)$ es combinación lineal de $e_1,\dots, e_{i-2}$. De este modo el conmutador de  dos elementos tiene  la misma propiedad.  Generalizando tenemos que $\central^i\g$ está formado por las matrices que son triangulares superiores y que además tienen $i$ ``diagonales'' superiores nulas.  Si $n$ es la dimensión del espacio, tenemos  que $\central^n\g$ tiene ceros en todos los lugares y por lo tanto el álgebra es nilpotente.
+  
+\item Veamos el mismo ejemplo anterior utilizando series de composición.  Sea 
+$$
+0=E_0\subset E_1 \dots \subset E_n=E
+$$
+una serie de composición y sea $\mathfrak{ut}(E)$ el conjunto de endomorfismos $\varphi$ que cumplen $\varphi(E_i)\subset E_{i-1}$.  Si componemos dos morfismos de este conjunto, entonces se cumple $\varphi_1 \varphi_2(E_i)\subset E_{i-2}$.  Por lo tanto $\central^1\g$ estará contenido en el conjunto de morfismos que cumplen $\varphi(E_i)\subset E_{i-2}$.  Inductivamente podemos probar que $\central^n\g$ está contenido en los morfismos que cumplen $\varphi(E_i) \subset E_0$ lo que  prueba que $\central^n\g=0$ si $n$ es la dimensión de $E$.
+
+\end{itemize}
+
+La condición de nilpotencia no depende del cuerpo base sobre el que consideramos el álgebra.  Podemos suponer, para realizar comprobaciones de nilpotencia, que el cuerpo base es algebraicamente cerrado.
+
+\begin{propo}
+
+Sea $k \subset K$ una extensión. $\g$ es nilpotente si y solo si $\g_K$ es nilpotente.
+
+\end{propo}
+
+\dem
+
+Para cualquier $r$ tenemos que
+$$
+\central^r(\g))_K= \central^r(\g_K)
+$$
+y uno es nulo si y solo si lo es el otro.  \fin
+
+
+
+\begin{propo}
+
+Toda álgebra nilpotente es resoluble.
+
+\end{propo}
+
+\dem
+
+Por definición $\D^1\g= \central^1 \g$.  Calculemos $\D^2 \g$
+$$
+\D^2\g = [\D^1\g, \D^1\g] \subset [\central^1, \g] = \central^2 \g
+$$
+Por inducción $\D^n\g \subset \central^n \g$. \fin
+
+No toda álgebra resoluble es nilpotente (problema \ref{pro:resolublenilpotente}). Sin embargo la  diferencia entre ambas no es excesiva.
+
+
+Sea $\g$ un álgebra tal que $[\g,\g]$ es nilpotente.  Llamamos $\g'$ al álgebra $[\g,\g]$. Entonces $\D^1 \g= \g'$ por definición.  Calculamos las álgebras derivadas de $\g$.
+$$
+\D^2\g= [\D^1\g,\D^1\g]= [\g',\g']= \central^1\g'
+$$
+Inductivamente tenemos que $\D^n\g \subset \central^{n-1}\g'$ lo que prueba la siguiente 
+
+\begin{propo}
+
+Sea $\g$ un álgebra de Lie.  Si el álgebra derivada $[\g,\g]$ es nilpotente, entonces $\g$ es resoluble.
+
+\end{propo}
+
+El recíproco de este teorema también es cierto, pero para su demostración necesitamos el teorema de Lie.
+
+
+\begin{propo}
+
+Un álgebra de Lie que verifica $\central^n \g=0$ si y solo si para cualesquiera $n+1$ elementos $x_1, \dots , x_{n+1}$ se cumple
+$$
+\ad_{x_1}\dots\ad_{x_{n}}(x_{n+1})=0
+$$
+
+\end{propo}
+
+\dem
+
+Dado un par de elementos $x,y$ tenemos que $\ad_x(y)=[x,y]$ que pertenece a $\central^1\g$.  Por inducción 
+$$
+\ad_{x_1}\dots\ad_{x_{i}}(x_{i+1})= [x_1,[x_2,[\dots,x_{i+1}]]] \in \central^i\g
+$$
+y al tomar exactamente $n+1$ elementos se anula.
+
+\bigskip
+
+Recíprocamente, los elementos de la forma $\ad_x(y)=[x,y]$ generan $\central^1\g$. Los  elementos $\ad_{x_1}\dots\ad_{x_{i-1}}(x_{i+1})$ generan $\central^i\g$ y si todos son nulos para $i=n$, necesariamente $\central^n\g=0$ y el álgebra es nilpotente. \fin
+
+
+\begin{cor}
+
+Dada un álgebra nilpotente. Sea $r$ el primer entero que verifique $\central^{r+1}\g=0$.  Dados $r$ elementos $x_1,\dots,x_r$ arbitrarios de $\g$ se tiene que
+$$
+\ad_{x_1}\dots\ad_{x_r}=0
+$$
+
+\end{cor}
+
+Si aplicamos este corolario a un elemento o a un par de elementos obtenemos
+
+\begin{cor}\label{cor:adnilpotente}
+
+Sea $\g$ nilpotente.  Entonces $\ad_x$ es nilpotente.  También $\ad_x\ad_y$ es un endomorfismo nilpotente.
+
+\end{cor}
+
+De nuevo el recíproco de este este resultado también es cierto.  En esencia eso es lo que afirma el teorema de Engel, que demostraremos posteriormente.
+
+
+\begin{propo}
+
+Si $\g$ es nilpotente entonces sus subálgebras y sus cocientes también son nilpotentes.
+
+\end{propo}
+
+\dem
+
+
+Se razona igual que en la demostración del resultado análogo para álgebras resolubles.
+Si $\mathfrak{h}\subset \g$ es una subálgebra inductivamente se prueba
+$$
+\central^r\mathfrak{h}\subset \central^r \g \cap \mathfrak{h}
+$$
+
+Análogamente, como el paso al cociente es epiyectivo
+$$
+\central^r(\g/\mathfrak{h})= \pi (\central^r \g)
+$$
+y se tiene el resultado deseado. \fin
+
+
+El resultado recíproco, que es cierto para álgebras resolubles, no es cierto para las nilpotentes, debido a que para calcular el álgebra central de cualquier orden siempre necesitamos utilizar todo el álgebra.  Pero sin embargo en un caso  importante si que tenemos el recíproco.
+
+\begin{propo}\label{propo:centronilpotente}
+
+Si $\g/\mathrm{Centro}(\g)$ es nilpotente, entonces $\g$ es nilpotente.
+
+\end{propo}
+
+\dem
+
+Sabemos que $\central^r(\g/\mathfrak{h})= \pi (\central^r \g)$.  Sea $r$ el primer valor que anule las álgebras centrales del cociente.  Entonces $ \pi (\central^r \g)=0$ y $\central^r\g$ está contenido en el núcleo de la aplicación $\pi$, que es precisamente el centro del álgebra.  Entonces
+$$
+\central^{r+1}\g = [\central^r \g, \g] \subset [\mathrm{Centro}(\g),\g]=0
+$$
+pues el centro conmuta con todo el álgebra.  \fin
+
+
+Analizando la demostración vemos cual es el problema que impide demostrar este resultado en el caso general.
+
+Como la representación adjunta tiene por núcleo precisamente al centro del álgebra, vemos que un álgebra es nilpotente si y solo si su imagen por la representación adjunta es nilpotente.  De esta manera para estudiar la nilpotencia podemos restringirnos a álgebras matriciales.
+
+Como muchas veces necesitaremos hacer inducción sobre la dimensión del álgebra, es útil el siguiente resultado.
+
+\begin{cor}
+
+Todo álgebra nilpotente tiene un ideal nilpotente de codimensión~$1$.  Es lo mismo que afirmar que existe en el álgebra un hiperplano que es ideal.
+
+\end{cor}
+
+
+\dem
+
+ Como las álgebras resolubles cumplen el enunciado (pues cumplen la condición de cadena), existe un ideal de codimensión $1$.  Como esta contenido en un álgebra nilpotente, dicho ideal es también nilpotente.  \fin
+
+Sea $\g$ un álgebra nilpotente.  Este álgebra tien un centro no trivial.  Lo denotamos $\g_1$.  El álgebra cociente $\g/ \g_1$ es de nuevo nilpotente y tiene un centro no nulo.  La antiimagen del centro del cociente por la proyección canónica la denotaremos $\g_2$.  De modo inductivo se construyen los ideales $\g_i$. Esta cadena de ideales es estrictamente creciente y por estar en dimensión finita debe terminar en $\g$.
+
+Estos ideales se pueden definir para cualquier álgebra, sea o nilpotente o no. Una definición recurrente de dichos ideales es
+$$
+\g_i= \{x \in \g \text{ tales que  } \ad_x(\g) \subset g_{i-1}\}
+$$
+tomando por convenio que $\g_0=0$.  Todos los ideales cumplen la regla básica
+$$
+[\g_i, \g] \subset \g_{i-1}
+$$
+
+\begin{defi}
+
+Dada un álgebra de Lie $\g$, la sucesión
+$$
+0 = \g_0 \subset \g_1 \subset \cdots \g_i \subset \cdots
+$$
+es la  \df{serie central ascendente} \index{serie central ascendente} del álgebra $\g$.
+
+\end{defi}
+
+\begin{cor}
+
+Si el álgebra es nilpotente y de dimensión finita, entonces existe $s$ tal que $\g_s= \g$.
+
+\end{cor}
+
+Esta condición necesaria es también suficiente y muchos autores la adoptan como definición de álgebra nilpotente.
+
+\begin{propo}
+
+Un álgebra es nilpotente si $\g_s= \g$ para cierto $s$.
+
+\end{propo}
+
+\dem
+
+Sea $s$ el primer entero tal que $\g_s=\g$.  Entonces
+$$
+\central^1\g= [\g,\g] = \g_s, \g] \subset \g_{s-1}
+$$
+Vamos al paso número dos
+$$
+\central^2 \g = [\central^1\g, \g]\subset [\g_{s-1}, \g] \subset \g_{s-2}
+$$
+y en general se cumple
+$$
+\central^i \g \subset \g_{s-i}
+$$
+Por lo tanto $ \central^s \g \subset g_{s-s}=0$ y el álgebra es nilpotente. \fin
+
+
+
+
+
+\section*{\centerline{Problemas}}
+
+\begin{pro}
+
+Demostrar que en general se cumple $[\central^r \g,\central^s\g]\subset \central^{r+s+1}\g$.
+
+\end{pro}
+
+
+\begin{pro}
+
+Sea $\mathfrak{n} \subset \g$ un ideal contenido en el centro del álgebra.  Entonces se tiene que $\g$ es nilpotente si y solo si $\mathfrak{n}$ y $\g/\mathfrak{n}$ lo son.
+
+\end{pro}
+
+\begin{pro}
+
+Si un álgebra $\g$ es nilpotente, entonces para cualquier extensión del cuerpo base $k \subset K$, el álgebra $\g_K$ es asimismo nilpotente.  Demostrar también que si $\g_K$ es nilpotente, entonces $\g$ es nilpotente.
+
+Como consecuencia la nilpotencia no depende del cuerpo base y se puede probar una vez extendido el cuerpo.  Por ello podemos suponer que es algebraicamente cerrado.
+
+\end{pro}
+
+
+
+\begin{pro}\label{pro:resolublenilpotente}
+
+Sea $\g$ el álgebra bidimensional con base $x,y$ que verifica $[x,y]=x$.  Este álgebra es resoluble pero no nilpotente.
+
+\end{pro}
+
+
+\begin{pro}
+
+En un álgebra nilpotente de dimensión $n$, existe una serie de composición
+$$
+0 = \mathfrak{n}_0 \subset \mathfrak{n}_1 \subset \cdots \subset \mathfrak{n}_n= \g
+$$
+formada por ideales que cumplen $[\g, \mathfrak{n}_i]\subset \mathfrak{n}_{i-1}$.
+
+\end{pro}
+
+\newpage
+
+\section{Teorema de Engel}
+
+Sabemos que las álgebras de la forma $\mathfrak{ut}(n,k)$ son nilpotentes.  Una consecuencia del teorema de  Engel afirma que el álgebra adjunta de un álgebra nilpotente  es isomorfa a una subálgebra de $\mathfrak{ut}(n,k)$.  Existen en la literatura muchos resultados conocidos como teorema de Engel, pero todos ellos se pueden obtener como corolarios de un único  teorema  que pasamos a demostrar.
+
+
+
+
+
+
+
+Sea $\g \subset \mathfrak{gl}(E)$ un álgebra matricial.  A cada elemento $x \in \g$ le asociamos los siguientes endomorfismos de $\mathfrak{gl}(E)$:
+\begin{itemize}
+
+\item Traslación por la izquierda
+$$
+\begin{array}{lccc}
+\lambda_x :& \mathfrak{gl}(E)& \lto &\mathfrak{gl}(E)\\
+           &  y  & \lto & xy
+\end{array}
+$$
+
+ \item Traslación por la derecha
+$$
+\begin{array}{lccc}
+\rho_x :& \mathfrak{gl}(E) &\lto &\mathfrak{gl}(E)\\
+           &  y  & \lto & yx
+\end{array}
+$$
+
+\item Operador adjunto
+$$
+\begin{array}{lccc}
+\ad_x :& \mathfrak{gl}(E) &\lto &\mathfrak{gl}(E)\\
+           &  y  & \lto & xy-yx
+\end{array}
+$$
+\end{itemize}
+
+
+
+\noindent {\bf Observaciones.}
+
+\begin{itemize}
+
+\item  Debemos resaltar que $x$ es un endomorfismo de $E$, mientras que $\lambda_x,\rho_x$ y $\ad_x$ son endomorfismo de $\mathfrak{gl}(E)$. Por la propia definición tenemos que, entendidos como endomorfismos de $\mathfrak{gl}(E)$, se cumple
+$$
+\ad_x = \lambda_x -\rho_x
+$$
+y además $\lambda_x$ y $\rho_x$ conmutan.
+
+\item La aplicación $\ad_x$ tiene la siguiente propiedad: $\ad_x$ deja invariante el subespacio $\g \subset \mathfrak{gl}(E)$ y por lo tanto da lugar a un endomorfismo
+$$
+\begin{array}{lccc}
+\ad_x :& \g &\lto &\g\\
+           &  y  & \lto & xy-yx
+\end{array}
+$$
+que es la representación adjunta del álgebra en si misma.
+ En general ni $\lambda_x$ ni $\rho_x$ dejan invariante $\g$ y  no dan lugar a endomorfismos del álgebra de Lie.  Recordemos que estas construcciones solamente son válidas para álgebras matriciales.
+
+
+\end{itemize}
+
+
+
+\begin{lema}
+
+Si $x$ es nilpotente entonces $\lambda_x, \rho_x$ y $ \ad_x$ son nilpotentes.
+
+\end{lema}
+
+\dem
+
+Supongamos que $x^n=0$.  Entonces $(\lambda_x)^ny = x^ny =0$ para todo endomorfismo $y$.  Por lo tanto $\lambda_x$ es nilpotente.  El razonamiento para $\rho_x$ es idéntico.
+
+Sabemos que $\ad_x = \lambda_x-\rho_x$ y que los dos operadores conmutan.  Aplicando el binomio de Newton a esta expresión, la suma de dos elementos nilpotentes que conmutan es también nilpotente. \fin
+
+\begin{teo}[Engel]
+
+Sea $\g \subset \mathfrak{gl}(E)$ un álgebra matricial.  Si todos los elementos de $\g$, entendidos como endomorfismos de $E$, son nilpotentes, entonces existe un vector $e  \in E$ no nulo que es propio para todos los elementos de $\g$.
+
+\end{teo}
+
+
+\dem
+
+La realizaremos por inducción sobre la dimensión de $\g$.
+
+Si la dimensión del álgebra es $1$, entonces todos los elementos del álgebra son múltiplos de un endomorfismo $x$.  Como $x$ es nilpotente, hemos visto que existe un vector no nulo $e$ que cumple $x(e)=0$.  Naturalmente cumple la misma relación para todos los elementos del álgebra.
+
+Sea $\g$ de dimensión $n$.  Posee un ideal $\mathfrak{n}$ de dimensión $n-1$ que es también nilpotente.  Para todos los elementos $x$ del ideal existe un vector no nulo $e$ que cumple $x(e)=0$.  
+
+Consideramos ahora el subespacio $F$ de $E$ formado por los vectores propios de todos los elementos del ideal.
+$$
+F= \{v \in E \text{ tales que } x(v)=0 \text{ para todo } x \in \mathfrak{n}\}
+$$
+Tomamos un elemento $z$ de $\g$ que no esté en el ideal.  Veamos que el subespacio $F$ es invariante por $z$.  Para ello, tomamos un vector $e \in F$, le aplicamos $z$ y debemos ver que sigue estando en $F$.  Debe ser  anulado por todo elemento del ideal.  Realicemos los cálculos.  Sea $e\in F$ y $x \in\mathfrak{n}$.
+$$
+x(z(e))=[x,z](e)+ z(x(e))=0+z(0)=0
+$$
+puesto que el primer sumando del segundo miembro es nulo, debido a  que $\mathfrak{n}$ es un ideal. Por restricción,  tenemos entonces un endomorfismo $z: F \rightarrow F$ que es nilpotente.
+
+Como $z$ es nilpotente, tiene un vector propio en $F$.  Denotémoslo por $e$. Como $\mathfrak{n}$ y $z$ generan todo el álgebra, resulta que $e$ es vector propio de todos los elementos de $\g$.  \fin 
+
+\begin{cor}
+
+Sea $\g \subset \mathfrak{gl}(E)$ un álgebra formada por endomorfismo nilpotentes.  Existe un $E$ una base de tal forma que todos los endomorfismos de $\g$ se representan por matrices triangulares de diagonal nula.
+
+\end{cor}
+
+\dem
+
+El razonamiento es idéntico al que se hace para hallar la forma triangular de un endomorfismo nilpotente.
+
+Sea $e_1 \in E$ anulado por todo endomorfismo de $\g$.  Todos los endomorfismos pasan al cociente $E/\langle e_1\rangle$ y son también nilpotentes.  Tomamos un elemento $\pi(e_2)$ anulado por todo el álgebra y se termina por inducción.  \fin
+
+Este corolario también se puede establecer con series de composición, obteniendose resultados análogos a los enunciados para un único endomorfismo nilpotente.
+
+\begin{cor}
+
+Todo álgebra $\g \subset \mathfrak{gl}(E)$ formada por endomorfismos nilpotentes es un álgebra nilpotente.
+
+\end{cor}
+
+\dem
+
+Si $\g$ está formada por endomorfismos nilpotentes, podemos triangular todos los elementos del álgebra.  Esto es lo mismo que decir que $\g$ es una subálgebra de $\mathfrak{ut}(E)$, que un álgebra nilpotente.  Como toda subálgebra de un álgebra nilpotente es nilpotente, obtenemos que $\g$ es nilpotente.  \fin
+
+El siguiente resultado se denomina también muchas veces como teorema de Engel y se toma como definición de álgebra nilpotente.
+
+\begin{cor}
+
+Un álgebra de Lie $\g$ es nilpotente si y solo si $\ad_x$ es nilpotente para todo $x \in \g$.
+
+\end{cor}
+
+\dem
+
+Sabemos que si el álgebra es nilpotente todos los endomorfismos adjuntos son nilpotentes (corolario \ref{cor:adnilpotente})
+
+\bigskip
+
+Reciprocamente, si todos los endomorfismos $\ad_x$ son nilpotentes, el álgebra adjunta, $\ad(\g)$, es nilpotente y  es isomorfa $\g/\mathrm{Centro}(\g)$ (proposición \ref{propo:centronilpotente}). Entonces $\g$ es nilpotente.  \fin
+
+
+
+
+\section*{\centerline{Problemas}}
+
+\begin{pro}
+
+Demostrar que $\g$ es nilpotente si y solo si existe una cadena decreciente de ideales
+$$
+\g = \mathfrak{n}_0 \subset \mathfrak{n}_1 \subset \dots \subset \mathfrak{n}_r =0
+$$
+que cumplen $[\g, \mathfrak{n}_i]\subset \mathfrak{n}_{i+1}$ para todo $i$.
+
+\end{pro}
+
+\newpage
+
+\section{Teorema de Lie}
+
+De todos los teoremas referentes a álgebras resolubles, el teorema de Lie que enunciaremos en esta sección es sin lugar a dudas el más importante.  Afirma que en esencia, las únicas álgebras de Lie resolubles importantes, son isomorfas a álgebras de Lie formadas por matrices triangulares superiores.  Sin embargo para la validez de este resultado no podemos considerar cuerpos arbitrarios.  Es necesario suponer que son algebraicamente cerrados y de característica nula.
+
+Sabemos por álgebra lineal, que todo endomorfismo de un espacio vectorial sobre un cuerpo algebraicamente cerrado, es triangulable.  Si el cuerpo no es algebraicamente cerrado, esto no es cierto, pues basta tomar un endomorfismo cuyo polinomio anulador no tenga ninguna raiz (por ejemplo $x^2+1$ en $\R$).
+
+El teorema de Lie es una generalización de este resultado, pero triangulando a la vez varios endomorfismos que no tienen por qué conmutar entre sí.  La demostración sigue la misma linea que el teorema de Engel.
+
+
+\begin{teo}[Lie]
+
+Sea $\g$ un álgebra resoluble sobre un cuerpo algebraicamente cerrado de característica nula.  Sea $\varphi:\g \rightarrow \mathfrak{gl}(E)$ una representación.  Entonces existe en $E$ un vector $e \neq 0$ tal que es autovector de todos los elementos de $\varphi(\g)$.
+
+
+\end{teo}
+
+\dem
+
+La haremos por inducción sobre la dimensión del álgebra.  Si $\mathrm{dim}(\g)=1$, y la representación es inyectiva, entonces $\varphi(\g)$ está constituido por todos los múltiplos de un elemento de $\mathfrak{gl}(E)$.  Tomamos un endomorfismo $x \in \varphi(\g)$.  Como el cuerpo es algebraicamente cerrado, el polinomio anulador tiene al menos una raiz y existe un autovector $e\neq 0$ de $x$.  Es claro que es autovector de todos los elementos de $\varphi(\g)$.
+
+\bigskip
+
+Sea $\g$ de dimensión $n$.  Como es resoluble y cumple la condición de cadena, posee un ideal $\mathfrak{n}$ de dimensión $n-1$. Este ideal es resoluble.  Consideramos la representación restringida a $\mathfrak{n}$
+$$
+\begin{array}{lccc}
+\varphi :&\mathfrak{n}&\lto &\mathfrak{gl}(E)\\
+         &  h &\lto & \varphi_h
+\end{array}
+$$
+Por hipótesis de inducción, existe en $E$ un vector $e\neq 0$ que es autovector de todos los elementos de $\varphi(\mathfrak{n})$.  Al ocurrir esto, podemos definir una forma lineal $\omega \in \mathfrak{n}^*$ que verifica
+$$
+\varphi_h(e) = \omega(h)e
+$$
+Con ayuda de esta forma lineal, construiremos un subespacio de $E$ que denotaremos por $F$
+$$
+F=\{v \in E \text{ tales que } \varphi_h(v) = \omega(h)v \}
+$$
+Naturalmente este conjunto es un subespacio y además es no nulo puesto que por construcción $e \in F$.  Si demostramos que este subespacio además de ser estable por $\mathfrak{n}$ es estable por todo $\g$ podemos concluir del siguiente modo. 
+
+ Tomamos $x \in \g -\mathfrak{n}$.  Debido a las dimensiones, $\g= \mathfrak{n}\oplus \langle x\rangle$.  Tenemos que $\varphi_x$ es entonces un endomorfismo del espacio vectorial no nulo $F$.  Como el cuerpo es de algebraicamente cerrado, debe existir en $F$ un vector $e$ que sea autovector  de $\varphi_x$.  Pero entonces $e$ es autovalor de todos los endomorfismos de $\varphi(\mathfrak{n})$, puesto que está en $F$.  Además es también autovector de $\varphi_x$ y por lo tanto es autovector de todos los elementos de $\varphi(\g)$.
+
+ Solo nos resta probar que en efecto $F$ es invariante por $\g$, cosa que haremos en el siguiente lema.  \fin
+ 
+ \begin{lema}
+ 
+En las condiciones del lema anterior $F$ es un subespacio invariante para todo endomorfismo de $\varphi (\g)$.
+
+\end{lema}
+
+
+\dem
+
+Tomemos un elemento $x \in \g - \mathfrak{n}$.  Sea $v \in F$.  Para comprobar que $x(v$ está en $F$ debemos aplicarle un endomorfismo $\h$ del ideal y comprobar que pasa.
+$$
+h(x(v))= h(x(v))-[x,h](v)= \lambda(h)x(v)- \lambda([x,h]v
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{cor}
+
+En las condiciones del teorema anterior, existe en $E$ una base de tal forma que todos los endomorfismos  de $\varphi(\g)$ tienen una matriz triangular.
+
+\end{cor}
+
+\begin{cor}
+
+En las condiciones del lema anterior, existe en $E$ una serie de composición que  es estable bajo todos los endomorfismos de $\varphi(\g)$.
+
+\end{cor}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\section{Álgebra envolvente(falta)}
+
+
+\newpage
+
+\section{Métrica de Killing}
+
+Dado un espacio vectorial $E$ de dimensión finita, en  su álgebra de endomorfismos, $\mathfrak{gl}(E)$, existe una forma bilineal canónica.  Dicha forma bilineal se denomina  \df{métrica de la traza} \index{métrica!de la traza}.  El producto escalar de dos endomorfismos es justamente la traza de su composición.  Si denotamos por $\escalar{-}{-}$ a este producto tenemos
+$$
+\escalar{f}{g}= \mathrm{Traza}(fg)
+$$
+De las propiedades de linealidad de la traza, se deduce  que esta aplicación es bilineal.  Aplicando la propiedad de conmutatividad de la traza
+$$
+\mathrm{Traza}(fg) = \mathrm{Traza}(gf)
+$$
+tenemos que también es simétrica.
+
+Basándonos en esta métrica y con ayuda de la representación adjunta, construiremos una métrica canónica en toda álgebra de Lie de dimensión finita.  La existencia de esta métrica nos permitirá utilizar razonamientos geométricos en la teoría de álgebras de Lie.
+
+\begin{defi}
+
+Sea $\g$ un álgebra de Lie de dimensión finita.  Llamamos  \df{métri\-ca de Killing} \index{métrica!de Killing} (o de Cartan-Killing en algunas referencias) a la aplicación bilineal simétrica
+$$
+\begin{array}{rccc}
+B: & \g \times \g & \lto & k \\
+   &  (x,y) & \lto & \mathrm{Traza}(\ad_x\ad_y)
+\end{array}
+$$
+
+\end{defi}
+
+Si es necesario hacer referencia al álgebra donde está definida la métrica la denotaremos por $B_\g$ u otra notación similar.
+
+\begin{propo}
+
+Sea $\g$ un álgebra de Lie nilpotente.  Entonces la forma de Killing es identicamente nula.
+
+\end{propo}
+
+\dem
+
+Sabemos que los endomorfismos de la forma $\ad_x\ad_y$ son nilpotentes, por lo que su traza es nula.  \fin
+
+\bigskip
+
+\noindent {\bf Observaciones.}
+
+\begin{itemize}
+
+\item Dado un morfismo de espacios vectoriales $\varphi : E \rightarrow E'$ y una métrica $T'_2$ en $E'$, podemos construir una métrica en $E$. Dicha métrica es la imagen inversa por $\varphi$ de  $T'_2$ y se denota $\varphi^*(T'_2)$.  Actua según la fórmula
+$$
+\varphi^*(T'_2)(x,y) = T'_2(\varphi(x),\varphi(y))
+$$
+Luego la métrica de Killing no es otra cosa que la imagen inversa de la métrica de la traza por la representación adjunta.
+
+
+\item En general, sea $\varphi:\g \rightarrow \mathfrak{gl}(E)$ una representación de $\g$.  La imagen inversa de la métrica de la traza por este morfismo es una aplicación bilineal simétrica sobre $\g$.  Si la denotamos $\mathfrak{t}_\varphi$ tenemos que
+$$
+\mathfrak{t}_\varphi (x,y) = \escalar{\varphi(x)}{\varphi(y)}= \mathrm{Traza}(\varphi_x\varphi_y)
+$$
+En particular $B= \mathfrak{t}_{\ad}$.
+
+\item El  \df{radical} \index{radical!de una métrica} de una métrica $T_2$,  definida en un espacio vectorial $E$, es el conjunto de vectores ortogonales a todo el espacio
+$$
+\mathrm{Rad}(T_2)= \{ x \in E \text{ tales que } T_2(x,y)=0 \text{ para todo } y \in E\}
+$$
+Otras notaciónes  empleadas para denotar al radical son $\mathrm{Rad}(E)$ y   $E^\perp$.
+
+Si $x \in \mathrm{Centro}(\g)$, entonces $\ad_x=0$ por lo que $B(x,y)=0$ para todo elemento $y \in \g$.  Deducimos que $\mathrm{Centro}(\g) \subset \mathrm{Rad}(B)$.  En general, si $ x \in \Ker (\varphi)$ tenemos que $\varphi_x=0$ y $x$ está en el radical de $\mathfrak{t}_\varphi$. 
+
+\item  En el álgebra $\mathfrak{gl}(E)$ existen dos métricas canónicas.  Una de ellas es la métrica de la traza y la otra la forma de Killing.  Ambas se encuentran relacionadas por la siguiente expresión.
+$$
+B(x,y) = 2n \escalar{x}{y}-2\escalar{x}{\Id}\escalar{y}{\Id}
+$$
+donde $n$ designa la dimensión del espacio vectorial $E$.
+
+\item Lo mismo ocurre para todas las álgebras de Lie lineales (matriciales), aunque en cada caso la fórmula sea distinta.
+
+Para $\mathfrak{sl}(E)$ tenemos
+$$
+B(x,y) = 2n \escalar{x}{y}
+$$
+En el caso de $\mathfrak{so}(E)$ la fórmula es 
+$$
+B(x,y) = (n-1) \escalar{x}{y}
+$$
+
+
+
+\end{itemize}
+
+
+Veamos que la métrica de Killing no es una métrica arbitraria, sino que está relacionada con la estructura algebraica de $\g$.
+
+\begin{propo}
+
+La métrica de Killing  es invariante por el grupo $\Aut(\g)$.  Esto es lo mismo que decir que 
+$$
+B(\varphi(x),\varphi(y))= B(x,y)
+$$
+para todo elemento $\varphi \in \Aut(\g)$.
+
+\end{propo}
+
+\dem
+
+Sea $\varphi: \g \rightarrow \g$ un morfismo de álgebras.  Sabemos que 
+$$
+\varphi[x,y]= [\varphi(x), \varphi(y)]
+$$
+  Esto equivale a
+$$
+\varphi(\ad_x(y))= \ad_{\varphi(x)} \varphi (y)
+$$
+por lo tanto tenemos la fórmula
+$$
+\ad_{\varphi(x)}= \varphi \ad_x \varphi^{-1}
+$$
+válida para cualquier automorfismo del álgebra.
+
+Utilizando esta expresión obtenemos
+\begin{equation}\nonumber
+\begin{split}
+B(\varphi(x),\varphi(y))= \mathrm{Traza}(\ad_{\varphi(x)} \ad_{\varphi(y}) =\\ \nonumber
+\mathrm{Traza} ( \varphi \ad_x \varphi^{-1}  \varphi \ad_y \varphi^{-1})=  \mathrm{Traza}(\varphi \ad_x  \ad_y \varphi^{-1})
+\end{split}
+\end{equation}
+Utilizando la conmutatividad de la traza concluimos. \fin 
+
+Un resultado del mismo tipo se enuncia en la siguiente 
+
+\begin{propo}
+
+En todo álgebra de Lie se cumple
+$$
+B(\ad_x(y), z)+ B (y, \ad_x(z))=0
+$$
+
+\end{propo}
+
+\dem
+
+El resultado que debemos demostrar equivale a 
+$$
+B([x,y],z)+B(y,[x,z])=0
+$$
+Partimos de la expresión del primer miembro.  Por definición de la métrica de Killing esta expresión es igual a 
+$$
+\mathrm{Traza}(\ad_{[x,y]},\ad_z) + \mathrm{Traza}(\ad_y, \ad_{[x,z]})
+$$
+Utilizando que la representación adjunta es morfismo de álgebras
+$$
+\mathrm{Traza}((\ad_x \ad_y-\ad_y\ad_x)\ad_z)+ \mathrm{Traza}(\ad_y(\ad_x\ad_z-\ad_z\ad_x))
+$$
+Desarrollamos y empleando la linealidad de la traza nos quedan cuatro sumandos, dos con signo positivo y dos con signo negativo.  Aplicando la conmutatividad de la traza, el valor de todos los sumandos es el mismo número y se eliminan por pares. \fin
+
+\noindent {\bf Observaciones.}
+
+\begin{itemize}
+
+\item Revisando la demostración vemos que esta  se basa en dos puntos claves.  El primero es que la métrica de la traza cumple la ecuación
+$$
+\escalar{[x,y]}{z}+\escalar{y}{[x,z]}=0
+$$
+y el segundo que la representación adjunta es morfismo de álgebras.  La misma demostración es válida entonces para la fórmula
+$$
+\mathfrak{t}_\varphi([x,y],z) + \mathfrak{t}_\varphi(y,[x,z])=0
+$$
+
+\item Consideremos el espacio vectorial $\g$ y la métrica $B$.  Asociada a esta estructura existe un álgebra de Lie, formada por los endomorfismos de $ \g$ que dejan invariante dicha métrica.  Por analogía con el caso ortogonal, la denotaremos $\mathfrak{o}(B)$ y es el conjunto
+$$
+\mathfrak{o}(B)= \{ \varphi \in \mathfrak{gl}(\g) \text{ tales que } B(\varphi(x),y)+ B(x,\varphi(y))=0\}
+$$
+Otra forma de enunciar la proposición es decir que $\ad(\g) \subset \mathfrak{o}(B)$.
+
+\item Cualquier métrica $T_2$ sobre $\g$ que cumpla
+$$
+T_2([x,y],z)+T_2(y,[x,z])=0
+$$
+se dice que es  \df{invariante} \index{métrica!invariante}.  Las métricas asociadas a representaciones del álgebra de Lie son todas invariantes.  En muchos resultados es precisamente esta propiedad de la métrica de Killing la que se utiliza.  La ventaja de la métrica de Killing sobre las otras métricas invariantes, es el carácter intrínseco de su definición.
+
+\item La condición de invariancia de la métrica de Killing es equivalente a las siguientes igualdades
+$$
+B(x,[y,z]) = B(y,[z,x])= B(z,[x,y])
+$$
+que nos recuerdan a la identidad de Jacobi.
+
+
+\end{itemize}
+
+Utilicemos ahora la teoría de métricas para obtener resultados sobre las álgebras de Lie.  Posteriormente aplicaremos estos resultados al estudio de las álgebras semisimples.
+
+Como es habitual, denotaremos por $\mathfrak{a}^\perp$ el ortogonal a un subespacio.  Siempre se sobreentiende que es respecto a la métrica de Killing.
+
+\begin{propo}\label{propo:ideal}
+
+Si $\mathfrak{n}\subset \g$ es un ideal, entonces $\mathfrak{n}^\perp$ también es un ideal.
+
+\end{propo}
+
+\dem
+
+
+Sabemos que $\mathfrak{n}^\perp$ es un subespacio.  Sea ahora $x \in \mathfrak{n}^\perp$ e $y \in \g$.  Tenemos que ver que $[y,x] \in \mathfrak{n}^\perp$.  Para ello haremos el producto escalar de este elemento con un elemento arbitrario $z \in \mathfrak{n}$.
+$$
+B([y,x],z)= -B(x,[y,z])=0
+$$
+puesto que $[y,z] \in \mathfrak{n}$ (por ser ideal) y $x \in \mathfrak{n}^\perp$. \fin
+
+\begin{cor}
+
+El radical de $B$ es un ideal.
+
+\end{cor}
+
+\dem
+
+Tenemos que $\textrm{Rad}(B)= \g^\perp$.  \fin
+
+
+Dada una subálgebra $\mathfrak{h} \subset \g$ podemos considerar sobre $\mathfrak{h}$ la forma de Killing de $\g$ restringida a $\mathfrak{h}$.  Como una subálgebra es en si misma un álgebra de Lie, posee su propia forma de Killing.  En general estas dos métricas no coinciden, pero tenemos el siguiente resultado.
+
+\begin{propo}
+
+Sea $\mathfrak{n}\subset \g$ un ideal.  La restricción de $B_\g$ al ideal coincide con la forma de Killing $B_\mathfrak{n}$ del ideal.
+
+\end{propo}
+
+\dem
+
+Recordemos un resultado elemental de álgebra, que se puede comprobar tomando bases.
+
+Si $T:E \rightarrow E$ es un endomorfismo cuya imagen es un subespacio $F \subset E$ (es decir, $T(E) \subset F$), entonces las trazas de $T$ y del endomorfismo $T_{\mid F}$ coinciden.
+
+Como $\mathfrak{n}$ es ideal, el endomorfismo $\ad_x\ad_y$ manda toda el álgebra sobre el subespacio $\mathfrak{n}$.  Aplicando lo anterior concluimos que la traza de ese endomorfismo en todo el espacio, coincide con la traza de ese endomorfismo restringido al ideal.  Claramente ese morfismo restringido es precisamente $\ad_x\ad_y$, siendo en este caso la representación adjunta asociada al ideal y no al espacio total.  \fin
+
+\newpage
+ 
+ \section{Criterios de Cartan}
+ 
+ Tenemos a nuestro disposición distintos criterios que nos permiten discernir cuando un álgebra es resoluble o semisimple.  Todos ellos utilizan conceptos de tipo algebraico.  Como además de la parte algebraica, en todo álgebra de Lie se puede introducir una métrica, existen también conceptos de tipo geométrico en las álgebras de Lie.  Es interesante tener criterios geométricos de las nociones más importantes.  Daremos aquí criterios de resolubilidad y de semisimplicidad, ambos debido al genio de Cartan.
+ 
+ Recordemos que un álgebra de Lie $\g$ es resoluble si su álgebra derivada $[\g,\g]$ es nilpotente.
+ 
+ \begin{propo}
+ 
+ Sea $\g$ un álgebra de Lie resoluble sobre un cuerpo arbitrario.  Entonces se cumple
+ $$
+ B([x,y],z)=0 \text{ para todo } x,y,z \in \g
+ $$
+ 
+ \end{propo}
+ 
+ \dem
+ 
+ Debemos calcular la traza del endomorfismo $\ad_{[x,y]}\ad_z$.  Como estamos ante un morfismo de álgebras de Lie, esto equivale a calcular la traza de $[\ad_x,\ad_y]\ad_z$.  Sabemos que el cálculo de la traza de endomorfismos puede hacerse despues de extender el cuerpo base.  Consideramos una extensión del cuerpo algebraicamente cerrada.
+ 
+ Gracias al teorema de Lie (que podemos aplicar por estar en el caso algebraicamente cerrado) podemos suponer que todos los endomorfismos adjuntos tienen forma triangular.  El endomorfismo $[\ad_x,\ad_y]$ es entonces triangular superior con la diagonal nula.  De esta manera el endomorfismo
+ $[\ad_x,\ad_y]\ad_z$ es también triangular superior con la diagonal nula.  Su traza es cero.  \fin
+ 
+ \begin{cor}
+ 
+ Sea $\g$ un álgebra resoluble. 
+ Los elementos del álgebra derivada son ortogonales a todo el álgebra.  En fórmulas lo expresaríamos
+ $$
+ B([\g,\g], \g)
+ $$
+ aunque también se puede decir que el álgebra derivada está contenida en el radical de la métrica.
+ 
+ 
+ \end{cor}
+ 
+  \dem
+ 
+ 
+ Los elementos del álgebra derivada son combinaciones lineales de elementos de la forma $[x,y]$ y para estos el producto escalar siempre es nulo.  \fin
+ 
+ \begin{cor}
+ 
+ Si $\g$ es resoluble, la métrica de Killing es nula sobre el álgebra derivada $[\g,\g]$.
+ 
+ \end{cor}
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ El teorema de Cartan es el recíproco estos resultados.  Para la validez del recíproco debemos suponer que el cuerpo es de característica nula.  Existen demostraciones más generales, pero nosotros vamos a realizarla sobre el cuerpo complejo.  Dicha demostración es válida para todos los cuerpos contenidos en $\C$.
+ 
+ \begin{lema}
+ 
+ Sea $\g \subset \mathfrak{gl}(E)$ un álgebra lineal compleja.  Si se cumple
+ $$
+ \mathrm{Traza}(xy)=0
+ $$
+ para todo par de elementos del álgebra $\g$, entonces su álgebra derivada es nilpotente.
+ 
+ \end{lema}
+ 
+ \dem
+ 
+ Dividiremos la demostración del lema en varios apartados. Además de demostrar este lema, podremos afirmar que $\g$ es resoluble, puesto que su álgebra derivada es nilpotente.
+ 
+ \bigskip
+ 
+ 1.- \textit{Un álgebra lineal es nilpotente si sus elementos son endomorfismos nilpotentes}.
+ 
+   Si un elemento $x$ de un álgebra lineal es un endomorfismo nilpotente, entonces $\ad_x$ también es nilpotente.  Por el teorema de Engel el álgebra es nilpotente. En nuestro caso, debemos demostrar  que todos los elementos de $[\g,\g]$ son nilpotentes.
+ 
+ \bigskip
+ 
+ 2.- \textit{El álgebra es un subespacio invariante para varios endormorfismos.}
+ 
+ 
+ 
+ Sea $x $ un elemento de un álgebra lineal.  Dicho elemento admite una descomposición de Jordan-Cheva\-lley.  Sea $x = s+n$ dicha descomposición.  Naturalmente nada nos asegura que $s$ ó $n$ sigan en el álgebra. Es por esta razón por la que empleamos álgebras lineales. 
+ 
+ Aplicando el teorema de descomposición de Jordan-Chevalley,  $s$ ó $n$ se pueden expresar como un polinomios de $x$.    La descomposición de Jordan 
+ $$
+ \ad_x=\ad_s+\ad_n
+ $$  nos dice que tanto $\ad_s$ como $\ad_n$ son polinomios en $\ad_x$ y por lo tanto dejan invariante el subespacio $\g\subset \mathfrak{gl}(E)$ puesto que $\ad_x$ cumple dicha propiedad. En definitiva, concluimos que $[s,y]$ y $[n,y]$ son elementos de $\g$ si $y$ es un elemento de $\g$.
+ 
+ Introduzcamos un nuevo endomorfismo $\overline{s}$.  Denotemos por $\overline{s}$ al endomorfismo semisimple que tiene los mismos vectores propios que $s$ pero que sus valores propios son los conjugados de $s$.  En una base donde diagonalice $s$, la matriz de $\overline{s}$ es justamente la conjugada.  También es claro que $\overline{s}$ puede no pertenecer a $\g$.  Sin embargo al ser $\ad_s$ un polinomio en $\ad_x$, tenemos que $\ad_{\overline{s}}= \overline{ad_s}$ es también un polinomio en $\ad_x$ y deja invariante $\g$.  Cumple entonces que $[\overline{s},y]\in \g$ si $y\in \g$
+ 
+ \bigskip
+ 
+ 3.- \textit{El endomorfismo $\overline{s}n$ es nilpotente.}
+ 
+
+   
+  Sabemos que $x$ y $n$ conmutan.  Entonces toda potencia de $x$ conmuta con~$n$.  Todo polinomio de $x$ conmuta con~$n$. En particular $\overline{s}$ conmuta con~$n$.  Como $n$ es nilpotente tenemos que $n^p=0$ para algún $p$.  Pero entonces $(\overline{s}n)^p = \overline{s}^pn^p=0$ y $\overline{s}n$ es nilpotente. Su traza es nula.  Calculemos la traza del endomorfismo $\overline{s}n$
+  
+  
+  
+\begin{equation}\nonumber
+\begin{split}
+ 0=\mathrm{Traza}(\overline{s}n) = \mathrm{Traza}(\overline{s}(x-s))= \\
+ \mathrm{Traza}(\overline{s}x) -\mathrm{Traza}(\overline{s}s) 
+  \end{split}
+  \end{equation}
+  
+  \bigskip
+  
+  4.- \textit{La  $\mathrm{Traza}(\overline{s}x)$ es nula si $x$ pertenece al álgebra derivada.}
+  
+    Como $x$ está en el álgebra derivada, lo podremos expresar como $x = \sum [x_i,y_i]$ donde todos los elementos pertenecen al álgebra $\g$.  Entonces
+ $$
+\textstyle \mathrm{Traza}(\overline{s}x) = \mathrm{Traza}(\overline{s}\sum[x_i,y_i]) = \sum\mathrm{Traza}(\overline{s}[x_i,y_i])
+ $$
+ Aplicando la invariancia de la traza tenemos que esta expresión equivale a 
+ $$
+ \textstyle \sum\mathrm{Traza}([\overline{s},x_i], y_i)= \mathrm{Traza}(\g,\g)=0
+ $$
+ puesto que aunque $\overline{s}$ puede no pertenecer a $\g$, tenemos que $[\overline{s},x_i]$ siempre pertenece a $\g$.
+ 
+ \bigskip
+ 
+ 5.- \textit{La parte semisimple es nula.}
+ 
+ La ecuación anterior se reduce en nuestro caso a 
+ $$
+ 0= \mathrm{Traza}(\overline{s}s)
+ $$
+ Sean $\lambda_1, \dots,\lambda_n$ los valores propios de $s$ contados con su multiplicidad.  Los valores propios de $\overline{s}$ son los conjugados.  Calculando la traza en una base donde ambos diagonalicen tenemos
+ $$
+  0= \mathrm{Traza}(\overline{s}s)= \textstyle \sum \overline{\lambda}_i\lambda_i = \sum \abs{\lambda_i}^2
+  $$
+  Todos los valores propios de $s$ son nulos, lo que implica que $s=0$ y el endomorfismo $x$ es nilpotente puesto que no tiene parte semisimple.  \fin
+ 
+ \begin{teo}[Cartan]
+ 
+ Un álgebra compleja es resoluble si y solo si la forma de Killing restringida al álgebra derivada es identicamente nula.
+ 
+ \end{teo}
+ 
+ \dem
+ 
+ 
+ Consideramos la representación adjunta.  Su núcleo es el centro que es resoluble.  Podemos situarnos entonces en el caso lineal.  La condición $B(x,y)=0$ para todo par de elementos del álgebra derivada, equivale a que $\mathrm{Traza}(\ad_x,\ad_y)=0$.  Estamos en el caso del lema anterior y el álgebra adjunta es resoluble.  Entonces $\g$ también es resoluble. \fin
+ 
+ 
+ \begin{cor}
+ 
+ Sea $\g$ un álgebra sobre un cuerpo que pueda ser inyectado en los complejos.  El criterio de Cartan anterior también es válido.
+ 
+ \end{cor}
+ 
+ \dem
+ 
+ Un álgebra  es resoluble si y solo si lo son sus extensiones.  La métrica de Killing no cambia al hacer extensiones de cuerpos, puesto que su cálculo implica únicamente a las trazas, que no dependen de la extensión.  \fin
+ 
+ \noindent{\bf Observación.}
+ 
+ Aunque nosotros lo hemos demostrado solamente en el caso complejo, el criterio de Cartan es válido para cualquier cuerpo de característica nula (ver~\cite{humint}).
+ 
+ \bigskip
+ 
+ 
+ 
+Teniendo a mano el criterio de resolubilidad, el criterio de semisimplicidad es sencillo de demostrar. Una de las implicaciones no necesita para su demostración el criterio de resolubilidad.
+
+\begin{propo}
+
+Si la forma de Killing es no degenerada, entonces el álgebra es semisimple.
+
+\end{propo}
+
+\dem
+
+Sea $\mathfrak{n}$ un ideal abeliano del álgebra.  Demostremos que dicho ideal está contenido en el radical de la forma de Killing. Sea $x \in \mathfrak{n}$ e $y\in \g$.  Tenemos que calcular $B(x,y)$ y demostrar que es cero.
+
+Tomamos un elemento arbitrario $z \in \g$.
+Tenemos que $\ad_x(z)= [x,z]\in \mathfrak{n}$ por ser ideal.  De la misma forma $\ad_y([x,z]) = \ad_y\ad_x(z) \in \mathfrak{n}$.  Si repetimos esta operación tenemos que $(\ad_x\ad_y)^2(z) \in [\mathfrak{n},\mathfrak{n}]=0$.  Esto es cierto para todo elemento  $z$ del álgebra.  Podemos concluir que $(\ad_x\ad_y)^2$ es nulo y por lo tanto el endomorfismo es nilpotente.  Tiene traza nula, que como coincide con $B(x,y)$, demuestra que $\mathfrak{n}$ está contenido en el radical de la métrica.  La no degeneración implica que no pueden existir ideales abelianos no nulos y el álgebra es semisimple. \fin
+
+Para la demostración del recíproco utilizamos el criterio de resolubilidad, por lo que suponemos que el cuerpo es de característica nula.  Tengamos en cuenta dos resultados ya conocidos.
+
+\begin{enumerate}[\indent 1.- ]
+
+\item El radical de una métrica es un ideal.  Ello es consecuencia de la invariancia de la forma de Killing.
+
+\item La métrica de Killing aplicada a ideales no es más que la restricción de la métrica del álgebra.
+
+\end{enumerate}
+
+  Además el radical de la métrica  es resoluble pues cumple que el producto escalar de dos cualesquiera de dos elementos es nulo.    Si estamos en un álgebra semisimple, dicho ideal debe ser nulo y la métrica es no degenerada.  Ello prueba la parte restante del 
+
+\begin{teo}[Cartan]
+
+Un álgebra es semisimple si y solo si la forma de Killing es no degenerada.
+
+\end{teo}
+
+\section*{\centerline{Problema}}
+
+\begin{pro}
+
+Analizando la métrica de Killing de $\mathfrak{sl}(E)$ demostrar que dicha álgebra es semisimple.
+
+\end{pro}
+
+
+
+\newpage
+
+\section{Álgebras semisimples y forma de Killing}
+
+
+El criterio de Cartan afirma que un álgebra de Lie es semisimple si y solo si la forma de Killing es no degenerada.  Como $B$ es no degenerada, su radical, $\mathrm{Rad}(B)= \g^\perp $, es nulo y  por ello la  \df{polaridad}\footnote{Dada una métrica $T_2$ en un espacio vectorial $E$ llamamos  \df{polaridad} a la aplicación de $E$ en su dual que manda el elemento $x$ a la forma lineal $i_xT_2$, donde $i_xT_2(y)$ es por definición igual a $T_2(x,y)$} asociada establece un isomorfismo de $\g$ con su dual.  Como consecuencia de ello se cumple la fórmula de las dimensiones
+$$
+\mathrm{dim }(\mathfrak{a})+ \mathrm{dim }(\mathfrak{a}^\perp) = \mathrm{dim }( \g)
+$$
+para todo subespacio $\mathfrak{a}$ incluido en $\g$.
+
+\begin{propo}
+
+Sea $\g$ semisimple y $\mathfrak{n}$ un ideal.  Entonces tenemos la descomposición en suma directa
+$$
+\g \sim \mathfrak{n} \oplus \mathfrak{n}^\perp
+$$
+
+\end{propo}
+
+\dem
+
+Sabemos (proposición \ref{propo:ideal}) que $\mathfrak{n}^\perp$ es un ideal y que las dimensiones se ajustan a la descomposición en suma directa.  Solo resta probar que $\mathfrak{n}\cap \mathfrak{n}^\perp=0$.
+
+Tomamos $x,y \in \mathfrak{n}\cap \mathfrak{n}^\perp$ y $z$ un elemento arbitrario de $\g$.  Entonces 
+$$
+B([x,y],z]= -B(y,[x,z])=0
+$$
+puesto que $[x,z] \in \mathfrak{n}$ por ser ideal e $y \in \mathfrak{n}^\perp$.
+
+Como esto es cierto para todo $z$ y la métrica es no degenerada, necesariamente $[x,y]=0$.  De este modo $\mathfrak{n} \cap \mathfrak{n}^\perp$ es un ideal abeliano, que debe ser nulo por ser $\g$ semisimple.  \fin
+
+Además de la descomposición en suma directa como espacios vectoriales, se cumple que $[\mathfrak{n},\mathfrak{n}^\perp]=0$ debido a que tanto $\mathfrak{n}$ como $\mathfrak{n}^\perp$ son ideales.  En efecto: si $x  \in \mathfrak{n}$, $y \in \mathfrak{n}^\perp$ entonces $[x,y] \in \mathfrak{n}$ y también $[x,y] \in \mathfrak{n}^\perp$ lo que implica que $[x,y] \in \mathfrak{n}\cap \mathfrak{n}^\perp=0$. De este modo $\g$ es isomorfa al producto directo de las álgebras de Lie $\mathfrak{n}$ y $\mathfrak{n}^\perp$
+$$
+\g \sim \mathfrak{n} \times \mathfrak{n}^\perp
+$$
+
+Debido a esta descomposición en suma directa  todo ideal de $\mathfrak{n}$ (o de $\mathfrak{n}^\perp$)  es también ideal de $\g$.  
+
+
+
+\begin{cor}
+
+Todo ideal $ \mathfrak{n}$ de un álgebra semisimple es semisimple.
+
+\end{cor}
+
+\dem
+
+La métrica de Killing en el ideal coincide con la restricción de la forma de Killing del álgebra.  El radical de la métrica restringida al subespacio $\mathfrak{n}$ es precisamente $\mathfrak{n} \cap \mathfrak{n}^\perp$ que hemos visto que es nulo.  La métrica es no degenerada y el ideal $\mathfrak{n}$ es semisimple aplicando el criterio de Cartan.  \fin
+
+\begin{cor}
+
+Todo cociente de un álgebra semisimple es semisimple.
+
+\end{cor}
+
+\dem
+
+Sea $\mathfrak{n}$ el ideal por el que hacemos cociente.  Entonces $\g \sim \mathfrak{n}\times \mathfrak{n}^\perp$ y el álgebra cociente $\g /\mathfrak{n}$ es entonces isomorfa al ideal $\mathfrak{n}^\perp$ que es semisimple. \fin
+
+\begin{cor}
+
+Un álgebra semisimple tiene centro nulo.  La representación adjunta es inyectiva y  el álgebra es isomorfa a un álgebra lineal.
+
+\end{cor}
+
+\dem
+
+Tenemos que $\mathrm{Centro}(\g) \subset \mathrm{Rad}(B)=0$.  El centro de $\g$ es el núcleo de la representación adjunta que es entonces inyectiva e isomorfa a su imagen, que es un álgebra lineal.   \fin
+
+
+Recordemos que un álgebra de Lie simple es aquella que no es abeliana y que solamente tiene como ideales el cero y el total.  Aplicando los resultados anteriores probaremos el siguiente
+
+\begin{teo}
+
+Toda álgebra de Lie semisimple finita es isomorfa a un producto directo de álgebras simples.
+
+\end{teo}
+
+\dem
+
+La haremos por inducción sobre la dimensión del álgebra.
+
+Dada $\g$ semisimple, tomamos un ideal minimal\footnote{Estos ideales también se denominan simples, pues entendidos como álgebras de Lie son simples} $\mathfrak{n}_1$, que es un ideal que no contiene ideales (salvo los triviales) en su interior.  Como estamos en dimensión finita es claro que dichos ideales existen.  Este ideal no puede ser abeliano pues entonces el álgebra no podría ser semisimple.  Descomponemos el álgebra como suma directa.
+$$
+\g \sim \mathfrak{n}_1 \times {\mathfrak{n}_1}^\perp
+$$
+Tenemos que $\mathfrak{n}_1$ es un álgebra simple, puesto que es un ideal minimal,  y que su ortogonal es un álgebra semisimple, por ser subálgebra de un álgebra semisimple.  Por inducción podemos descomponer el ortogonal en suma directa y obtenemos finalmente
+$$
+\g \sim \mathfrak{n}_1 \times \dots \times  \mathfrak{n}_k
+$$
+donde cada $\mathfrak{n}_i$ es un álgebra de Lie simple.  \fin
+
+En principio parece que la descomposición depende del ideal minimal que tomamos para empezar la inducción, pero en realidad esto solamente permutará los factores de la descomposición.  Veamoslo.
+
+Sea $\mathfrak{n}$ un ideal minimal arbitrario de $\g$.  Entonces $[\mathfrak{n}, \g]$ es un ideal contenido en $\mathfrak{n}$, que no puede ser nulo, pues de lo contrario el álgebra no sería semisimple.  Es necesario entonces que exista  un ideal de la descomposición que cumpla $[\mathfrak{n},\mathfrak{n}_i]\neq 0$, lo que implica que $[\mathfrak{n},\mathfrak{n}_i]= \mathfrak{n}$. Teniendo en cuenta que $\mathfrak{n}_i$ también es simple debe cumplirse asimismo que $[\mathfrak{n},\mathfrak{n}_i]= \mathfrak{n}_i$, que prueba la igualdad de $\mathfrak{n}$ con uno de los ideales de la descomposición.
+
+\begin{cor}
+
+La descomposición en factores de un álgebra semisimple es úni\-ca (salvo el orden).
+
+\end{cor}
+
+
+\begin{cor}
+
+Si $\g$ es semisimple entonces $[\g,\g]=\g$.
+
+\end{cor}
+
+\dem
+
+Si el álgebra es simple, entonces $[\g,\g]$ es un ideal que no puede ser nulo por no ser abeliana.  Necesariamente se cumple la igualdad. Para las álgebras semisimples se emplea este resultado tras descomponer en factores simples el álgebra.  \fin
+
+Obtendremos ahora un resultado referente a las derivaciones de un álgebra de Lie semisimple.  Dada un álgebra de Lie $\g$, el conjunto de sus derivaciones lo denotamos por $\Der(\g)$.  Las derivaciones de la forma $\ad_x$ se denominan derivaciones interiores.  El conjunto de todas las derivaciones interiores es justamente $\ad(\g)$, que denominaremos  \df{álgebra adjunta} \index{algebra@álgebra!adjunta} de $\g$.  
+
+\begin{lema}
+
+Sea $\g$ un  álgebra de Lie arbitraria.  El conjunto de derivaciones interiores $\ad(\g)$ es un ideal de $\Der(\g)$.
+
+\end{lema}
+
+\dem
+
+Sea $D$ una derivación arbitraria.  Entonces $[D, \ad_x]= \ad_{D(x)}$ como se comprueba rápidamente.  \fin
+
+\begin{teo}
+
+Si $\g$ es semisimple, entonces $\ad(\g)= \Der(\g)$.  
+
+\end{teo}
+
+\dem
+
+Como $\g$ es simisimple, la representación adjunta es inyectiva y $\g$ es isomorfa a su imagen, $\ad(\g)$, que es semisimple y a la par es un ideal.  En el álgebra $\Der(\g)$ tenemos una forma de Killing, que al restringirla a este ideal es no degenerada.  De esta manera el ortogonal, $\ad(\g)^\perp$, y $\ad(\g)$ tienen intersección nula.    De ello deducimos que $[D, \ad_x]=0$ para todo elemento $D$ del ortogonal. 
+
+Sea $D\in \ad(\g)^\perp$.  Por el lema anterior $[D,\ad_x]= \ad_{D(x)}=0$ para todos los elementos $x \in \g$. Como la representación adjunta es inyectiva esto implica que $D(x)=0$ y necesariamente $D$ es nula.  El ortogonal al álgebra adjunta es nulo y tenemos el enunciado. \fin
+
+
+\section*{\centerline{Problemas}}
+
+\begin{pro}
+
+El producto directo de álgebras semisimples es simisimple.
+
+\end{pro}
+
+\begin{pro}
+
+Sea $\g$ semisimple y $\varphi: \g \rightarrow \mathfrak{gl}(E)$ una representación.  Demostrar que $\varphi_x$ tiene traza nula. (Utilizar que $[\g,\g]=\g$)
+
+\end{pro}
+
+\newpage
+
+\section{Rango de un álgebra}
+
+Recordemos algunos hechos referentes a la estructura de los endomorfismos de un espacio vectorial de dimensión finita sobre un cuerpo algebraicamente cerrado.
+
+Sea $\varphi: E \rightarrow E$ un endomorfismo.  Denotemos por $p(x)$ a su polinomio característico.  Como el cuerpo es algebraicamente cerrado, el polinomio descompone en factores lineales
+$$
+p(x)= \prod_{i=1}^{r}(x-\lambda_i)^{m_i}
+$$
+Según el teorema de clasificación de endomorfismos, el espacio $E$ descompone en suma directa
+$$
+E \sim \Ker (\varphi-\lambda_1)^{m_1} \oplus \dots \oplus \Ker(\varphi- \lambda_r)^{m_r}
+$$
+
+Los subespacios de la forma $\Ker(\varphi - \lambda_i)^{m_1}$ admiten otra descripción.  En ellos la aplicación $\varphi- \lambda_i$ es nilpotente.  Entonces un elemento $x$ pertenece a $\Ker(\varphi- \lambda_i)^{m_i}$ si y solo si $(\varphi- \lambda_i)^p(x)=0$ para algún entero $p$ suficientemente grande.
+
+Nosotros estamos interesados principalmente en el subespacio correspondiente al valor propio nulo.
+
+\begin{defi}
+
+Sea $\varphi: E \rightarrow E$ un endomorfismo.  Llamamos  \df{nilespacio} \index{nilespacio}de $\varphi$ al subespacio
+$$
+E^0 = \{x \in E \text{ tales que } \varphi^p(x)=0 \text{ para cierto entero } p \}
+$$
+
+\end{defi}
+
+Como el espacio es de dimensión finita, la aplicación $\varphi$ da un endomorfismo nilpotente al restringuirla a su nilespacio.
+
+\begin{defi}
+
+Llamamos  \df{rango}\index{rango!de un endomorfismo} de un endomorfismo a la dimensión de su nilespacio.
+
+\end{defi}
+
+En el caso particular de las álgebras de Lie, o en general de cualquier tipo de álgebras, a cada elemento del álgebra le hacemos corresponder una aplicación lineal del álgebra en si misma, utilizando la representación adjunta.  De esta forma todos los conceptos referentes a endomorfismo se pueden trasladar a los elementos del álgebra.
+
+\begin{defi}
+
+Llamamos  \df{rango} \index{rango!de un elemento} de un elemento $x \in \g$ al rango del endomorfismo $\ad_x$.  El  \df{rango}\index{rango!de un álgebra} de un álgebra de Lie es el menor de los rangos de sus elementos.
+
+\end{defi}
+
+
+\noindent {\bf Observaciones.}
+
+\begin{itemize}
+
+\item  El rango de un elemento $x$ no puede sobrepasar la dimensión del álgebra de Lie.  El rango de un álgebra siempre es menor o igual que su dimensión.
+
+\item  En el caso de las álgebras de Lie, el rango de un elemento nunca es nulo.  Ello se debe a que $\ad_x(x)= [x,x]=0$ y todo endomorfismo adjunto tiene al menos un vector propio de valor propio nulo.  El álgebra de Lie tiene entonces rango mayor o igual a uno.
+
+\item  Si $\ad_x$ es nilpotente, lo que hemos denominado nilespacio de $\ad_x$ coincide con toda el álgebra.  En este caso el rango del elemento $x$ es precisamente la dimensión del álgebra.  Recíprocamente, si el rango de un elemento coincide con la dimensión del álgebra, el nilespacio coincide con el álgebra y el endomorfismo es nilpotente.
+
+
+
+\end{itemize}
+
+ Si todos los elementos de un álgebra son nilpotentes entonces el rango del álgebra coincide con la dimensión del álgebra.  Si el rango del álgebra es igual a la dimensión del espacio, todos los endomorfismos son nilpotentes.  Según el teorema de Engel esto equivale a que el álgebra sea nilpotente.
+ 
+ \begin{propo}
+ 
+ Un álgebra tiene rango igual a su dimensión si y solo si el álgebra es nilpotente.
+ 
+ \end{propo}
+ 
+ En un álgebra de Lie algunos elementos tienen rango igual a rango del álgebra y sin embargo otros tienen un rango estrictamente superior.  Llamamos  \df{elemento regular} de un álgebra a aquel que su rango coincida con el rango del álgebra.   En virtud de la definición de rango de un álgebra, debe existir al menos un elemento regular.
+ 
+ Utilizaremos un elemento regular $x$ para descomponer el espacio en suma directa.  Modificaremos un poco las notaciones para adaptarnos al convenio habitual.  Con las notaciones del principio de la sección denotaremos por $\g_x^\lambda$ al subespacio $\Ker(\ad_x-\lambda)^m$. Como suponemos dado el elemento $x$,  no lo escribiremos a no ser que sea estrictamente necesario.  En particular la dimensión de  $\g^0$ es el rango del elemento $x$, que como es regular coincide con el rango del álgebra.  Con estas notaciones tenemos la descomposición en suma directa
+ $$
+ \g \sim \g^0 \oplus \g^{\lambda_1} \oplus \dots \oplus \g^{\lambda_r}
+ $$
+ donde los elementos $\lambda_i$ (y el cero) son las raices del polinomio característico de~$x$.
+ 
+ \begin{propo}
+ 
+ Sea $x$ un elemento regular de $\g$.  Se cumple:
+ 
+ \begin{enumerate}[\indent 1.- ]
+ 
+ \item $[\g^\lambda, \g^\mu] \subset \g^{\lambda+\mu}$ siendo $\lambda $ y $\mu$ raices del polinomio característico.
+ 
+ \item  $\g^0$ es una subálgebra.
+ 
+ \end{enumerate}
+ 
+ \end{propo}
+ 
+ \dem
+ 
+ Decir que $x \in \g^\lambda$ equivale a que exista un natural $p$ tal que $(\ad_x-\lambda)^p(x)=0$.  Tomamos el elemento $[y,z]$ con $y\in \g^\lambda$ y $z\in \g^\mu$. Debemos demostrar que para álgun entero $n$ suficientemente grande se tiene que
+ $$
+ (\ad_x-\lambda- \mu)^n ([y,z])=0
+ $$
+ Utilizando la identidad de Jacobi repetidamente se prueba por inducción la fórmula
+ $$
+ (\ad_x-\lambda- \mu)^n ([y,z])= \sum_{p=0}^n[(\ad_x-\lambda)^p(y), (\ad_x-\mu)^{n-p}(z)]
+ $$ 
+ que prueba la nulidad del primer miembro tomando $n$ suficientemente alto.
+ 
+ Para demostrar la segunda propiedad basta tomar $\lambda=\mu=0$ en el resultado anterior.  \fin
+ 
+
+
+\newpage
+
+\section{Problemas sin colocar}
+
+
+
+\section*{Problemas}
+
+
+
+Estudiaremos ahora las álgebras seudoortogonales. Para su introducción recordemos que si una forma bilineal sobre un espacio vectorial real es no degenerada, podemos encontrar una base de tal forma que los productos escalares de la base sean $1$ o $-1$.  Decimos en este caso que la forma bilineal tiene signatura $(p,q)$.  Nosotros pondremos siempre primero los positivos y despues los negativos.  Por lo tanto en este caso la matriz $S$ será de la forma
+$$
+S= \begin{pmatrix}
+\Id_p& 0 \\
+0 & -\Id_q
+\end{pmatrix}
+$$
+donde $\Id_p$ designa la matriz identidad de dimensión $p$.
+
+\begin{defi}
+
+Llamamos  \df{álgebra seudoortogonal}\index{algebra@álgebra!seudoortogonal} de tipo $(p,q)$  y denotamos $\mathfrak{o}(p,q, k)$ al conjunto 
+
+$$
+\mathfrak{o}(p,q,k)= \{A \in \mathfrak{gl}(p+q,k) \text{ tales que } A^tS+SA=0 \}
+$$
+donde $S$ designa a la matriz
+$$
+S= \begin{pmatrix}
+\Id_p& 0 \\
+0 & -\Id_q
+\end{pmatrix}
+$$
+
+\end{defi}
+
+Para realizar operaciones en este tipo de álgebras se supone siempre que las matrices están en forma de bloques de tamaño $p$ y $q$.  Realizando las operaciones vemos que las matrices del álgebra seudoortogonal son de la forma (problema \ref{pro:algebraseudoortogonal})
+$$
+\begin{pmatrix}
+A_p & A \\
+{A}^t& A_q
+\end{pmatrix}
+$$
+donde $A_p$ es una matriz antisimétrica de dimension $p$, $A_q$ es una matriz antisimétrica de dimensión $q$ y $A$ es una matriz arbitraria de dimensión $p\times q$.  Con todo esto la dimensión de este álgebra es 
+$$
+\frac{p(p-1)}{2}+\frac{q(q-1)}{2}+ pq
+$$
+
+\bigskip
+
+
+Ya no nos queda más que estudiar las álgebras clásicas asociadas a productos hermíticos. Para introducir estos producto es necesario que el cuerpo tenga una conjugación\footnote{Llamaremos  \df{conjugación} \index{conjugación} de un cuerpo $k$ a todo isomorfismo de cuerpos cuyo cuadrado sea la identidad}.  Supondremos entonces que estamos sobre los complejos, aunque todo lo dicho puede ser cierto para un cuerpo que posea una conjugación. Haremos el estudio del álgebra seudounitaria de tipo $(p,q)$ que incluye como caso particular el del álgebra unitaria (tipo $(n,0)$).
+
+Denotemos ahora por $\escalar{-}{-}$ un producto hermitiano definido sobre un espacio vectorial complejo. Nosotros seguiremos el convenio de considerar que la antilinealidad se produce en la segunda componente. Si es no degenerado, se puede diagonalizar y obtener una matriz formada por $1$ y $-1$.  Si denotamos por $p$ al número de $1$ y por $q$ al de $-1$ la matriz será de la forma hermítica será
+$$
+S= \begin{pmatrix}
+\Id_p & 0 \\
+0 & -\Id_q
+\end{pmatrix}
+$$
+
+
+
+\begin{defi}
+
+El  \df{álgebra seudounitaria} \index{algebra@álgebra!seudounitaria} es el conjunto
+$$
+\mathfrak{u}(n,\C)= \{ A \in \mathfrak{gl}(n,\C)\text{ tales que } A^*S+SA=0 \}
+$$
+donde denotamos por $A^*$ a la matriz hermítica conjugada.
+
+\end{defi}
+
+La matriz hermítica conjugada es aquella que se obtiene al conjugar todos los elementos de la matriz y posteriormente transponer la matriz.
+
+Debemos hacer notar que esta es un álgebra de Lie sobre el cuerpo de los números reales y no sobre el cuerpo de los números complejos.
+
+
+
+\begin{pro}
+
+Denotamos por $\mathfrak{su}(n,\C)$ a la intersección  $\mathfrak{u}(n,\C) \cap \mathfrak{sl}(n,\C)$.
+Demostrar que las matrices
+$$
+e_1= \begin{pmatrix}
+i & 0\\
+0 & -i \\
+\end{pmatrix}
+\quad
+e_2= \begin{pmatrix}
+0 & -1\\
+-1 & 0 \\
+\end{pmatrix}
+\quad
+e_3= \begin{pmatrix}
+0 & i\\
+i & 0 \\
+\end{pmatrix}
+$$
+forman una base de $\mathfrak{su}(2,\C)$ y hallar sus reglas de conmutación.
+
+\end{pro}
+
+\newpage
+
+\section{Álgebras clásicas}
+
+A todo grupo de Lie se le puede asignar un álgebra de Lie.   Asociados a ciertas geometrías aparecen algunos grupos de Lie que se han dado en denominar clásicos.  La álgebras de Lie de estos grupos son las \index{algebra@álgebra!clásica} \df{álgebras clásicas}. Extenderemos dichas definiciones a cuerpos arbitrarios, trabajando siempre en un entorno matricial.  Realizaremos el estudio tomando como base el cuerpo $\C$.  Si el estudio se basa en el cuerpo $\R$ aparecen tipos diferentes de álgebras, algunas de las cuales serán tratadas en los problemas.
+
+\bigskip
+
+El álgebra de Lie asociada al grupo lineal de un espacio vectorial la denotaremos por $\mathfrak{gl}(E)$.  Si en $E$ tomamos una base, dicha álgebra se transforma en el álgebra matricial $\mathfrak{gl}(n,k)$, donde $n$ es la dimensión de $E$.  Este álgebra tiene dimensión $n^2$ y una base la forman las matrices $e_{ij}$ donde $i$ y $j$ varian entre $1$ y $n$.  Los grupos clásicos son subgrupos del grupo lineal, por lo que las álgebras clásicas serán subálgebras de $\mathfrak{gl}(n,k)$, es decir, álgebras matriciales.
+
+\bigskip
+
+El grupo especial lineal de $E$ es el conjunto de automorfismos de determinante $1$.  Su álgebra se identifica con el conjunto de matrices de traza nula.
+
+\begin{defi}
+
+Llamamos  \df{álgebra especial lineal} \index{algebra@álgebra!especial lineal} y denotaremos $\mathfrak{sl}(n,k)$ a
+$$
+\mathfrak{sl}(n,k)=\{ x \in \mathfrak{gl}(n,k) \text{ tales que } \text{ Traza}(x)=0\}
+$$
+
+\end{defi}
+
+La dimensión de este álgebra es precisamente $n^2 -1$, puesto que la traza es una aplicación lineal y su núcleo es un hiperplano del álgebra de endomorfismos.  Una base está constituida por las matrices $e_{ij}$ con $i \neq j$ y las matrices $e_{ii}-e_{nn}$ con $i= 1, \dots, n-1$.
+
+\bigskip
+
+Sea $T_2$ una métrica simétrica no degenerada sobre un espacio complejo.  Los elementos del grupo lineal que conservan la métrica forman el grupo ortogonal del espacio.  El álgebra de Lie del grupo está formada por los endomorfismos que ``derivan'' a la métrica
+$$
+T_2(\varphi(x), y)+ T_2(x, \varphi(y))=0
+$$
+Como $\C$ es un cuerpo algebraicamente cerrado, existen bases ortonormales para la métrica.  Trabajando en estas bases, los endomorfismos que derivan a la métrica
+son aquellos que cumplen la ecuación matricial $A^t+A=0$.  Todo ello nos conduce a la 
+
+\begin{defi}
+
+Llamamos  \df{álgebra ortogonal} \index{algebra@álgebra!ortogonal} y denotamos $\mathfrak{so}(n,k)$ al conjunto
+$$
+\mathfrak{so}(n,k) = \{ x \in \mathfrak{gl}(n,k) \text{ tales que } x^t+x=0\}
+$$
+
+\end{defi}
+
+Es claro que este conjunto es una subálgebra de $\mathfrak{gl}(n,k)$ y que sus elementos son las matrices antisimétricas.  El subespacio de matrices antisimétricas tiene como dimensión
+$$1+2+ \dots+ n-1= \frac{n(n-1)}{2}
+$$
+puesto que la diagonal es nula y el triángulo inferior es el traspuesto del superior cambiado de signo.
+
+Una base del álgebra la forman las matrices $e_{ij}$ con $i <j$. Nuevamente observamos que la dimensión es 
+$$
+\binom{n}{2}= \frac{n(n-1)}{2}
+$$
+\bigskip
+
+Si en un espacio vectorial existe una métrica hemisimétrica no degenerada, necesariamente la dimensión del espacio es par y existen en él bases simplécticas.  En dichas bases la matriz de la métrica es
+$$
+J=
+\begin{pmatrix}
+0 & \Id_n \\
+-\Id_n& 0
+\end{pmatrix}
+$$
+
+De nuevo el álgebra asociada al grupo simpléctico está formada por los endomorfismos que derivan a la métrica.  Matricialmente dichos endomorfismos cumplen la ecuación $A^tJ+JA=0$.
+
+\begin{defi}
+
+Llamamos  \df{álgebra simpléctica} \index{algebra@álgebra!simpléctica} $\mathfrak{sp}(2n,k)$ a 
+$$
+ \mathfrak{sp}(2n,k)=\{x \in \mathfrak{gl}(2n,k) \text{ tales que }x^t J+Jx=0\}
+$$
+
+\end{defi}
+
+Para realizar cálculos en este tipo de álgebras las matrices se escriben en bloques de tamaño adecuado, en este caso todas son $n \times n$.
+
+Escribamos $x$ como una matriz formada por cuatro bloques
+$$
+x=\begin{pmatrix} A& B \\ C & D\end{pmatrix}
+$$
+La condición $x^tJ+Jx=0$ conduce a un sistema de ecuaciones matriciales
+$$
+\begin{cases} 
+-C^t+C&=0 \\
+A^t+D &=0 \\
+-D^t+A &=0 \\
+B^t-B&=0
+\end{cases}
+$$
+La tercera ecuación es redundante y vemos que $C$ y $B$ son simétricas y además $D=-A^t$, siendo $A$ arbitraria. La forma general de una matriz simpléctica es
+$$
+\begin{pmatrix}
+A & B \\
+C & -A^t
+\end{pmatrix}
+$$
+donde $B$ y $C$ son simétricas.  Ahora es fácil calcular la dimensión
+$$
+\frac{n(n-1)}{2}+\frac{n(n-1)}{2}+n^2=n(2n+1)
+$$
+Los dos primeros sumandos provienen de las partes simétricas y el último de la parte diagonal.
+
+\bigskip
+
+\noindent{\bf Observación.}
+
+
+Debido a los teoremas de clasificación de álgebras semisimples se suele emplear también la siguiente notación
+$$
+\begin{array}{l}
+A_n= \mathfrak{sl}(n+1,k) \\
+B_n = \mathfrak{so} (2n+1,k) \\
+C_n= \mathfrak{sp}(2n,k) \\
+D_n= \mathfrak{so}(2n,k)
+\end{array}
+$$
+
+
+\section*{\centerline{Problemas}}
+
+\begin{pro}
+
+Consideremos el álgebra $\mathfrak{so}(3, \R)$.  Dadas las matrices
+$$
+e_1 = 
+\begin{pmatrix}
+0 & 1 & 0 \\
+-1 & 0 & 0 \\
+0 & 0 & 0
+\end{pmatrix}
+\quad
+e_2=
+\begin{pmatrix}
+0 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & -1 & 0
+\end{pmatrix}
+\quad
+e_3= 
+\begin{pmatrix}
+0 & 0 & 1 \\
+0 & 0 & 0 \\
+-1 & 0 & 0
+\end{pmatrix}
+$$
+demostrar que forman una base  y calcular sus reglas de conmutación.  Demostrar que este álgebra es isomorfa a $\R^3$ con el producto vectorial.
+
+\end{pro}
+
+\begin{pro}
+
+En $\mathfrak{sl}(2,\R)$ las matrices
+$$
+e_1 = 
+\begin{pmatrix}
+0 & 1  \\
+0   & 0 
+\end{pmatrix}
+\quad
+e_2=
+\begin{pmatrix}
+0 & 0 \\
+1 & 0 
+\end{pmatrix}
+\quad
+e_3= 
+\begin{pmatrix}
+1 & 0  \\
+0 & -1 
+\end{pmatrix}
+$$
+forman una base. Calcular las reglas de conmutación.
+
+\end{pro}
+
+\begin{pro}
+
+En $\mathfrak{sl}(2, \R)$ las matrices
+$$
+a_+ = 
+\begin{pmatrix}
+0 & 1  \\
+0   & 0 
+\end{pmatrix}
+\quad
+a_-=
+\begin{pmatrix}
+0 & 0 \\
+1 & 0 
+\end{pmatrix}
+\quad
+a_0=\frac{1}{2} 
+\begin{pmatrix}
+1 & 0  \\
+0 & -1 
+\end{pmatrix}
+$$
+forman una base. Calcular las reglas de conmutación.
+
+\end{pro}
+
+\begin{pro}
+
+Sea $E$ un espacio vectorial complejo de dimensión par y $T_2$ una métrica simétrica no degenerada.
+
+\begin{itemize}
+
+\item Demostrar que existe una base donde la matriz del producto escalar es
+$$
+g=  \begin{pmatrix}
+0 & \Id_n \\
+\Id_n& 0
+\end{pmatrix}
+$$
+
+\item Escribiendo $x$ en bloques de tamaño $n  \times n$
+$$
+x= \begin{pmatrix} A & B \\ C & D \end{pmatrix}
+$$
+la condición $x^tg+gx=0$ conduce a los resultados: $B$ y $C$ son antisimétricas y $D=-A^t$ siendo $A$ arbitraria.
+
+\item Calcular la dimensión utilizando el hecho anterior.
+
+\item Las matrices diagonales forman una subálgebra conmutativa de dimensión~$n$.  Hallar una base de dicha subálgebra.
+
+\end{itemize}
+
+\end{pro}
+
+\begin{pro}
+
+Realizar un estudio análogo al problema anterior en dimensión impar, sabiendo que en este caso existen bases donde el producto escalar tiene como matriz
+$$
+g= \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & \Id_n \\
+0 & \Id_n & 0
+\end{pmatrix}
+$$
+
+\end{pro}
+
+\begin{pro}
+
+En el caso real las métricas tienen signatura y existen bases donde las matrices del producto escalar son de la forma
+$$
+\begin{pmatrix} 
+\Id_p & 0 \\
+0 &- \Id_q
+\end{pmatrix}
+$$
+El álgebra que surge al hacer un estudio con esta matriz se conoce como  \df{álgebra seudoortogonal} \index{algebra@álgebra!seudoortogonal} de signatura $(p,q)$.
+
+\end{pro}
+
+\begin{pro}
+
+Demostrar que $\mathfrak{so}(n,k)$ y $\mathfrak{sp}(2n,k)$ son subálgebras del álgebra especial lineal.
+
+\end{pro}
+
+\begin{pro}
+
+Calcular el centro del álgebra $\mathfrak{gl}(n,k)$.  El cociente de $\mathfrak{gl}(n,k)$ módulo su centro es el álgebra especial lineal.
+
+\end{pro}
+
+\newpage
+
+\section{Producto semidirecto}
+
+Si $\mathfrak{g}_1$ y $\mathfrak{g}_2$ son dos álgebras de Lie, entonces sobre el espacio vectorial producto $\mathfrak{g}_1 \times \mathfrak{g}_2$ existe una estructura natural de álgebra de Lie.  Con ayuda de un morfismo de álgebras de Lie introduciremos otra estructura de álgebra en el mismo espacio vectorial.  Es lo que se llama  \df{producto semidirecto} \index{producto semidirecto} de las álgebras.  Pasemos a los detalles.
+
+Sean $\mathfrak{g}_1$ y $\mathfrak{g}_2$ dos  álgebras de Lie.  Supongamos dado un morfismo 
+$$
+\varphi: \mathfrak{g}_1 \lto \mathfrak{gl}(\mathfrak{g}_2)
+$$
+de tal forma que $\varphi(x)=\varphi_x$ sea una derivación de $\mathfrak{g}_2$.  En realidad $\varphi$ es un morfismo valorado en $\mathrm{Der}(\mathfrak{g}_2)$.
+
+Nuestra idea es que la multiplicación de un elemento $x \in \mathfrak{g}_1$ por un elemento $y \in \mathfrak{g}_2$ sea $\varphi_x(y)$.  Teniendo en cuenta esta premisa y utilizando la bilinealidad definimos el siguiente corchete en el espacio vectorial $\mathfrak{g}_1 \times \mathfrak{g}_2$
+$$
+[x_1+y_1, x_2+y_2]= [x_1,x_2]+(\varphi_{x_1}(y_2)- \varphi_{x_2}(y_1)+ [y_1,y_2])
+$$
+donde hemos expresado los elementos de $\mathfrak{g}_1 \times \mathfrak{g}_2$ como suma de un elemento de $\mathfrak{g}_1$ y otro de $\mathfrak{g}_2$.  El primero de los sumandos de la parte derecha está en $\mathfrak{g}_1$ y los tres últimos en $\mathfrak{g}_2$.
+
+Nuestra tarea es ahora mostrar que en efecto este corchete dota de estructura de álgebra de Lie al espacio vectorial $\mathfrak{g}_1 \times \mathfrak{g}_2$.  Tanto la bilinealidad como la antisimetría son claras.  Para comprobar la identidad de Jacobi analizaremos por separado cuatro casos. Debido a la bilinealidad del producto, demostrando estos cuatro casos se demuestran todos.
+
+\begin{enumerate}[1.- ]
+
+\item Si los tres elementos pertencen a $\mathfrak{g}_1$, la identidad de Jacobi es consecuencia de la estructura de álgebra en $\mathfrak{g}_1$.
+
+\item Análogamente si los tres elementos están en $\mathfrak{g}_2$.
+
+\item Supongamos que dos elementos $x,y \in \mathfrak{g}_1$ y el tercero $z \in \mathfrak{g}_2$.
+$$
+[[x,y]z]=-[z,[x,y]]= -\varphi_z([x,y])
+$$
+utilizando que $\varphi_z$ es una derivación
+$$
+-[\varphi_z(x),y]-[x,\varphi_z(y)]= -[[z,x],y]-[x,[z,y]]
+$$
+que es la identidad de Jacobi.
+
+\item Si $x \in \mathfrak{g}_1$ e $y,z \in \mathfrak{g}_2$ entonces
+$$
+[[x,y],z]= \varphi_{[x,y]}(z)
+$$
+utilizando que $\varphi$ es morfismo de álgebras
+$$
+(\varphi_x \varphi_y - \varphi_y\varphi_x)z = [x,[y,z]]+[y,[x,z]]
+$$
+que es de nuevo la identidad de Jacobi.
+
+\end{enumerate}
+
+\begin{defi}
+
+LLamamos  \df{producto semidirecto} \index{producto semidirecto} de $\mathfrak{g}_1$ y $\mathfrak{g}_2$ asociado a $\varphi$ al álgebra que hemos construido anteriormente.  La denotaremos $\mathfrak{g}_1 \times_\varphi \mathfrak{g}_2$, aunque esta notación no es estandard.
+
+\end{defi}
+
+\noindent{\bf Observaciones.}
+
+\begin{itemize}
+
+\item Si $\varphi$ es nulo el producto semidirecto coincide con el producto directo.
+
+\item $\mathfrak{g}_2$ es un ideal del producto semidirecto, pero $\mathfrak{g}_1$ no es un ideal, es simplemente una subálgebra.
+
+\item Las inyecciones canónicas y la proyección en el primer factor son morfismos de álgebras.
+
+\end{itemize}
+
+\noindent{\bf Ejemplos.}
+
+\begin{itemize}
+
+\item Sea $\mathfrak{g}$ un álgebra de Lie.  El conjunto de derivaciones de $\mathfrak{g}$ lo denotamos $\mathrm{Der}(\mathfrak{g})$. Si tomamos $\mathfrak{g}_1= \mathrm{Der}(\mathfrak{g})$ y $\mathfrak{g}_2=\mathfrak{g}$ y como morfismo la inyección natural, podemos construir el producto semidirecto $\mathrm{Der}(\mathfrak{g}) \times_\varphi \mathfrak{g}$.  El mismo argumento es válido tomando como $\mathfrak{g}_1$ cualquier subálgebra de $\mathrm{Der}(\mathfrak{g})$.
+
+\item Sea $\mathfrak{g}$ un álgebra abeliana.  Entonces el conjunto de derivaciones de $\mathfrak{g}$ coincide con el conjunto de endomorfismos de $\mathfrak{g}$.  El producto semidirecto
+$$
+\mathfrak{gl}(\mathfrak{g}) \times_\varphi \mathfrak{g}
+$$
+es un caso particular del ejemplo anterior.  Esta construcción se corresponde con los grupos afines.
+
+\end{itemize}
+
+\begin{propo}
+
+La siguiente sucesión es exacta
+$$
+0 \lto \mathfrak{g}_2 \hookrightarrow \mathfrak{g}_1 \times_\varphi \mathfrak{g} \stackrel{\pi}{\lto} \mathfrak{g}_1 \lto 0
+$$
+
+\end{propo}
+
+\newpage
+
+\section{Cambio de cuerpo base}
+
+Dada una extensión de cuerpos $k \subset L$, a todo $k$-espacio vectorial se le puede asociar un $L$-espacio vectorial.  Se dice que este $L$-espacio se ha obtenido por extensión de escalares.  Esta construcción es también válida para álgebras de Lie.
+
+Dada una $k$-álgebra de Lie $\mathfrak{g}$ y una extensión de cuerpos $k \subset L$, construimos el espacio vectorial $\mathfrak{g}\otimes L$.  Este producto tensorial es un $k$-espacio vectorial y está generado por los elementos de la forma
+$$
+x \otimes \lambda \text{ con } x \in \mathfrak{g} \text{ y } \lambda \in L
+$$
+Sobre dichos elementos se define la multiplicación por escalares de $L$ mediante la regla
+$$
+\mu(x \otimes \lambda) = x \otimes \lambda \mu
+$$
+La propiedad universal del producto tensorial garantiza la existencia de una aplicación bien definida de $L \times (\mathfrak{g}\otimes L) \rightarrow \mathfrak{g}\otimes L$
+que sobre los tensores elementales $x \otimes \lambda$ coincide con nuestra definición.  Un elemento general del espacio $\mathfrak{g} \otimes L$ es de la forma $\sum x_i \otimes \lambda_i$.  La multiplicación de un escalar $\mu$ por este elemento es entonces
+$$
+\mu(\sum x_i \otimes \lambda_i) = \sum x_i \otimes \lambda_i \mu
+$$
+y no depende de la expresión tomada como suma de elementos generadores.  Esta multiplicación por escalares dota al conjunto $\mathfrak{g}\otimes L$ de una estructura de espacio vectorial sobre $L$.
+
+\bigskip
+
+\noindent{\bf Observación.}
+
+Los elementos de la forma $x\otimes 1$ donde $x \in \mathfrak{g}$ forman un conjunto generador del $L$-espacio $\mathfrak{g}\otimes L$.  Recordemos que muchas construcciones de álgebra lineal basta definirlas sobre conjuntos generadores.
+
+\bigskip
+
+Tenemos que introducir una estructura de álgebra de Lie en $\mathfrak{g}\otimes L$. Para ello pedimos que la inyección natural de $\mathfrak{g}$ en  $\mathfrak{g} \otimes L$ dada por $x\rightarrow x\otimes 1$ sea un morfismo de álgebras de Lie.  Ello nos lleva a definir
+$$
+[x \otimes 1, y\otimes 1]= [x,y]\otimes 1
+$$
+y extender dicha definición a todo $\mathfrak{g} \otimes L$ por bilinealidad.  Para elementos de este tipo la antisimetría y la identidad de Jacobi son consecuencia de la estructura de álgebra en $\mathfrak{g}$.  Como estos elementos generan el conjunto $\mathfrak{g}\otimes L$, todos los elementos de este conjunto cumplen las propiedades que definen un álgebra de Lie.
+
+Es costumbre hacer un cambio de notación  y escribir $\mathfrak{g}_L$ para el álgebra que acabamos de construir.
+
+\begin{defi}
+
+La $L$-álgebra $\mathfrak{g}_L$ se ha obtenido de $\mathfrak{g}$ cambiando el cuerpo base $k$ por el cuerpo base $L$.
+
+\end{defi}
+
+\noindent{\bf Observación.}
+
+Aunque $\mathfrak{g}_L$ se puede considerar, por restricción de escalares, como una $k$-álgebra, siempre que hablemos de $\mathfrak{g}_L$ supondremos que estamos trabajando con su estructura sobre el cuerpo $L$.
+
+\bigskip
+
+La aplicación $x \rightarrow x \otimes 1$ de $\mathfrak{g}$ en $\mathfrak{g}_L$ es una aplicación inyectiva.  Si consideramos a $\mathfrak{g}_L$ con su estructura de $k$-espacio vectorial, el subespacio generado por los elementos de la forma $x \otimes 1$ es un álgebra  isomorfa de modo canónico a $\mathfrak{g}$.  Vía esta interpretación siempre consideraremos que $\mathfrak{g}$ es un subconjunto de $\mathfrak{g}_L$.
+
+Sea ahora $\mathfrak{h}$ una subálgebra o en general un subespacio de $\mathfrak{g}$.  Considerando $\mathfrak{h}$ incluido en $\mathfrak{g}_L$ este conjunto genera un $L$-espacio vectorial.  Lo denotaremos por $\mathfrak{h}_L$.  En particular si $\mathfrak{h}= \mathfrak{g}$ el subespacio generado es el total y no existe riesgo de confusión.  La subálgebra $\mathfrak{h}_L$ es isomorfa a la extensión del álgebra $\mathfrak{h}$ y de ahí la notación.
+
+\begin{propo}
+
+Si $\mathfrak{h}$ y $\mathfrak{h}'$ son subespacio de $\mathfrak{g}$ entonces
+$$
+[\mathfrak{h}_L, \mathfrak{h}'_L]= ([\mathfrak{h}, \mathfrak{h}'])_L
+$$
+
+\end{propo}
+
+Dado un morfismo de álgebras $\varphi: \mathfrak{g} \rightarrow \mathfrak{g}'$ podemos construir una aplicación $\varphi_L : \mathfrak{g}_l \rightarrow \mathfrak{g}'_L$. Sobre los elementos de la forma $x \otimes 1$ se define como
+$$
+\varphi_L(x \otimes 1) = \varphi(x) \otimes 1
+$$
+y para el resto se extiende por linealidad (sobre $L$).
+Esta aplicación es un morfismo de álgebras.  De esta manera se construye un functor de la categoría de $k$-álgebras en la categoría de $L$-álgebras.
+
+Si dos álgebras $\mathfrak{g}$ y $\mathfrak{g}'$ son isomorfas, entonces sus extensiones $\mathfrak{g}_L$ y $\mathfrak{g}'_L$ también lo son.  Pero puede ocurrir que las extensiones sean isomorfas sin serlo $\mathfrak{g}$ y $\mathfrak{g}'$.
+
+
+\section*{\centerline{Problemas}}
+
+\begin{pro}
+
+Si $\{e_i\}$ es una base de $\mathfrak{g}$, entonces $\{e_i \otimes 1\}$ es una base de $\mathfrak{g}_L$. La dimensión es estable por cambio de cuerpo base.  Calcular las constantes de estructura en la base $\{e_i \otimes 1\}$ en función de las constantes de estructura en la base $\{e_i\}$.
+
+\end{pro}
+
+\begin{pro}
+
+Considerar a $\mathfrak{g}_L$ como una $k$-álgebra.  Calcular su dimensión en función de la dimensión de $\mathfrak{g}$.
+
+\end{pro}
+
+\begin{pro}
+
+Cambiar de cuerpo base a un producto de álgebras.
+
+\end{pro}
+
+\begin{pro}
+
+Sea $k \subset L \subset M$ dos extensiones de cuerpos. Entonces se tiene un isomorfismo canónico entre las $M$-álgebras
+$$
+(\mathfrak{g}_L)_M = \mathfrak{g}_M
+$$
+Esta propiedad se conoce como la  \df{transitividad}\index{transitividad} del cambio de cuerpo base.
+
+\end{pro}
+
+\newpage
+
+\section{Nilradical}
+
+Hemos demostrado que la suma de dos ideales resolubles es de nuevo resoluble.  Gracias a este resultado hemos podido construir el radical del álgebra.  También es cierto que la suma de dos ideales nilpotentes es nilpotente.  En este caso el ideal maximal se denomina \index{nilradical}  \df{nilradical}.
+
+\begin{lema}
+
+Sea $\mathfrak{g}$ un álgebra de Lie.  Entonces
+$$
+[\central^i\mathfrak{g}, \central^j \mathfrak{g}]\subset \central^{i+j+1}\mathfrak{g}
+$$
+
+\end{lema}
+
+\dem
+
+La realizaremos por inducción
+$$
+[\central^0\mathfrak{g}, \central^j\mathfrak{g}] = [\mathfrak{g}, \central^j \mathfrak{g}]= \central^{j+1}\mathfrak{g}
+$$
+El siguiente caso es
+$$[\central^1\mathfrak{g}, \central^j\mathfrak{g}]= [[\mathfrak{g},\mathfrak{g}], \central^j\mathfrak{g}]
+$$
+Por la identidad de Jacobi, dicho conjunto está contenido en 
+$$
+[[\mathfrak{g},\central^j\mathfrak{g}],\mathfrak{g}]+[[\central^j, \mathfrak{g}], \mathfrak{g}] \subset [\central^{j+1}\mathfrak{g},\mathfrak{g}]= \central^{j+2}\mathfrak{g}
+$$
+e inductivamente se prueba el resultado. \fin
+
+\noindent{\bf Observación.}
+
+Otra posible demostración se basa en que $\central^j\mathfrak{g}$ está generado por los productos de $(j+1)$ elementos.
+
+\bigskip
+
+\begin{propo}
+
+Sea $\mathfrak{n}$ un ideal y $x$ un elemento formado por un producto de~$n$ elementos, colocados en cualquier orden, de los cuales $r$ están en el ideal~$\mathfrak{n}$.  Entonces $x \in \central^{r-1} \mathfrak{n}$
+
+\end{propo}
+
+\dem
+
+El caso de un único elemento es evidente.  Supongamos que $x$ es el producto de $n$ términos y que en total hay $r$ elementos del ideal $\mathfrak{n}$. Si escribimos $x$ como la última multiplicación, $x=[y,z]$, cada elemento $y,z$ es un producto de  menos de $n$ elementos.  Supongamos que en $y$ hay $q$ elementos del ideal y que en $z$ hay $q$ elementos de $\mathfrak{n}$. Como en $x$ hay $r$ elementos debe cumplirse que $p+q=r$.
+
+Por hipótesis de inducción $y \in \central^{p-1}\mathfrak{n}$ y $z \in \central^{q-1}\mathfrak{n}$. Por el lema anterior su producto
+$$
+x=[y,z]\in [\central^{p-1}\mathfrak{n}, \central^{q-1}\mathfrak{n}]\subset \central^{p+q-1}\mathfrak{n}= \central^{r-1}\mathfrak{n}
+$$
+lo que prueba la proposición. \fin
+
+Independientemente del orden, si en un producto hay $r$ elementos de un ideal~$\mathfrak{n}$, dicho producto pertenece a $\central^{r-1}\mathfrak{n}$.
+
+\bigskip
+
+
+\noindent{\bf Observación.}
+
+Tomemos dos ideales $\mathfrak{n}_1, \mathfrak{n}_2$. Los elementos del ideal suma se escriben en la forma $x_1+x_2$.  Los productos de elementos de este tipo generan $\central^1(\mathfrak{n}_1+\mathfrak{n}_2)$.  Apliquemos la propiedad distributiva
+$$
+[x_1+x_2, y_1+y_2]= [x_1,y_1]+[x_1,y_2]+ [x_2,y_1]+[x_2,y_2]
+$$
+Si hacemos lo mismo con $p+q$ elementos observamos que dicho producto es igual a una suma de productos.  En cada producto hay al menos $p$ elementos de $\mathfrak{n}_1$ o bien $q$ elementos de $\mathfrak{n}_2$.
+
+\bigskip
+
+\begin{propo}
+La suma de ideales nilpotentes es nilpotente.
+
+\end{propo}
+
+\dem
+
+Sea $\mathfrak{n}_1$ y $\mathfrak{n}_2$ ideales tales que $\central^i\mathfrak{n}_1=0$ y $\central^j \mathfrak{n}_2=0$.  Estudiemos el ideal $\central^{i+j}(\mathfrak{n}_1+\mathfrak{n}_2)$.  Este ideal está generado por los productos de $(i+j+1)$ elementos de $\mathfrak{n}_1+\mathfrak{n}_2$. Por la observación anterior, cada producto tiene o bien $(i+1)$ elementos de $\mathfrak{n}_1$ o bien $(j+1)$ elementos de $\mathfrak{n}_2$.  En cualquier caso todos estos elementos son nulos.  Necesariamente $\central^{i+j}(\mathfrak{n}_1+\mathfrak{n}_2)$ es nulo y el ideal es nilpotente. \fin
+
+\begin{defi}
+
+El ideal nilpotente maximal de $\mathfrak{g}$ es el \index{nilradical} \df{nilradical} de $\mathfrak{g}$.
+
+\end{defi}
+
+\noindent{\bf Observación.}
+
+
+
+Denotemos por $\mathfrak{r}$ al nilradical de $\mathfrak{g}$.  El álgebra cociente $\mathfrak{g}/\mathfrak{r}$ puede tener nilradical no nulo (problema \ref{pro:nonilpotencia}).  En esto se diferencian las álgebras resolubles de las nilpotentes.  Ello es debido a que en una sucesión exacta
+$$
+0 \lto \mathfrak{n} \lto \mathfrak{g}\lto \mathfrak{g}/\mathfrak{n} \lto 0
+$$
+la nilpotencia de los extremos no garantiza la nilpotencia de $\mathfrak{g}$.
+
+\section*{\centerline{Problemas}}
+
+\begin{pro}{\label{pro:nonilpotencia}}
+
+Sea $\mathfrak{g}$ el álgebra bidimensional con base $x,y$ y regla de conmutación \mbox{$[x,y]=x$.}  Calcular el  nilradical.  Tanto el nilradical como cociente son nilpotentes y sin embargo $\mathfrak{g}$ no lo es.
+
+\end{pro}
+
+\newpage
+
+\section{Álgebra envolvente}
+
+Dada un álgebra asociativa $A$, de modo natural es también un álgebra de Lie.  En $A$ podemos considerar las subálgebras de Lie.  Esto que parece un ejemplo, engloba en realidad a todas las álgebras de Lie.  En esta sección asociaremos a todo álgebra de Lie $\mathfrak{g}$ un álgebra asociativa $\uni(\mathfrak{g})$ que contiene a $\mathfrak{g}$ como subálgebra de Lie.
+
+\bigskip
+
+Dado un espacio vectorial $E$ denotamos por $T^i(E)$ al producto tensorial de $i$ copias de $E$
+$$
+T^i(E)= E \otimes \stackrel{i)}{\cdots}\otimes E
+$$
+
+La suma directa de todas estas potencias tensoriales es un espacio vectorial denotado $\tau(E)$
+$$
+\tau(E) = \bigoplus_{i \geq 0} T^i (E)
+$$
+donde hemos escrito por convenio $T^0(E)=k$.  También el espacio vectorial $E$ se considerará incluido en $\tau(E)$ por la identificación $E= T^1(E)$.
+
+Los elementos de $T^n(E)$ se denominar tensores homogeneos de grado $n$ y los monomios de la forma
+$$
+x_1 \otimes \cdots \otimes x_n
+$$
+generan dicho espacio vectorial.  Por lo tanto los monomios generan el espacio vectorial $\tau(E)$.
+
+Gracias a la asociatividad del producto tensorial tenemos el isomorfismo
+$$
+T^i(E)  \otimes T^j(E)= T^{i+j}(E)
+$$
+Esto nos permite introducir un producto en el espacio $\tau(E)$.  Dicho producto se sigue denotando $\otimes$ y sobre los monomios se define como
+$$
+(x_1\otimes \cdots\otimes x_i) \otimes (x'_1 \otimes \cdots \otimes x'_j)= x_1 \otimes \cdots \otimes x_i \otimes x'_1 \otimes \cdots \otimes x'_j
+$$
+Para el resto de elementos se extiende por linealidad, lo cual es lícito pues los monomio generan $\tau(E)$.
+
+El producto así definido dota $\tau(E)$ de una estructura de álgebra asociativa con elemento unidad.  Este álgebra sin embargo no es conmutativa.
+
+La principal propiedad de este álgebra es la que enuncia la siguiente
+
+\begin{propo}
+
+Sea $A$ un álgebra asociativa con unidad.  Sea $\varphi:E \rightarrow A$ una aplicación lineal.  Entonces existe un único morfismo de anillos con unidad
+$$
+\overline{\varphi}: \tau(E) \lto A
+$$
+que sobre $E$ coincide con $\varphi$.
+
+\end{propo}
+
+\dem
+
+Veamos primeramente la unicidad, que nos dará pistas importantes sobre su existencia.
+
+Como $\overline{\varphi}$ es morfismo de álgebra necesariamente sobre los monomios debe cumplir
+$$
+\overline{\varphi}(x_1\otimes \cdots\otimes x_n)= \overline{\varphi}(x_1) \cdots \overline{\varphi}(x_n)
+$$
+y como sobre $E$ coincide con $\varphi$, la única definición posible de la aplicación $\overline{\varphi}$ es
+$$
+\overline{\varphi}(x_1\otimes \cdots\otimes x_n)= \varphi(x_1) \cdots \varphi(x_n)
+$$
+Como $\overline{\varphi}$ conserva la unidad, necesariamente $\overline{\varphi}(\lambda)=\lambda$ para todo escalar $\lambda \in k$.
+
+Definimos entonces $\overline{ \varphi}$ por la fórmula anterior y la extendemos por linealidad a todo $\tau(E)$.  Una simple comprobación nos muestra que es morfismo de anillos con unidad. \fin
+
+Este resultado que acabamos de demostrar es la  \df{propiedad universal} del álgebra tensorial.  Esta propiedad caracteriza a $\tau(E)$ salvo un isomorfismo, en el sentido de que si existe otra álgebra que cumpla el enunciado, necesariamente es isomorfa al álgebra $\tau(E)$.
+
+\bigskip
+
+\noindent{\bf Observaciones.}
+
+\begin{itemize}
+
+\item El conjunto $k \cup E$ generan, como anillo, toda el álgebra tensorial.  Si tomamos una base de $E$, $\{e_i\}$, el conjunto $1 \cup \{e_i\}$ también genera.
+
+\item  Dada una aplicación lineal $\varphi: E \rightarrow E'$, existe un único morfismo de álgebras $\overline{\varphi}: \tau(E) \rightarrow \tau(E')$ que sobre $E$ coincide con $\varphi$.  Esto nos permite construir un functor covariante de la categoría de $k$-espacios en la categoría de $k$-álgebras asociativas con unidad.
+
+\end{itemize}
+
+
+Si trabajamos con un álgebra de Lie $\mathfrak{g}$, podemos considerar en su álgebra tensorial todos los elementos de la forma
+$$
+x\otimes y - y \otimes x -[x,y] \quad\text{ con } x,y \in \mathfrak{g}
+$$
+Dicho conjunto genera un ideal bilatero $I$.
+
+
+\begin{defi}
+
+Llamamos  \df{álgebra envolvente} \index{algebra@álgebra!envolvente} de $\mathfrak{g}$ al cociente $\tau(\mathfrak{g})/I$.  En general la denotaremos por $\uni(\mathfrak{g})$.
+
+\end{defi}
+
+El álgebra envolvente es asociativa, pues hereda dicha propiedad del álgebra tensorial.  El morfismo canónico
+$$
+k \hookrightarrow \tau(\mathfrak{g}) \stackrel{\pi}{\lto} \uni(\mathfrak{g})
+$$
+es inyectivo dado que los elementos de $k$ son de grado cero y no pueden ser congruentes con los elementos de $I$, que son de grado mayor o igual a $1$.  De este modo el álgebra envolvente posee una copia del cuerpo $k$ y posee unidad.
+
+Tomemos ahora la aplicación
+$$
+\mathfrak{g} \hookrightarrow \tau(\mathfrak{g}) \stackrel{\pi}{\lto} \uni(\mathfrak{g})
+$$
+Esta aplicación también es inyectiva, aunque la demostración de este hecho no es tan simple. Puede obtenerse como corolario del teorema de Poincaré-Birkhoff-Witt (ver \cite{humint}). Así $\mathfrak{g}$ se puede considerar inyectado en el álgebra envolvente.  Además esta inyección es un morfismo de álgebras de Lie, puesto que en $\uni(\mathfrak{g})$ se tiene que $xy-yx-[x,y]=0$ por ser elementos del ideal $I$.  También es claro que las constantes y $\mathfrak{g}$ generan, como anillo, el álgebra envolvente.
+
+Demostremos ahora la propiedad universal del álgebra envolvente.
+
+\begin{propo}
+
+Sea $\mathfrak{g}$ un álgebra de Lie y $A$ un álgebra asociativa con unidad.  Dado un morfismo de álgebras de Lie ($A$ con el conmutador)
+$$
+\varphi: \mathfrak{g}\lto A
+$$
+existe un único morfismo de anillos
+$$
+\tilde \varphi: \uni(\mathfrak{g}) \lto A
+$$
+que sobre $\mathfrak{g}$ coincide con $\varphi$.
+
+\end{propo}
+
+\dem
+
+Sabemos que existe una única aplicación del álgebra tensorial en $A$.  Debido a que $\varphi$ es morfismo de álgebra de Lie, $\overline{\varphi}$ se anula sobre los elementos de la forma $x \otimes y - y \otimes x -[x,y]$
+$$
+\overline{\varphi}(x \otimes y -y \otimes x - [x,y])= \varphi(x)\varphi(y)- \varphi(y)\varphi(x)- \varphi([x,y])=0
+$$
+y también se anula sobre el ideal que generan.  Tenemos entonces que $\overline{\varphi}(I)=0$.
+
+Por el teorema de factorización canónica, el morfismo $\overline{\varphi}$ pasa al cociente e induce un morfismo de anillos
+$$
+\tilde \varphi: \tau(\mathfrak{g})/I \lto A
+$$
+que verifica el enunciado. La unicidad es clara teniendo en cuenta que $1$ y $\mathfrak{g}$ generan el álgebra envolvente.
+
+
+\bigskip
+\noindent{\bf Observaciones.}
+
+\begin{itemize}
+
+\item Dado un morfismo $\varphi: \mathfrak{g}\rightarrow \mathfrak{g}'$ existe un morfismo $\tilde \varphi: \uni(\mathfrak{g}) \rightarrow \uni(\mathfrak{g}')$ que tiene propiedades functoriales.
+
+\item Si el álgebra de Lie es conmutativa, el álgebra envolvente coincide con el álgebra simétrica asociada al espacio vectorial $\mathfrak{g}$.
+
+\end{itemize}
+
+\newpage
+
+\section{Álgebra especial lineal}
+
+En esta sección haremos un estudio más pormenorizado del álgebra especial lineal.  Muchos conceptos y resultado que daremos se generalizan a cualquier álgebra de Lie simple.  Para que las fórmula que nos aparezcan sean más simplen utilizaremos el álgebra $\mathfrak{sl}(n+1)$.  La dimensión de este álgebra es
+$$
+(n+1)^2-1= n(n+2)
+$$
+
+\bigskip
+
+Toda matriz se puede expresar de modo único como suma de tres matrices: una estrictamente triangular superior, otra diagonal y otra estrictamente triangular inferior. En nuestro caso las matrices diagonales deben tener traza nula.
+
+Denotamos por $N_+$ al conjunto de matrices triangulares (estrictas) superiores, por $H$ al conjunto de matrices diagonales y por $N_-$ a las matrices triangulares inferiores.
+
+El conjunto $H$ es una subálgebra de $\mathfrak{sl}(n+1)$.  Este álgebra es conmutativa por estar formada por matrices diagonales.  El conjunto $N_+$ también es subálgebra.  Todos sus elementos son nilpotentes, debido a la estructura triangular.  Por el teorema de Engel $N_+$ es nilpotente.  Con estas notaciones tenemos la
+
+\begin{propo}El álgebra $\mathfrak{sl}(n+1)$ descompone en suma directa (como espacio vectorial, no como  álgebra
+$$
+\mathfrak{sl}(n+1)= N_+ \oplus H \oplus N_-
+$$
+
+\end{propo}
+
+La dimensión de $H$ es $n$, puesto que la traza es nula.  Para hallar la dimensión de $N_+$ debemos ``contar'' los elemento situados sobre la diagonal, que son en total
+$$
+1+2+ \dots+ n= \frac{n(n+1)}{2}
+$$
+Otro método de hallar esta dimensión es restar la dimensión de $H$ a la dimensión de $\mathfrak{sl}(n+1)$ y dividir entre dos, pues claramente $N_+$ y $N_-$ tienen la misma dimensión.
+
+\bigskip
+
+Una base para el álgebra $H$ está constituida por las matrices $H_i= e_{ii}-e_{i+1,i+1}$.  Una base para $N_+$ es $e_{ij}$ con $i<j$.
+
+Introducimos la siguiente notación, adaptada a este álgebra particular
+$$
+e_1 =e_{12}, \quad e_2= e_{23}, \quad  \cdots\quad, e_i = e_{i,i+1}\quad \cdots
+$$
+$$
+f_1 =e_{21}, \quad f_2= e_{32}, \quad  \cdots\quad, f_i = e_{i+1,i}\quad \cdots
+$$
+La regla de conmutación básica que verifican estos elementos es
+$$
+[e_i,e_{i+1}]= e_{i,i+2}
+$$
+Si conmutamos este resultado con $e_{i+2}$ obtenemos
+$$
+[e_{i,i+2},e_{i+2}]= e_{i,i+3}
+$$
+y de modo inductivo se puede construir cualquier elemento de la base de $N_+$.
+
+\begin{propo}
+
+Los elementos $e_1, \dots e_n$ generan $N_+$ como álgebra.
+
+\end{propo}
+
+Otras reglas de conmutación útiles y de demostración simple son
+
+\begin{itemize}
+
+\item $[h_i,h_j]=0$ ($H$ es conmutativa)
+
+\item $[h_i,e_i]= 2e_i$ ($e_i$ es un autovector de $ \ad_{h_i}$)
+
+\item $[h_i, f_i]= -2f_i$ (también es autovector)
+
+\item $[e_i,f_j]= \delta_{ij} \cdot h_j$ (especie de reglas de ortogonalidad) 
+
+\end{itemize}
+
+\noindent{\bf Observación.}
+
+Teniendo en cuenta estas reglas de conmutación, para cada $i$, el subespacio vectorial generado por $\{h_i,e_i,f_i\}$ es una subálgebra.  Dicha subálgebra es isomorfa a $\mathfrak{sl}(2) $ y de este resultado proviene la importancia de este álgebra particular, que está presente en todas las álgebras simples.
+
+\section*{\centerline{Problemas}}
+
+\begin{pro}
+
+En las casos $\mathfrak{sl}(2)$ y $\mathfrak{sl}(3)$ escribir explícitamente los elementos $e_{ij},e_i,f_i,h_i$.
+
+\end{pro}
+
+\begin{pro}
+
+SEa $A$ una matriz diagonal del álgebra especial lineal con valores $\{a_i\}$ en la diagonal.  Escribir $A$ como combinación de la base $h_i$
+
+\end{pro}
+
+\begin{pro}
+
+Encontrar las reglas de conmutación para $[h_i,e_{i-1}]$ y para $[h_i,e_{i+1}]$.
+
+\end{pro}
+
+\begin{pro}
+
+El subespacio $H \oplus N_+$ es una subálgebra de Lie.  Además es resoluble (subálgebra de una resoluble).  El álgebra $H \oplus N_+$ se  llama  \df{álgebra de Borel} \index{algebra@álgebra!de Borel} de $\mathfrak{sl}(n+1)$.
+
+\end{pro}
+
+\begin{pro}
+
+Demostrar que los vectores $\{e_i,f_i\}$ generan toda el álgebra especial lineal.
+
+\end{pro}
+
+\newpage
+
+\section{Representaciones y módulos}
+
+\begin{defi}
+
+Dada un álgebra de Lie $\g$ y un espacio vectorial sobre el mismo cuerpo, llamamos  \df{representación} \index{representación} de $\g$ en $E$ a todo morfismo de álgebras
+$$
+\varphi: \g \lto \mathfrak{gl}(E)
+$$
+La  \df{dimensión}\index{dimensión!representación} de la representación  es la dimensión del espacio vectorial $E$.
+
+\end{defi}
+
+Si el morfismo es inyectivo, la representación se dice que es  \df{fiel} \index{representación!fiel} y su imagen en $\mathfrak{gl}(E)$ es isomorfa al álgebra $\g$.  El álgebra $\g$ puede entonces considerarse inyectada en $\mathfrak{gl}(E)$.
+Si la representación no es fiel, debe poseer un núcleo.  Por el teorema de factorización canónica se induce un morfismo de álgebras de Lie
+$$
+\overline{\varphi} :\g/\Ker(\varphi) \lto \mathfrak{gl}(E)
+$$
+que es una representación del álgebra cociente.  Esta representación carece de núcleo y fiel.
+
+\bigskip
+
+\noindent{\bf Observación.}
+
+Existe un teorema, debido a Ado, que afirma que toda álgebra de Lie de dimensión finita posee una representación fiel de dimensión finita.  Como consecuencia, toda álgebra de Lie de dimensión finita es isomorfa a un álgebra matricial.
+
+\bigskip
+
+Si tenemos una representación $\varphi$, a cada elemento $x \in \g$ le podemos hacer corresponder una aplicación lineal $\varphi(x)= \varphi_x$.  Hagamos un cambio de notación y representemos por $xe$ al vector $\varphi_x(e)$.  Con esta nueva notación se cumplen las propiedades
+
+\begin{enumerate}[\indent 1.- ]
+
+\item $x (\lambda e+ \mu e')= \lambda(xe)+ \mu (xe')$
+
+\item $(\lambda x+ \mu y)e = \lambda(xe) + \mu(ye)$
+
+\item $[x,y]e= x(ye)-y(xe)$
+
+\end{enumerate}
+donde los elementos de $\g$ se denotan con letras $x,y$, los elementos de $E$ con las letras $e,e'$ y los escalares con $\lambda, \mu$.
+
+Hemos construido una aplicación bilineal de $\g \times E$ en $E$.  Justamente estas propiedades son las que nos sirven para definir una nueva estructura algebraica.
+
+\begin{defi}
+
+Sea $\g$ un álgebra de Lie y $E$ un espacio vectorial.  Una estructura de $\g$-módulo en $E$ es la dada por una aplicación bilineal
+$$
+\begin{array}{ccl}
+\g \times E & \lto& E \\
+(x,e)& \lto & xe
+\end{array}
+$$
+que verifica las tres propiedades enunciadas anteriormente.
+
+\end{defi}
+
+Hemos visto que una representación lineal de $\g$ da origen a un $\g$-módulo.  Este proceso se  puede revertir y conseguir asociar a todo $\g$-módulo una representación lineal de $\g$.
+
+Llamemos $\varphi_x$ a la aplicación
+$$
+\begin{array}{cccl}
+\varphi_x :&  E & \lto & E \\
+  & e & \lto & xe
+\end{array}
+$$
+
+La condición $1$ afirma que $\varphi_x$ es lineal. Ya podemos construir la función
+$$
+\begin{array}{cccl}
+\varphi :&  \g & \lto & \mathfrak{gl}(E) \\
+  & x & \lto & \varphi_x=\varphi(x)
+\end{array}
+$$
+
+La condición $2$ se traduce en la linealidad de $\varphi$ y la $3$ en que $\varphi$ conserva el producto.  Estamos ante un morfismo de álgebras de Lie.
+
+Hemos demostrado que el concepto de representación de $\g$ y el concepto de $\g$-módulo son equivalentes.  Lo único que cambia es el lenguaje y siempre podremos traducir los resultados entre ambos conceptos.
+
+\bigskip
+
+\noindent{\bf Ejemplos.}
+
+\begin{itemize}
+
+\item Sea $\g$ un álgebra de Lie lineal o matricial.  Si $\g \subset \mathfrak{gl}(E)$, la inyección canónica  da una representación de $\g$ en $E$.
+
+\item El morfismo
+$$
+\ad: \g \lto \mathfrak{gl}(\g)
+$$
+se denomina \index{representación!adjunta}  \df{representación adjunta} .  La aplicación bilineal que da la estructura de módulo es simplemente el producto del álgebra de Lie.
+
+\item Si $\mathfrak{h}$ es una subálgebra de $\g$ la composición
+$$
+\mathfrak{h} \hookrightarrow \g \stackrel{\ad}{\lto} \mathfrak{gl}(\g)
+$$
+da lugar a una representación de $\mathfrak{h}$ en $\g$.
+
+\end{itemize}
+
+La estructura de $\g$-módulo está muy relacionada con la estructura de módulo sobre un anillo.  
+
+Dada una representación de $\g$
+$$
+\varphi: \g \lto \mathfrak{gl}(E)
+$$
+se induce un morfismo
+$$
+\overline{\varphi}: \uni (\g) \lto \mathfrak{gl}(E)
+$$
+Este morfismo de anillos da lugar a una estructura de $\uni(\g)$-módulo en el conjunto~$E$.  Como en nuestro caso el anillo no es conmutativo, debemos diferenciar entre módulos por la derecha y módulos por la izquierda.
+
+De la misma manera, una estructura de $\uni(\g)$-módulo da lugar a un morfismo de anillos
+$$
+\varphi: \uni(\g) \lto \mathfrak{gl}(E)
+$$
+restringuiendo este morfismo al álgebra $\g$ se tiene una representación de $\g$ en $E$.
+
+Como resumen, podemos enunciar la 
+
+\begin{propo}
+
+Los siguientes conceptos son equivalentes:
+
+\begin{itemize}
+
+\item Representación de $\g$.
+
+\item Estructura de $\g$-módulo.
+
+\item Estructura de $\uni(\g)$-módulo por la izquierda.
+
+\end{itemize}
+
+\end{propo}
+
+\newpage
+
+\section{Operaciones con módulos}
+
+Toda estructura de $\g$-módulo conduce a una estructura de $\uni(\g)$-módulo.  Diversas nociones de la teoría de módulos sobre anillos se trasladan de modo inmediato al caso de los $\g$-módulos.
+
+\begin{defi}
+
+Sean $E$ y $E'$ dos $\g$-módulos. Un  \df{morfismo} \index{morfismo!de $\g$-módulos} de $\g$-módulos es una aplicación lineal $\varphi: E \rightarrow E'$ que verifica
+$$
+\varphi(xe)=x\varphi(e) \text{ para todo } c \in \g, e \in E
+$$
+
+\end{defi}
+
+Enunciaremos algunas propiedades cuya demostración es inmediata a partir de la definición.
+
+La composición de dos morfismo es de nuevo un morfismo.  Si un morfismo $\varphi$ es biyectivo, la aplicación inversa $\varphi^{-1}$ es también morfismo.  Si entre dos módulos existe un  \df{isomorfismo} \index{isomorfismo} se dice que los módulos son isomorfos.A todos los efectos dos módulos isomorfos pueden ser considerados iguales.  Los isomorfismos de un módulo consigo mismo se denominan \index{automorfismo}  \df{automorfismos}.  El conjunto de automorfismos de un módulo es un grupo respecto a la composición.
+
+\begin{defi}
+
+Un subconjunto $E' \subset E$ es un $\g$- \df{submódulo} \index{submódulo} si
+
+\begin{itemize}
+
+\item $E'$ es un subespacio vectorial.
+
+\item Para todo $x \in \g, e' \in E'$ se cumple $xe'\in E'$
+
+\end{itemize}
+
+\end{defi}
+
+Naturalmente con las operaciones inducidas $E'$ es un módulo y la inyección canónica un morfismo.
+
+La intersección de una cantidad arbitraria de submódulos es  un submódulo.  Tiene sentido entonces hablar sobre el submódulo generado por un subconjunto de $E$.  Es simplemente la intersección de todos los submódulos que contienen al conjunto.  La suma de una familia de submódulos es también submódulo.  Las operaciones de suma e intersección dotan al conjunto de submódulos de una estructura de retículo.
+
+Dado un morfismo de módulos, la imagen y la antiimagen de submódulos son submódulos.  En particular el núcleo de un morfismo es un submódulo.
+
+Todo módulo posee siempre dos submódlos, el cero y el total, llamados submódulos triviales.
+
+\begin{defi}
+
+Un módulo es  \df{simple} \index{módulo!simple} (o \index{módulo!irreducible} \df{irreducible}) si sus únicos submódulos son los triviales.
+
+\end{defi}
+
+  
+\noindent{\bf Ejemplos.}
+
+\begin{itemize}
+
+\item Consideremos a $\g$ con su estructura natural de módulo dada por la representación adjunta. Los submódulos de $\g$ son precisamente los ideales.
+
+\item Sea $\g$ un álgebra de Lie.  El álgebra $\mathrm{Der}(\g)$ está contenida en $\mathfrak{gl}(\g)$.  El conjunto $\g$ puede dotarse de una estructura de $\mathrm{Der}(\g)$-módulo.  Los submódulos respecto a esta estructura se llaman \index{ideal!característico}  \df{ideales característicos}..  En particular son ideales puesto que $\ad_x \in \mathrm{Der}(\g)$ para todo $x \in \g$.
+
+\item  Decimos que un álgebra es simple si carece de ideales. Esto es lo mismo que decir que es simple como módulo.
+
+\end{itemize}
+
+\begin{propo}[Lema de Schur] \index{lema de Schur}
+
+Sea $\varphi: E \rightarrow E'$ un morfismo con $E$ y $E'$ módulos simples.  Entonces $\varphi$ es nulo o bien es un isomorfismo.
+
+\end{propo}
+
+\dem
+
+Sabemos que $\Ker(\varphi)$ es un submódulo.  Pueden darse dos casos:
+
+\begin{itemize}
+
+\item Si $\Ker(\varphi)=0$, la aplicación es inyectiva.
+
+\item Si $\Ker(\varphi)=E$, entonces $\varphi$ es nula.
+
+\end{itemize}
+
+De la misma forma $\Im(\varphi)$ es un submódulo y los dos casos se traducen o bien en la nulidad de $\varphi$ y en la epiyectividad. \fin
+
+\begin{cor}
+
+Sea $\varphi: E \rightarrow E$ un morfismo, con $E$ simple.  Entonces $\varphi$ es nulo o es un automorfismo.
+
+\end{cor}
+
+\begin{cor}
+
+Si en el caso anterior el cuerpo es algebraicamente cerrado y $E$ es de dimensión finita, necesariamente $\varphi$ es un escalar.
+
+\end{cor}
+
+\dem
+
+Como el cuerpo es algebraicamente cerrado posee al menos un autovalor.  Tenemos que $\Ker(\varphi-\lambda \Id)$ es un submódulo no nulo.  Necesariamente $\varphi- \lambda \Id=0$ y se concluye. \fin
+
+\begin{defi}
+
+Dado  un submódulo $E' \subset E$ llamamos {módulo cociente}\index{módulo!cociente} al espacio vectorial $E/E'$ dotado del producto $x \pi(e)= \pi(xe)$.
+
+\end{defi}
+
+La definición de producto por elementos d $\g$ no depende del representante elegido en la clase de equivalencia.  Un simple cálculo muestra que en efecto este producto dota a $E/E'$ de una estructura de $\g$-módulo, de tal modo que la proyección es morfismo de módulos.
+
+El teorema de factorización y los teoremas del isomorfismo de Noether son válidos sin cambios.
+
+\bigskip
+
+Los conceptos de suma directa y de producto directo también se generalizan.  En ambos casos la multiplicación por elementos de $\g$ se realiza componente a componente.  En el caso de un número infinito de módulos, la suma directa es un submódulo del producto directo.  Las inyecciones y proyecciones canónicas en cada sumando son morfismos.
+
+\bigskip
+
+Sea $E$ un módulo y $e'$ un submódulo.  Decimos que $E''$ es un submódulo  \df{suplementario}\index{suplementario} de $E'$ si $E' \cap E''=0$ y $E'+E''= E$.  En estas condiciones el módulo $E$ es isomorfo a la suma directa $E' \oplus E''$.  De esta forma, siempre que tengamos un submodulo y un suplemenario podemos descomponer el espacio.  Las siguientes definiciones son equivalentes
+
+\begin{defi}
+
+Un módulo es  \df{semisimple} \index{módulo!semisimple} o  \df{completamente reducible}\index{módulo!completamente reducible} si todo submódulo admite un suplementario.
+
+\end{defi}
+
+\begin{defi}
+
+Un módulo es  \df{semisimple} \index{módulo!semisimple} o  \df{completamente reducible}\index{módulo!completamente reducible} si es isomorfo a una suma directa de módulos simples.
+
+\end{defi}
+
+Si un módulo es semisimple con la primera definición, tomamos un submódulo $E_1$ simple.  Este submódulo tiene suplementario $F_1$. En el suplementario tomamos otro submódulo simple $E_2$.  El submódulo $E_1\oplus E_2$ tiene suplementario.  Continuando con este proceso podemos descomponer el módulo en suma directa de módulos simples.
+
+Inversamente si el módulo $E$ es suma directa de simples, tomamos un submó\-dulo arbitrario.  Cada componente simple está o bien enteramente contenida en el submódulo o está en posición de suma directa y podemos hallar un suplementario tomando todos los submódulos simples que no están en $E'$.
+
+\bigskip
+
+\noindent{\bf Observación.}
+
+El teorema de Weyl afirma que toda representación de dimensión finita de un álgebra semisimple es completamente reducible.
+
+\bigskip
+
+El producto tensorial de módulos también admite una generalización, pero en este caso debemos tener cuidado, pues la definición del producto por elementos de $\g$ parece, a primera vista, poco natural.
+
+Sean $E$ y $E'$ dos módulos.  Construimos el producto tensorial de ambos como espacios vectoriales.  Los tensores de la forma $e \otimes e'$ generan este espacio.  Veremos como se multiplican estos tensores por elementos de $\g$ y extenderemos esta definición a todo el espacio por linealidad.  La definición es
+$$
+x (e \otimes e')= xe\otimes e'+ e \otimes xe'
+$$
+Observemos que la multiplicación por $x$ se comporta como una derivación.
+
+En principio no es obvio que esta definición dote a $E \otimes E'$ de estructura de $\g$-módulo.  La dificultad principal está en demostrar la propiedad $3$.  Como los elementos $e \otimes e'$ generan, dicha comprobación puede hacerse únicamente sobre los elementos de esta forma.  Debemos comprobar 
+$$
+[x,y]e\otimes e'= x (y(e\otimes e'))- y (x(e\otimes e'))
+$$
+Desarrollando ambos miembros, vemos que los términos que ``sobran'' se eliminan entre si.
+
+\section*{\centerline{Problemas}}
+
+\begin{pro}
+
+Sea $\varphi: \g \rightarrow \mathfrak{gl}(E)$ una representación.  Denotemos por $x^*$ la aplicación traspuesta de $x \in \mathfrak{gl}(E)$.  La función $x \rightarrow -x^*$ es una representación de $\g$ en en el dual $E^*$ llamada representación  \df{dual} \index{representación!dual} de $\varphi$.
+
+\end{pro}
+
+\begin{pro}
+
+Sabemos por álgebra lineal que $\mathrm{End}(E)= E^*\otimes E$.  Teniendo una representación en $E$, tenemos una representación dual y una representación en el producto tensorial.
+
+\end{pro}
+
+\newpage
+
+\section{Representaciones de $\mathfrak{sl}(2)$}
+
+En esta seción clasificaremos todos los módulos simples de dimensión finita sobre el álgebra $\g= \mathfrak{sl}(2, \C)$ y obtendremos su estructura.  Ciertos conceptos y resultados se utilizan en el estudio de los módulos sobre álgebras semisimples.
+
+\bigskip
+
+En el álgebra $\mathfrak{sl}(2, \C)$ tomamos como base los elementos
+$$
+h= 
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
+\quad
+x =
+\begin{pmatrix}
+0 & 1 \\
+0 & 0 
+\end{pmatrix}
+\quad
+y= 
+\begin{pmatrix}
+0 & 0 \\
+1 & 0 
+\end{pmatrix}
+$$
+cuyas reglas de conmutación son:
+$$
+[h,x]= 2x \quad [h,y]= -2y \quad [x,y]= h
+$$
+
+\bigskip
+
+\noindent{\bf Observación.}
+
+El álgebra generada por $h$ es una subalgebra abeliana.  Para cualquier elemento $h_1$ de dicha subálgebra, el endomorfismo $\ad_{h_1} : \g \rightarrow \g$ diagonaliza en la base $\{h,x,y\}$.  En particular los autovalores de $\ad_h$ son $-2,0,2$. 
+El álgebra generada por $x$ y $h$ es uná subálgebra resoluble, llamada álgebra de Borel de $\mathfrak{sl}(2)$.
+
+\bigskip
+
+Fijemos un módulo $E$ simple y de dimensión finita.  La representación asociada la denotamos
+$$
+\varphi: \g \lto \mathfrak{gl}(E)
+$$
+La imagen de un elemento arbitrario de $\g$ se denota ton la misma letra, pero escrita en mayúsculas.  Con esta notación tenemos que las aplicaciones lineales $H$, $X$ e $Y$ cumple las reglas de conmutación
+$$
+[H,X]= 2X \quad [H,Y]= -2Y \quad [X,Y]= H
+$$
+
+El método que vamos a seguir consiste en estudiar los autovales de $H$ y descomponer el espacio en suma directa (de espacios vectoriales) con ayuda de este endomorfismo.
+
+\begin{defi}
+
+Denotamos por $E^\lambda$ al conjunto de autovectores de $H$ de valor propio $\lambda$.
+$$
+E^\lambda=\{e \in E \text{ tales que } H(e)= \lambda e\}
+$$
+
+Los valores $\lambda \in \C$ para los que $E^\lambda \neq 0$ se denominan  \df{pesos} de la representación y los vectores de $E^\lambda$ son vectores de peso $\lambda$.
+
+\end{defi}
+
+Recordemos el siguiente resultado de álgebra lineal:  ``los vectores propios de distinto valor propio son linealmente independientes''.  Como  $E$ es de dimensión finita, solamente puede existir un número finito de pesos.  Al ser el cuerpo algebraicamente cerrado, todo endomorfismo tiene un valor propio.
+
+\begin{propo}
+
+Todo módulo de dimensión finita tiene un número  finito y no nulo de pesos.
+
+\end{propo}
+
+
+\begin{propo}
+
+Se cumple que $X(E^\lambda)\subset E^{\lambda+2}$ e $Y(E^\lambda) \subset E^{\lambda-2}$
+
+\end{propo}
+
+\dem
+
+Tomamos un elemento $e \in E^\lambda$ y estudiamos el vector $X(e)$.  Debemos comprobar que $X(e) \in E^{\lambda+2}$.
+$$
+H(X(e))= [H,X](e)+\lambda(H(e))= 2X(e)+\lambda X(e)= (\lambda+2) X(e)
+$$
+donde hemos utilizado la regla de conmutación
+$$
+[H,X]= HX-XH=2X
+$$
+La otra demostración es similar. \fin
+
+Sabemos que $H$ tiene al menos un valor propio $\lambda$. Si $X(E^\lambda)\neq 0$, entonces $H$ tiene un valor propio $\lambda +2$.  Repitiendo la operación, si $X(E^{\lambda+2}) \neq 0$, $H$ tiene como valor propio $\lambda +4$. Como estamos en dimensión finita, esta sucesión no puede continuar indefinidamente. Existe un valor $k \in \N$ tal que $E^{\lambda+2k} \neq 0$ y sin embargo $X(E^{\lambda+2k})=0$.  Para simplificar, denotaremos por $\mu$ al valor  $\lambda +2k$.  Los vectores de $E^\mu$ cumplen
+$$
+H(e)=\mu e\qquad X(e)=0
+$$
+
+\begin{defi}
+
+Sea $E$ un módulo simple.  Decimos que $e \in E $ es  \df{primitivo} de peso $\mu$ si es no nulo y 
+$$
+H(e)= \mu e \qquad X(e)=0
+$$
+
+\end{defi}
+
+Con el anterior razonamiento se demuestra que todo módulo simple de dimensión finita tiene un elemento primitivo.
+
+\bigskip
+
+\noindent{\bf Observación.}
+
+Sea $\mathfrak{b}$ el álgebra de Borel generada por $x$ y $h$.  Un vector primitivo es un vector propio de todo elemento de $\mathfrak{b}$.  Recíprocamente, si $e $ es un vector propio de todo elemento de $\mathfrak{b}$ necesariamente $X(e)=0$ y el vector es primitivo.
+
+\bigskip
+
+Los elementos de $\g$ sólo se pueden multiplicar utilizando el corchete, pero los elementos de $\varphi(\g)\subset \mathfrak{gl}(E)$ se pueden componer, dando elementos de $\mathfrak{gl}(E)$.  Si consideramos $\g$ incluida en su álgebra envolvente, también existe este producto asociativo en $\g$, pero su resultado es un elemento de $U(\g)$.  Como el morfismo inducido en el álgebra envolvente por la representación es morfismo de anillos, las siguientes operaciones se trasladan desde $U(\g)$ hasta $\mathfrak{gl}(E)$.
+
+\begin{lema}
+
+Sea $A$ asociativa.  Dado $x \in A$, el morfismo $\ad_x$ es una derivación del álgebra asociativa.
+
+\end{lema}
+
+\dem
+
+Tenemos que comprobar que 
+$$
+\ad_x(yz)= \ad_x(y)z+y\ad_xz
+$$
+Si escribimos esta ecuación con los conmutadores
+$$
+[x,yz]=[x,y]z+y[x,z]
+$$
+que se comprueba trivialmente. \fin
+
+Con ayuda de este lema se pueden calcular fácilmente los conmutadores de las potencias de $h$, $x$ e $y$. Utilizaremos únicamente las reglas de conmutación enunciadas en la siguiente
+
+\begin{propo}
+
+Enel álgebra envolvente se cumplen las identidades:
+
+\begin{itemize}
+
+\item $ [h,x^k]= 2kx^k$
+
+\item $[h,y^k]= -2ky^k$
+
+\item $ x,y^k]=-k(k-1)y^{k-1}+ky^{k-1}h$
+
+\end{itemize}
+
+\end{propo}
+
+\dem
+
+
+Todas se realizan por inducción sobre $k$.  El caso $k=1$ es consecuencia de las reglas de conmutación del álgebra de Lie.  Veamos la primera
+$$
+[h,x^k]= h,x^{k-1}x]
+$$
+Uutilizando que $\ad_h$ es derivación
+$$
+[h,x^{k-1}]x+x^{k-1}[h,x]
+$$
+y utilizando la hipótesis de inducción
+$$
+2(k-1)x^{k-1} x+x^{k-1}2x= 2kx^k
+$$
+La segunda propiedad es análoga y la tercera es simplemente un poco más tediosa. \fin
+
+Partiendo de un vector primitivo y utilizando estas reglas de conmutación generalizadas, construiremos un submódulo de $E$.  Como estamos suponiendo que $E$ es simple, este submódulo es el total y obtendremos la estructura de $E$.
+
+Sea $e$ un vector primitivo. Definimos
+$$
+e_0=e, e_1=Y(e), \dots, e_j=Y^j(e)
+$$
+
+Deseamos conocer como actuan $H$, $X$ e $Y$ sobre los elementos $e_j$.
+
+\begin{propo}
+
+Se cumple
+
+\begin{itemize}
+
+\item $H(e_j)= (\mu-2j)e_j$
+
+\item $X(e_j)= j(\mu-j+1)e_{j-1}$
+
+\item $Y(e_j)= e_{j+1}$
+
+
+\end{itemize}
+
+\end{propo}
+
+\dem
+
+Se utilizan las reglas de conmutación generalizadas haciendo actuar ambos miembros sobre el vector $e_j$.  Par el primer caso
+$$
+H(e_j)= H(Y^j(e)= Y^j(H(e))-2kY^j(e)= \mu Y^j(e)-2kY^j(e)= (\mu-2k)Y^j(e)=(\mu-2k)e_j
+$$
+La tercera propiedad es simplemente la definición. \fin
+
+Salvo constantes, los endomorfismos $H$, $X$ e $Y$ transforman los vectores $e_j$ en vectores del mismo tipo.  El subespacio generado por los vectores $\{e_j\}$ con $j \geq 0$ es estable por $H$, $X$ e $Y$ y es por tanto un submódulo.  Com $E$ es simple, este submódulo coincide con el total y los vectores $\{e_j\}$ con $j\geq 0$ forman una base.
+
+El espacio es de dimensión finita y esta base no puede ser infinita.  Exise $k \in \N$ tal que $e_k\neq 0$ y $e_{k+1}=0$.  Le aplicamo $X$ al vector $e_{k+1}$
+$$
+0=X(e_{k+1}= (k+1)(\mu-k)e_k
+$$
+Necesariamente $\mu -k=0$.  El peso primitivo $\mu$ coincide con el número natural $k$, que necesariamente es $\mathrm{dim}(E)-1$ ya que $\{e_0,e_1,\dots, e_k\}$ es una base.
+
+De modo recíproco, si tenemos un espacio vectorial de dimensión $k+1$, podemos denotar a una base con los nombres $\{e_0,e_1,\dots, e_n\}$.  En función de esta base definimos los endomorfismos $H$, $X$ e $Y$ utilizando los resultados de la proposición \ref{}.  Se comprueba que los endormorfismos así definidos cumplen las reglas de conmutación y dan origen a una representación de $\mathfrak{sl}(2,\C)$ que es irreducible.
+
+\begin{teo}
+
+Si $E$ es simple de dimensión $k+1$, podemos tomar una base $\{e_0,e_1,\dots, e_k\}$ donde las aplicaciones $H$, $X$ e $Y$ actuan del modo señalado.
+
+\end{teo}
+
+\begin{cor}
+
+Dos módulos simples son isomorfos si y solo si tienen la misma dimensión.
+
+\end{cor}
+
+\begin{cor}
+
+Dado un módulo de dimensión $k+1$, existe un vector primitivo de peso $k$.  Dicho vector es único salvo producto por escalares.
+
+\end{cor}
+
+Dado un número natural $k$ existe, salvo isomorfismos, un único módulo simple de dimensión $k+1$.  Denotaremos dicho módulo por $E(k)$, donde $k$ es el peso del vector primitivo.
+
+\bigskip
+
+\noindent{\bf Ejemplos.}
+
+\begin{itemize}
+
+
+\item Sea $E= \C$.  El morfismo nulo $\varphi: \g \rightarrow \mathfrak{gl}(\C)$ convierte a $\C$ es un $\g$-módulo.  Este módulo es isomorfo a $E(0)$.
+
+\item Sea $E= \C^2$.  La inyección canónica de $\mathfrak{sl}(2,\C)$ en $\mathfrak{gl}(\C^2)$ convierte a $\C^2$ en módulo $E(1)$.
+
+Sea $E= \g$ y $\varphi$ la representación  adjunta.  Este representación es irreducible, puesto que los submódulos son los ideales.  Resulta que precisamente es isomorfa a $E(2)$.
+
+\item Sea $P_d$ el conjunto de polinomios homogeneos en dos variables, que denotaremos $z_1$ y $z_2$, para evitar confusiones.  Este conjunto es un espacio vectorial de dimensión $d+1$.  Tomamos como base en este espacio los polinomios
+$$
+e_0=z_1^d, e_1= Z_1^{d-1}Z_2, \dots , e_d= z_2^d
+$$
+y como aplicaciones $X$, $Y$ y $H$
+$$
+X= Z_2 \frac{\partial}{\partial z_1}, Y= Z_1 \frac{\partial}{\partial z_2}, H= Z_2 \frac{\partial}{\partial z_2}- Z_1 \frac{\partial}{\partial z_1}
+$$
+Un lígero cálculo nos asegura que estos elementos cumplen las reglas de conmutación adecuadas y proporcionan una representación de $\mathfrak{sl}(2, \C)$.  Haciendo las correspondientes derivadas tenemos que
+\begin{equation*}
+\begin{split}
+Xe_j= (d-j)e_{j+1} \\
+Y(e_j= j e_{j-1} \\
+H(e_j)= (2j-d)e_j
+\end{split}
+\end{equation*}
+
+Esta representación es irreducible y necesariamente es isomorfa a $E(d)$.
+
+
+
+
+
+\end{itemize}
+
+\nocite{*}
+
+\newpage
+
+\addcontentsline{toc}{section}{Bibliografía}
+
+
+\bibliographystyle{plain}
+\bibliography{algebrasdelie}
+
+\addcontentsline{toc}{section}{Índice de Materias}
+\printindex
+
+\end{document}
+
+
+
+\begin{pro}
+
+Sea $\g$ un álgebra de Lie tridimensional.  Supongamos que $[\g,\g]$ tiene dimensión uno.  Tomando un elemento $z \in [\g,\g]$ no nulo, tenemos:
+
+\begin{itemize}
+
+\item $[x,y]= \omega(x,y)z$ donde $\omega$ es una forma bilineal antisimétrica en $\g$.
+
+\end{itemize}
+
+Como estamos en dimensión impar, $\omega$ es degenerada y su radical debe ser unidimensional, pues de lo contrario el álgebra sería abeliana, contradiciendo las hipótesis.  Pueden darse dos casos:  $[\g,\g]$ puede ser el radical de $\omega$ o puede no serlo.
+
+\begin{itemize}
+
+\item  Si $z \in \mathrm{Rad}(\omega)$, demostrar que existe una base $\{x,y,z\}$ que cumple las reglas de conmutación
+$$
+[x,y]=z, \quad [x,z]=0, \quad [y,z]=0
+$$
+Este álgebra tridimensional se denomina \index{algebra@álgebra!de Heisenberg} \df{álgebra de Heisenberg}.
+
+\item Si $z \not \in \mathrm{Rad}(\omega)$, demostrar que existe una base $\{x,y,z\}$ que verifica
+$$
+[x,y]=0, \quad [y,z]=0, \quad [x,z]= z
+$$
+
+\end{itemize}
+
+Cualquier álgebra tridimensional con $[\g,\g]$ de dimensión uno es isomorfa a una de estas dos álgebras.
+
+\end{pro}
+
+
+
+\begin{pro}
+
+Sea $A$ un álgebra asociativa y sea $\theta: A \rightarrow A$ un antimorfismo de álgebras.  Esto quiere decir que $\theta $ es lineal y que cumple $\theta (ab) = \theta(b) \theta(a)$.  El conjunto
+$$
+E= \{ x \in A \text{ tales que } \theta(x)=-x\}
+$$
+es una subálgebra de Lie de $A$.
+
+\end{pro}
+
+\begin{pro}
+
+Sea $\mathfrak{gl}( n,\C)$ considerada como álgebra de Lie real. La aplicación que manda a cada matriz  a su adjunta es un antimorfismo (sobre $\R$).  De la misma forma,  transformar una matriz en su traspuesta es también un antimorfismo.
+
+\end{pro}
+
+
+\begin{pro}
+
+Demostrar que $\R^3$ con el producto vectorial es isomorfa a $\mathfrak{so}(3, \R)$.  Demostrar que también es isomorfa al álgebra $\mathfrak{su}(2)$.
+
+\bigskip
+
+\noindent {\bf Indicación.}
+\smallskip
+
+Considerar las siguientes bases:
+
+\begin{itemize}
+
+\item En $\R^3$ $(1,0,0)$, $(0,1,0)$ y $(0,0,1)$.
+
+\item En $\mathfrak{so}(3,\R)$ 
+$\left(
+\begin{smallmatrix}
+0 & 0 & 0\\
+0& 0 & -1 \\
+0 & 1 & 0
+\end{smallmatrix} 
+\right)$, 
+$\left(
+\begin{smallmatrix}
+0 & 0 & 1\\
+0& 0 & 0 \\
+-1 & 0 & 0
+\end{smallmatrix} 
+\right)$,
+$\left(
+\begin{smallmatrix}
+0 & -1 & 0\\
+1& 0 & 0 \\
+0 & 0 & 0
+\end{smallmatrix} 
+\right)$
+
+\item En $\mathfrak{su}(2) $
+$\frac{1}{2}
+\left(
+\begin{smallmatrix}
+0 & -i\\
+-i & 0 
+\end{smallmatrix} 
+\right)$,
+$\frac{1}{2}
+\left(
+\begin{smallmatrix}
+0 & -1\\
+1 & 0 
+\end{smallmatrix} 
+\right)$,
+$\frac{1}{2}
+\left(
+\begin{smallmatrix}
+-i & 0\\
+0 & -1
+\end{smallmatrix} 
+\right)$
+
+\end{itemize}
+
+
+\end{pro}
+
+
+
+\begin{pro}
+
+Demostrar que el álgebra compleja asociada al grupo especial unitario de orden 2, $\mathfrak{su}(2)_\C$, es isomorfa al álgebra compleja $\mathfrak{sl}(2,\C)$.  Hacer lo mismo con el álgebra $\mathfrak{sl}(2, \R)_\C$.
+De esta forma el álgebra compleja $\mathfrak{sl}(2,\C)$ tiene dos formas reales.
+
+\end{pro}
+
+
+
+
+
+
+
+
+
+
+
