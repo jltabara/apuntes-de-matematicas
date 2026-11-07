@@ -12,12 +12,13 @@ python3 -m http.server 8765 --directory docs
 
 Visita http://localhost:8765. El visor usa el lector PDF del navegador; se ofrece también apertura independiente y descarga. En móvil el lector aparece debajo del catálogo.
 
-## Publicar en GitHub Pages
+## GitHub Pages
 
-1. En la cuenta `jltabara`, crea el repositorio `apuntes-de-matematicas`.
-2. Sube el contenido de esta carpeta `web` conservando `docs` como subcarpeta. Para subir todos los archivos cómodamente puedes utilizar GitHub Desktop.
-3. En el repositorio, abre Settings → Pages. Selecciona Deploy from a branch, rama `main`, carpeta `/docs`, y guarda.
-4. La dirección prevista es https://jltabara.github.io/apuntes-de-matematicas/ una vez publicado. Todavía no se ha creado el repositorio ni publicado la web.
+La web se publica desde la rama `main`, carpeta `/docs`, en:
+
+https://jltabara.github.io/apuntes-de-matematicas/
+
+Para actualizarla, regenera el catálogo si has añadido o cambiado obras, revisa los archivos de `docs` y sube los cambios a `main`.
 
 Referencia: https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site
 
